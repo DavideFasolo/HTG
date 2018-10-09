@@ -82,7 +82,7 @@
                   <desc >Benvenuto!</>
                   <buttons >auto</>
                   <design >head</>
-                  <headlogo >C:\Users\blues\Documents\Coding\HTG\1.21\KG-Logo_161x49.bmp</>
+                  <headlogo >Configurazione\assets\KG-Logo_161x49.bmp</>
                   <varlist >
                      <rows ></>
                   </>
@@ -116,7 +116,7 @@ Questa breve guida ti permetterà di installare il software in questo computer, 
                   <desc ></>
                   <buttons >auto</>
                   <design >left</>
-                  <headlogo >C:\Users\blues\Documents\Coding\HTG\1.21\KG-Logo_161x49.bmp</>
+                  <headlogo >Configurazione\assets\KG-Logo_161x49.bmp</>
                   <chlist >
                      <rows >
                         <_ >
@@ -150,14 +150,14 @@ Questa breve guida ti permetterà di installare il software in questo computer, 
                         <srclist >
                            <rows rel = unpack >
                               <_ >
-                                 <filename >C:\Program Files (x86)\Hole Table Generator\Configurazione</>
+                                 <filename >Configurazione</>
                                  <recurse >1</>
                                  <justfile >0</>
                                  <emptydir >0</>
                                  <exclude ></>
                               </>
                               <_ >
-                                 <filename >C:\Users\blues\OneDrive\Desktop\HTG.exe</>
+                                 <filename >comp\HTG.exe</>
                                  <recurse >1</>
                                  <justfile >1</>
                                  <emptydir >0</>
@@ -194,7 +194,7 @@ Questa breve guida ti permetterà di installare il software in questo computer, 
                                  <path >inst</>
                                  <file >HTG.exe</>
                                  <cmdline ></>
-                                 <icon >C:\Program Files (x86)\Hole Table Generator\Configurazione\icns\icona.ico</>
+                                 <icon >Configurazione\icns\icona.ico</>
                                  <work >inst</>
                                  <defwork ></>
                                  <if ></>
@@ -205,7 +205,7 @@ Questa breve guida ti permetterà di installare il software in questo computer, 
                                  <path >inst</>
                                  <file >HTG.exe</>
                                  <cmdline ></>
-                                 <icon >C:\Program Files (x86)\Hole Table Generator\Configurazione\icns\icona.ico</>
+                                 <icon >Configurazione\icns\icona.ico</>
                                  <work >inst</>
                                  <defwork ></>
                                  <if >#desklink#</>
@@ -216,7 +216,7 @@ Questa breve guida ti permetterà di installare il software in questo computer, 
                                  <path >inst</>
                                  <file >Configurazione\config.kg</>
                                  <cmdline ></>
-                                 <icon >C:\Program Files (x86)\Hole Table Generator\Configurazione\icns\conf.ico</>
+                                 <icon >Configurazione\icns\conf.ico</>
                                  <work >inst</>
                                  <defwork ></>
                                  <if ></>
@@ -227,7 +227,7 @@ Questa breve guida ti permetterà di installare il software in questo computer, 
                                  <path >inst</>
                                  <file >Configurazione\isograph\isograph.pp</>
                                  <cmdline ></>
-                                 <icon >C:\Program Files (x86)\Hole Table Generator\Configurazione\icns\conf.ico</>
+                                 <icon >Configurazione\icns\conf.ico</>
                                  <work >inst</>
                                  <defwork ></>
                                  <if ></>
@@ -298,7 +298,7 @@ Questa breve guida ti permetterà di installare il software in questo computer, 
                   <desc ></>
                   <buttons >c</>
                   <design >head</>
-                  <headlogo >C:\Users\blues\Documents\Coding\HTG\1.21\KG-Logo_161x49.bmp</>
+                  <headlogo >Configurazione\assets\KG-Logo_161x49.bmp</>
                   <chlist >
                      <rows >
                         <_ >
@@ -629,7 +629,7 @@ Questa breve guida ti permetterà di installare il software in questo computer, 
    <csuninst >"<exefilename>"</>
    <csupdate >"<exefilename>"</>
    <crautorun >0</>
-   <autoicon >C:\Program Files (x86)\Hole Table Generator\Configurazione\assets\icona.ico</>
+   <autoicon >Configurazione\icns\icona.ico</>
    <multilist >
       <rows ></>
    </>
