@@ -1,4 +1,4 @@
-pyinstaller.exe --workpath=comp --distpath="comp" --clean --specpath=comp --onefile -w --icon="graphics\icona.ico" HTG.py
+pyinstaller.exe --workpath=comp --distpath="comp" --clean --specpath=comp --onefile -w --icon="Configurazione\icns\icona.ico" HTG.py
 xcopy /Y comp\HTG.exe %HOMEPATH%\OneDrive\Desktop\
 "%PROGRAMFILES(X86)%\CreateInstall Free\cicmdf.exe" -c -r0 "installer\Hole Table Generator.ci"
 TIMEOUT 3
