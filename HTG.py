@@ -10,7 +10,7 @@ from outdxf import *
 import configparser
 ######################################################################
 class Htg_gui:
-    workpath="C:\\Program Files (x86)\\Hole Table Generator\\Configurazione\\"
+    workpath="Configurazione\\"
     Config = configparser.ConfigParser()
     Config.read(workpath+"config.kg")
     arrot=int(Config.get('ambiente','cifre decimali delle coordinate'))
@@ -43,20 +43,20 @@ class Htg_gui:
         stile.configure("TButton", foreground="black",
                         height=32,
                         width=32)
-        
+
         proprio.gen_1=genitore
         proprio.container1=Frame(genitore)
         proprio.container1.pack(fill=X)
         proprio.container1.configure(padding=butt_p)
-        
+
         proprio.msgwrite=Frame(genitore)
         proprio.msgwrite.pack(fill=X)
         proprio.msgwrite.configure(padding=butt_p)
-        
+
         proprio.container3=Frame(genitore)
         proprio.container3.pack(fill=X)
         proprio.container3.configure(padding=butt_p)
-        
+
         proprio.butt_apri=Button(proprio.container1)
         proprio.butt_apri.configure(text='apri vda',
                                     image=proprio.icn_apri,
@@ -82,7 +82,7 @@ class Htg_gui:
                                    image=proprio.icn_cnc)
         proprio.butt_cnc.pack(side=LEFT)
         proprio.butt_cnc.configure(state=DISABLED)
-        
+
         proprio.butt_txt=Button(proprio.container1)
         proprio.butt_txt.configure(text='salva txt',
                                    image=proprio.icn_txt)
@@ -99,9 +99,9 @@ class Htg_gui:
         proprio.container2=Frame(genitore)
         proprio.container2.pack(side=TOP)
         proprio.container2.configure(padding=butt_p)
-        
+
         proprio.mw = Text(proprio.msgwrite, height=1)
-        proprio.mw.tag_configure('normale', foreground='#476042', 
+        proprio.mw.tag_configure('normale', foreground='#476042',
 						font=('Tempus Sans ITC', 8))
         proprio.mw.tag_configure('csv',
                                  foreground='green',
@@ -116,14 +116,14 @@ class Htg_gui:
                                  foreground='mediumblue',
                                  font=('Tempus Sans ITC', 8))
 
-        
+
         proprio.mw.insert(END, 'selezionare un file vda','normale')
-        
+
         proprio.mw.config(relief=FLAT,
                           bg='#E1E1E1',
                           state=DISABLED)
         proprio.mw.pack(side=LEFT,expand=1,fill=tk.X)
-        
+
         proprio.S = Scrollbar(proprio.container2)
         proprio.S.pack(side=RIGHT, fill=Y)
         proprio.T = Text(proprio.container2, height=20, width=text_w)
