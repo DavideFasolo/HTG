@@ -7,7 +7,7 @@ def esporta_cnc(fori,p,f,workpath,traduttore):
     print(workpath+traduttore+"\\"+traduttore+".pp")
 
     enne=str(postppc.get('generale','identificatore riga'))
-    incenne=str(postppc.get('generale','incremento riga'))
+    incremento_N=str(postppc.get('generale','incremento riga'))
     zzz=str(postppc.get('generale','Z di arrivo comune'))
     rigaforo=str(postppc.get('generale','riga di foratura'))
     vt=float(postppc.get('generale','velocita di taglio'))
@@ -18,47 +18,47 @@ def esporta_cnc(fori,p,f,workpath,traduttore):
         os.mkdir(dircnc)
 
     i=1
-    vainmona=list()
-    vainfiga=list()
-    vainmona.append(fori[0][0])
+    diamtemp=list()
+    n_fori_diam=list()
+    diamtemp.append(fori[0][0])
     while i<len(fori)-1:
-        vainmona.append(fori[i][0])
-        if vainmona[i]==vainmona[i-1]:
-            contatore=str(vainmona).count(str(vainmona[i]))
+        diamtemp.append(fori[i][0])
+        if diamtemp[i]==diamtemp[i-1]:
+            contatore=str(diamtemp).count(str(diamtemp[i]))
         else:
-            vainfiga.append([vainmona[i-1],contatore])
+            n_fori_diam.append([diamtemp[i-1],contatore])
             contatore=1
         i+=1
-    vainfiga.append([vainmona[i-1],contatore+1])
+    n_fori_diam.append([diamtemp[i-1],contatore+1])
 
     i=0
-    contafiga=0
-    while i<len(vainfiga):
-        nomdia=str(float(vainfiga[i][0]))
-        if round(float(nomdia),0)-float(nomdia)==0:
-            nomdia=int(round(float(nomdia),0))
-        cnc=dircnc+"\\"+f.strip(".")+"_Diam-"+str(nomdia).replace(".",",")+".cnc"
+    foro_attuale=0
+    while i<len(n_fori_diam):
+        diametro_format=str(float(n_fori_diam[i][0]))
+        if round(float(diametro_format),0)-float(diametro_format)==0:
+            diametro_format=int(round(float(diametro_format),0))
+        cnc=dircnc+"\\"+f.strip(".")+"_Diam-"+str(diametro_format).replace(".",",")+".cnc"
         out_cnc = open(cnc,"w+")
-        figaebamba=0
-        lelo=int(incenne)
-        while figaebamba<vainfiga[i][1]:
-            x=str(fori[contafiga+figaebamba][1]).strip("0")
-            y=str(fori[contafiga+figaebamba][2]).strip("0")
-            z=str(fori[contafiga+figaebamba][3]).strip("0")
-            nuforo=str(contafiga+figaebamba+1)
-            deforo=str(float(fori[contafiga+figaebamba][0]))
+        foro_sub_diam=0
+        incremento_int=int(incremento_N)
+        while foro_sub_diam<n_fori_diam[i][1]:
+            x=str(fori[foro_attuale+foro_sub_diam][1]).strip("0")
+            y=str(fori[foro_attuale+foro_sub_diam][2]).strip("0")
+            z=str(fori[foro_attuale+foro_sub_diam][3]).strip("0")
+            nuforo=str(foro_attuale+foro_sub_diam+1)
+            deforo=str(float(fori[foro_attuale+foro_sub_diam][0]))
             if vt!=0:
-                giriminuto=str(int(vt*1000/(math.pi*float(fori[contafiga+figaebamba][0]))))
+                giriminuto=str(int(vt*1000/(math.pi*float(fori[foro_attuale+foro_sub_diam][0]))))
             if zzz!="no":
                 z=zzz
-            fikah=rigaforo.replace("<x>",x).replace("<y>",y).replace("<z>",z).replace("<s>",giriminuto).replace("<n>",nuforo).replace("<d>",deforo).split("#")
-            lalah=0
-            while lalah<len(fikah):
-                out_cnc.write(enne+"\t"+str(lelo)+"\t"+str(fikah[lalah])+"\n")
-                lelo+=int(incenne)
-                lalah+=1
-            figaebamba+=1
-        contafiga+=figaebamba
+            scrivi_riga=rigaforo.replace("<x>",x).replace("<y>",y).replace("<z>",z).replace("<s>",giriminuto).replace("<n>",nuforo).replace("<d>",deforo).split("#")
+            cont_riga=0
+            while cont_riga<len(scrivi_riga):
+                out_cnc.write(enne+"\t"+str(incremento_int)+"\t"+str(scrivi_riga[cont_riga])+"\n")
+                incremento_int+=int(incremento_N)
+                cont_riga+=1
+            foro_sub_diam+=1
+        foro_attuale+=foro_sub_diam
         out_cnc.close()
         print("Creato il file \n"+cnc+"\n"+"Nella cartella dove si trova il file vda selezionato")
         i+=1
@@ -76,51 +76,51 @@ def esporta_txt(fori,p,f,workpath):
         os.mkdir(dirtxt)
 
     i=1
-    vainmona=list()
-    vainfiga=list()
-    vainmona.append(fori[0][0])
+    diamtemp=list()
+    n_fori_diam=list()
+    diamtemp.append(fori[0][0])
     while i<len(fori)-1:
-        vainmona.append(fori[i][0])
-        if vainmona[i]==vainmona[i-1]:
-            contatore=str(vainmona).count(str(vainmona[i]))
+        diamtemp.append(fori[i][0])
+        if diamtemp[i]==diamtemp[i-1]:
+            contatore=str(diamtemp).count(str(diamtemp[i]))
         else:
-            vainfiga.append([vainmona[i-1],contatore])
+            n_fori_diam.append([diamtemp[i-1],contatore])
             contatore=1
         i+=1
-    vainfiga.append([vainmona[i-1],contatore+1])
+    n_fori_diam.append([diamtemp[i-1],contatore+1])
 
     i=0
-    contafiga=0
-    while i<len(vainfiga):
-        nomdia=str(float(vainfiga[i][0]))
-        if round(float(nomdia),0)-float(nomdia)==0:
-            nomdia=int(round(float(nomdia),0))
-        txt=dirtxt+"\\"+f.strip(".")+"_Diam-"+str(nomdia).replace(".",",")+".txt"
+    foro_attuale=0
+    while i<len(n_fori_diam):
+        diametro_format=str(float(n_fori_diam[i][0]))
+        if round(float(diametro_format),0)-float(diametro_format)==0:
+            diametro_format=int(round(float(diametro_format),0))
+        txt=dirtxt+"\\"+f.strip(".")+"_Diam-"+str(diametro_format).replace(".",",")+".txt"
         out_txt = open(txt,"w+")
-        figaebamba=0
+        foro_sub_diam=0
         if intestaz=='si':
-            out_txt.write('Coordinate dei fori diametro '+str(nomdia)+'\n\n')
-        numiniz=str(contafiga+1)
-        while figaebamba<vainfiga[i][1]:
-            x=str(fori[contafiga+figaebamba][1]).strip("0")
-            y=str(fori[contafiga+figaebamba][2]).strip("0")
-            z=str(fori[contafiga+figaebamba][3]).strip("0")
+            out_txt.write('Coordinate dei fori diametro '+str(diametro_format)+'\n\n')
+        numiniz=str(foro_attuale+1)
+        while foro_sub_diam<n_fori_diam[i][1]:
+            x=str(fori[foro_attuale+foro_sub_diam][1]).strip("0")
+            y=str(fori[foro_attuale+foro_sub_diam][2]).strip("0")
+            z=str(fori[foro_attuale+foro_sub_diam][3]).strip("0")
             if etcoord=='si':
-                fikah='X'+x+'\t\t\tY'+y
+                scrivi_riga='X'+x+'\t\t\tY'+y
                 if z_coord=='si':
-                    fikah+='\t\t\tZ'+z+'\n'
+                    scrivi_riga+='\t\t\tZ'+z+'\n'
                 else:
-                    fikah+='\n'
+                    scrivi_riga+='\n'
             else:
-                fikah=x+'\t\t\t'+y
+                scrivi_riga=x+'\t\t\t'+y
                 if z_coord=='si':
-                    fikah+='\t\t\t'+z+'\n'
+                    scrivi_riga+='\t\t\t'+z+'\n'
                 else:
-                    fikah+='\n'
-            out_txt.write(fikah)
-            figaebamba+=1
-        contafiga+=figaebamba
-        numfina=str(contafiga)
+                    scrivi_riga+='\n'
+            out_txt.write(scrivi_riga)
+            foro_sub_diam+=1
+        foro_attuale+=foro_sub_diam
+        numfina=str(foro_attuale)
         if intestaz=='si':
             out_txt.write('\n\nFori dal '+numiniz+' al '+numfina+' della tabella fori')
         out_txt.close()
