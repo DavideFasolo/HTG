@@ -5,6 +5,7 @@ def esporta_cnc(fori,p,f,workpath,traduttore):
     postppc = configparser.ConfigParser()
     postppc.read(workpath+traduttore+"\\"+traduttore+".pp")
     print(workpath+traduttore+"\\"+traduttore+".pp")
+    print(os.getcwd())
 
     enne=str(postppc.get('generale','identificatore riga'))
     incremento_N=str(postppc.get('generale','incremento riga'))

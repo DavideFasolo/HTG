@@ -10,7 +10,7 @@ from outdxf import *
 import configparser
 ######################################################################
 class Htg_gui:
-    workpath="Configurazione\\"
+    workpath=str(os.getcwd())+"\\Configurazione\\"
     Config = configparser.ConfigParser()
     Config.read(workpath+"config.kg")
     arrot=int(Config.get('ambiente','cifre decimali delle coordinate'))
