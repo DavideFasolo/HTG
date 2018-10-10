@@ -10,7 +10,7 @@ from outdxf import *
 import configparser
 ######################################################################
 class Htg_gui:
-    #aggiunta rilevazione directory di lavoro
+    #aggiunta rilevazione directory di lavoro - da migliorare
     workpath=str(os.getcwd())+"\\Configurazione\\"
     Config = configparser.ConfigParser()
     Config.read(workpath+"config.kg")
