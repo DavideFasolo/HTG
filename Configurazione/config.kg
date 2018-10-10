@@ -1,82 +1,41 @@
 [postprocessore cnc]
-nome postprocessore:isograph
+nome postprocessore = isograph
 
-#######SETTAGGI COLORI E DIMENSIONI OUTPUT DXF##################################
-###i colori fanno riferimento ai valori di autocad standard
-###per uno schema dettagliato dei colori, consultare la pagina dedicata:
-
-###http://sub-atomic.com/~moses/acadcolors.html#################################
-
-################################################################################
 [ambiente]
-esporta coordinate Z dei cerchi:true
-cifre decimali delle coordinate:3
+esporta coordinate z dei cerchi = true
+cifre decimali delle coordinate = 3
 
 [stile cerchi]
-spessore tratto:2
-colore del tratto:150
-livello:Fori-HTC-Fasolo
+spessore tratto = 2
+colore del tratto = 150
+livello = Fori-HTC-Fasolo
 
 [stile assi]
-spessore tratto:4
-colore tratto:102
+spessore tratto = 4
+colore tratto = 102
 
 [stile etichette]
-colore tratto:200
-altezza caratteri:3.5
-angolazione:20
-livello:Fori-HTC-Fasolo-etichette
-livello testo:Fori-HTC-Fasolo-tag
-colore testo:6
-
-################################################################################
-
-
-
-#################IMPOSTAZIONI OUTPUT CSV PER EXCEL##############################
-###impostare i valori in base a come avete settato excel
-###per l'apertura di file csv
+colore tratto = 200
+altezza caratteri = 3.5
+angolazione = 20
+livello = Fori-HTC-Fasolo-etichette
+livello testo = Fori-HTC-Fasolo-tag
+colore testo = 6
 
 [formattazione csv]
-separatore colonne:;
-virgola:,
-
-################################################################################
-
-
-#################IMPOSTAZIONI OUTPUT TXT##############################
+separatore colonne = ;
+virgola = ,
 
 [formattazione txt]
-etichette coordinate:si
-coordinate z:no
-intestazione:si
+etichette coordinate = si
+coordinate z = no
+intestazione = si
 
-################################################################################
-
-
-
-
-
-################################################################################
 [avanzate]
+scala dimensioni testo due cifre = 1.9
+fattore offset tag due cifre x = 1.6
+fattore offset tag due cifre y = 1.25
+scala dimensioni testo una cifra = 1.2
+fattore offset tag una cifra x = 2.2
+fattore offset tag una cifra y = 1.8
 
-###############ETICHETTE A DUE CIFRE############################################
-
-#imposta la grandezza dell'etichetta ottagonale rispetto al numero
-scala dimensioni testo due cifre:1.9
-
-#spostamento in x e in y del testo rispetto all'etichetta ottagonale
-fattore offset tag due cifre x:1.6 
-fattore offset tag due cifre y:1.25
-
-
-###############ETICHETTE A UNA CIFRA############################################
-
-#######imposta la grandezza dell'etichetta ottagonale rispetto al numero########
-scala dimensioni testo una cifra:1.2 
-
-#######spostamento in x e in y del testo rispetto all'etichetta ottagonale######
-fattore offset tag una cifra x:2.2
-fattore offset tag una cifra y:1.8
-
-################################################################################
