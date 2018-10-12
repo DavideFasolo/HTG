@@ -1,9 +1,9 @@
 Coordinate dei fori diametro 6
 
-X-51.655			Y83.781			Z-15.777
-X-33.943			Y83.781			Z-3.655
-X33.277			Y83.781			Z-3.655
-X50.989			Y83.781			Z-15.777
+X-51.655			Y83.781
+X-33.943			Y83.781
+X33.277			Y83.781
+X50.989			Y83.781
 
 
 Fori dal 1 al 4 della tabella fori

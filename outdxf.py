@@ -10,9 +10,7 @@ def esporta_dxf(fori,f):
     coord_z=str(Config.get('ambiente','esporta coordinate Z dei cerchi'))
     cer_livello=str(Config.get('stile cerchi','livello'))
     cer_colore=str(Config.get('stile cerchi','colore del tratto'))
-    cer_spessore=str(Config.get('stile cerchi','spessore tratto'))
     ass_colore=str(Config.get('stile assi','colore tratto'))
-    ass_spessore=str(Config.get('stile assi','spessore tratto'))
     htesto=str(Config.get('stile etichette','altezza caratteri'))
     tes_livello=str(Config.get('stile etichette','livello testo'))
     tes_colore=str(Config.get('stile etichette','colore testo'))
@@ -44,7 +42,7 @@ def esporta_dxf(fori,f):
         else:
             cz=0
         i+=1
-        out_dxf.write(dxf_cerchio(cx,cy,cz,cr,cer_livello,cer_colore,cer_spessore))
+        out_dxf.write(dxf_cerchio(cx,cy,cz,cr,cer_livello,cer_colore))
         out_dxf.write(dxf_testo(coord_testo_etichetta(cx,cy,cz,cr,htesto,angolo,'x',i,etk_dmodA,etk_dmodB,etk_dmodAx,etk_dmodBx),coord_testo_etichetta(cx,cy,cz,cr,htesto,angolo,'y',i,etk_dmodA,etk_dmodB,etk_dmodAy,etk_dmodBy,),cz,0,0,str(i),htesto,tes_livello,tes_colore))
         out_dxf.write(dis_etichetta(cx,cy,cz,cr,htesto,angolo,etk_livello,i,etk_colore,etk_dmodA,etk_dmodB))
     ###assi
@@ -65,8 +63,8 @@ def esporta_dxf(fori,f):
         g+=1
     if miny>0:
         miny=0
-    out_dxf.write(dxf_linea(minx,0,0,maxx,0,0,cer_livello,ass_colore,ass_spessore))
-    out_dxf.write(dxf_linea(0,maxy,0,0,miny,0,cer_livello,ass_colore,ass_spessore))
+    out_dxf.write(dxf_linea(minx,0,0,maxx,0,0,cer_livello,ass_colore))
+    out_dxf.write(dxf_linea(0,maxy,0,0,miny,0,cer_livello,ass_colore))
     #######
     out_dxf.write('0\nENDSEC\n0\nEOF')
     out_dxf.close()

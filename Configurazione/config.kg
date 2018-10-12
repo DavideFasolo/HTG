@@ -6,12 +6,10 @@ esporta coordinate z dei cerchi = true
 cifre decimali delle coordinate = 3
 
 [stile cerchi]
-spessore tratto = 2
 colore del tratto = 152
 livello = Cerchi
 
 [stile assi]
-spessore tratto = 4
 colore tratto = 102
 
 [stile etichette]
