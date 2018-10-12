@@ -1,9 +1,9 @@
 Coordinate dei fori diametro 8
 
-X-131.855			Y.366			Z-19.547
-X-131.855			Y83.781			Z-16.537
-X131.195			Y.366			Z-19.547
-X131.195			Y83.781			Z-16.537
+X-131.855			Y.366
+X-131.855			Y83.781
+X131.195			Y.366
+X131.195			Y83.781
 
 
 Fori dal 5 al 8 della tabella fori
