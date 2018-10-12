@@ -1,0 +1,9 @@
+Coordinate dei fori diametro 10
+
+X-20.			Y.			Z-87.235
+X.			Y-22.			Z-87.235
+X.			Y22.			Z-87.235
+X20.			Y.			Z-87.235
+
+
+Fori dal 9 al 12 della tabella fori

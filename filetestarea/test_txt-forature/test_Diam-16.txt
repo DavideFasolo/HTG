@@ -1,0 +1,9 @@
+Coordinate dei fori diametro 16
+
+X-125.			Y-200.			Z.
+X-125.			Y200.			Z.
+X125.			Y-200.			Z.
+X125.			Y200.			Z.
+
+
+Fori dal 25 al 28 della tabella fori
