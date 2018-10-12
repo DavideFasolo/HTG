@@ -7,8 +7,8 @@ cifre decimali delle coordinate = 3
 
 [stile cerchi]
 spessore tratto = 2
-colore del tratto = 150
-livello = Fori-HTC-Fasolo
+colore del tratto = 152
+livello = Cerchi
 
 [stile assi]
 spessore tratto = 4
@@ -18,8 +18,8 @@ colore tratto = 102
 colore tratto = 200
 altezza caratteri = 3.5
 angolazione = 20
-livello = Fori-HTC-Fasolo-etichette
-livello testo = Fori-HTC-Fasolo-tag
+livello = Etichette
+livello testo = Tag
 colore testo = 6
 
 [formattazione csv]

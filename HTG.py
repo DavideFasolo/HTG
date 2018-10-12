@@ -7,6 +7,7 @@ from creamatrix import *
 from outcsv import *
 from outcnc import *
 from outdxf import *
+from settings import *
 import configparser
 ######################################################################
 class Htg_gui:
@@ -90,13 +91,6 @@ class Htg_gui:
         proprio.butt_txt.pack(side=LEFT)
         proprio.butt_txt.configure(state=DISABLED)
 
-        proprio.butt_chiudi=Button(proprio.container1)
-        proprio.butt_chiudi.configure(text='esci',
-                                      width=butt_main_w,
-                                      image=proprio.icn_esci,
-                                      command=proprio.esci)
-        proprio.butt_chiudi.pack(side=LEFT)
-
         proprio.container2=Frame(genitore)
         proprio.container2.pack(side=TOP)
         proprio.container2.configure(padding=butt_p)
@@ -134,7 +128,7 @@ class Htg_gui:
                          relief=FLAT)
         proprio.T.insert(END, "per cominciare, seleziona un file vda usando il pulsante apposito\n")
         proprio.T.config(state=DISABLED)
-
+        
     def aprifile(proprio):
         t=aprivda()
         if t:
@@ -208,11 +202,40 @@ class Htg_gui:
                                    command=esportcnc)
         proprio.butt_txt.configure(state=NORMAL,
                                    command=esporttxt)
-    def esci(proprio):
-        radice.destroy()
 
+def esciii():
+    radice.destroy()
+def sett_1():
+    impostazioni = Toplevel()
+    impostazioni.title("Impostazioni file di testo")
+    impostazioni.iconbitmap(Htg_txtset.workpath+"\\icns\\conf.ico")
+    set_txt=Htg_txtset(impostazioni)
+    impostazioni.mainloop()
+def sett_2():
+    impostazioni = Toplevel()
+    impostazioni.title("Impostazioni file csv")
+    impostazioni.iconbitmap(Htg_csvset.workpath+"\\icns\\conf.ico")
+    set_csv_gui=Htg_csvset(impostazioni)
+    impostazioni.mainloop()
+def sett_3():
+    impostazioni = Toplevel()
+    impostazioni.title("Impostazioni dxf")
+    impostazioni.iconbitmap(Htg_dxfset.workpath+"\\icns\\conf.ico")
+    set_dxf_gui=Htg_dxfset(impostazioni)
+    impostazioni.mainloop()
 radice = Tk()
 radice.title("Hole Table Generator by Kill Goliath")
 radice.iconbitmap(Htg_gui.workpath+"\\icns\\icona.ico")
 heg_gui=Htg_gui(radice)
+butt_sett=Menu(radice)
+impostazioni=Menu(butt_sett,tearoff=0)
+impostazioni.add_command(label="file di testo",
+                              command=sett_1)
+impostazioni.add_command(label="file csv",
+                              command=sett_2)
+impostazioni.add_command(label="file dxf",
+                              command=sett_3)
+butt_sett.add_cascade(label="Impostazioni", menu=impostazioni)
+butt_sett.add_command(label='esci',command=esciii)
+radice.config(menu=butt_sett)
 radice.mainloop()

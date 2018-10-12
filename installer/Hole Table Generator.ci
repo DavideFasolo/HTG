@@ -3,7 +3,7 @@
    <autoclose >0</>
    <compname >Kill Goliath</>
    <produrl >https://sites.google.com/view/holetablegenerator/home</>
-   <ver >2.0.1</>
+   <ver >2.1.0</>
    <supurl >https://sites.google.com/view/holetablegenerator/home</>
    <updurl >https://sites.google.com/view/holetablegenerator/home</>
    <dlgfont >verdana</>
@@ -285,7 +285,7 @@ Questa breve guida ti permetterà di installare il software in questo computer, 
                   <auto >1</>
                   <buttons >nc</>
                   <design >left</>
-                  <headlogo >C:\Users\blues\Documents\Coding\HTG\1.21\KG-Logo_161x49.bmp</>
+                  <headlogo >Configurazione\assets\KG-Logo_161x49.bmp</>
                   <varlist >
                      <rows ></>
                   </>
