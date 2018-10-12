@@ -31,8 +31,6 @@ class Htg_gui:
         #------------------------------------------------------
         proprio.icn_apri=tk.PhotoImage(file=proprio.workpath+
                                "icns\\folder-orange-open.png")
-        proprio.icn_esci=tk.PhotoImage(file=proprio.workpath+
-                               "icns\\system-shutdown.png")
         proprio.icn_csv=tk.PhotoImage(file=proprio.workpath+
                                "icns\\csv-file.png")
         proprio.icn_dxf=tk.PhotoImage(file=proprio.workpath+
@@ -92,7 +90,7 @@ class Htg_gui:
         proprio.butt_txt.configure(state=DISABLED)
 
         proprio.container2=Frame(genitore)
-        proprio.container2.pack(side=TOP)
+        proprio.container2.pack(side=TOP,expand=1,fill=tk.BOTH)
         proprio.container2.configure(padding=butt_p)
 
         proprio.mw = Text(proprio.msgwrite, height=1)
@@ -122,12 +120,13 @@ class Htg_gui:
         proprio.S = Scrollbar(proprio.container2)
         proprio.S.pack(side=RIGHT, fill=Y)
         proprio.T = Text(proprio.container2, height=20, width=text_w)
-        proprio.T.pack(side=TOP,expand=1,fill=tk.X)
+        proprio.T.pack(side=TOP,expand=1,fill=tk.BOTH)
         proprio.S.config(command=proprio.T.yview)
         proprio.T.config(wrap=NONE,
                          relief=FLAT)
         proprio.T.insert(END, "per cominciare, seleziona un file vda usando il pulsante apposito\n")
         proprio.T.config(state=DISABLED)
+        proprio.T['yscrollcommand'] = proprio.S.set
         
     def aprifile(proprio):
         t=aprivda()
@@ -236,6 +235,7 @@ impostazioni.add_command(label="file csv",
 impostazioni.add_command(label="file dxf",
                               command=sett_3)
 butt_sett.add_cascade(label="Impostazioni", menu=impostazioni)
-butt_sett.add_command(label='esci',command=esciii)
+butt_sett.add_command(label='esci',
+                      command=esciii)
 radice.config(menu=butt_sett)
 radice.mainloop()
