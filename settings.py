@@ -4,6 +4,8 @@ from tkinter import ttk
 from tkinter.ttk import *
 import os
 import configparser
+
+
 class Htg_txtset:
     workpath=str(os.getcwd())+"\\Configurazione\\"
     Config = configparser.ConfigParser()
@@ -61,6 +63,7 @@ class Htg_txtset:
         ###################################################################
         make_box('proprio.cont1','formattazione txt')
 
+
 class Htg_csvset:
     workpath=str(os.getcwd())+"\\Configurazione\\"
     Config = configparser.ConfigParser()
@@ -117,7 +120,6 @@ class Htg_csvset:
             proprio.butt_set.pack(side=BOTTOM)
         ###################################################################
         make_box('proprio.cont1','formattazione csv')
-
 
 
 class Htg_dxfset:
