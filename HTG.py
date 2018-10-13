@@ -185,7 +185,7 @@ class Htg_gui:
             proprio.mw.config(state=DISABLED,
                               bg='honeydew')
         def esportdxf():
-            esporta_dxf(proprio.fori,proprio.f)
+            esporta_dxf(proprio.fori,proprio.f, proprio.workpath)
             proprio.mw.config(state=NORMAL)
             proprio.mw.delete(1.0,END)
             proprio.mw.insert(END, 'Esportazione file dxf R12 completata','dxf')
