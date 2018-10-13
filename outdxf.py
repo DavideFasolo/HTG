@@ -1,9 +1,10 @@
 import configparser
 from etik import *
 from KG_dxf import *
-def esporta_dxf(fori,f):
 
-    workpath="C:\\Program Files (x86)\\Hole Table Generator\\Configurazione\\"
+
+def esporta_dxf(fori,f, workpath):
+
     Config = configparser.ConfigParser()
     Config.read(workpath+"config.kg")
 
