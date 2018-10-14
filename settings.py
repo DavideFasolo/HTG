@@ -3,13 +3,8 @@ from tkinter import *
 from tkinter import ttk
 from tkinter.ttk import *
 import os
-import configparser
 
-
-class HtgConfiguration:
-    def __init__(self, path):
-        self.Config = configparser.ConfigParser()
-        self.Config.read(path + "config.kg")
+from infrastructure import HtgConfiguration
 
 
 class Htg_txtset:

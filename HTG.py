@@ -4,11 +4,12 @@ from tkinter import ttk
 from tkinter.ttk import *
 from aprifiles import *
 from creamatrix import *
+from infrastructure import InterfaceConfiguration
 from outcsv import *
 from outcnc import *
 from outdxf import *
 from settings import *
-import configparser
+
 ######################################################################
 root = tk.Tk()
 root.overrideredirect(True)
@@ -22,16 +23,6 @@ canvas.create_image(width*0.5/2, height*0.5/2, image=image)
 canvas.pack()
 root.after(5000, root.destroy)
 root.mainloop()
-
-
-class InterfaceConfiguration:
-    def __init__(self, path):
-        Config = configparser.ConfigParser()
-        Config.read(path+"config.kg")
-        self.arrot=int(Config.get('ambiente','cifre decimali delle coordinate'))
-        self.traduttore=str(Config.get('postprocessore cnc','nome postprocessore'))
-        self.separ=Config.get('formattazione csv','separatore colonne')
-        self.virgo=Config.get('formattazione csv','virgola')
 
 
 class Htg_gui:

@@ -1,19 +1,5 @@
 import os
-import configparser
-
-
-class PostProcessorConfiguration:
-    def __init__(self, path, translator):
-        config = configparser.ConfigParser()
-        config.read(path+translator+"\\"+translator+".pp")
-        print(path+translator+"\\"+translator+".pp")
-        print(os.getcwd())
-        self.enne=str(config.get('generale','identificatore riga'))
-        self.incremento_N=str(config.get('generale','incremento riga'))
-        self.zzz=str(config.get('generale','Z di arrivo comune'))
-        self.rigaforo=str(config.get('generale','riga di foratura'))
-        self.vt=float(config.get('generale','velocita di taglio'))
-        self.giriminuto=str(config.get('generale','giri al minuto'))
+from infrastructure import TextConfiguration, PostProcessorConfiguration
 
 
 def esporta_cnc(fori,p,f,workpath,traduttore):
@@ -73,16 +59,6 @@ def esporta_cnc(fori,p,f,workpath,traduttore):
 
 
 def esporta_txt(fori,p,f,workpath):
-
-    class TextConfiguration:
-        def __init__(self, path):
-            Config = configparser.ConfigParser()
-            Config.read(path+"config.kg")
-
-            self.etcoord=str(Config.get('formattazione txt','etichette coordinate'))
-            self.z_coord=str(Config.get('formattazione txt','coordinate z'))
-            self.intestaz=str(Config.get('formattazione txt','intestazione'))
-
     cf = TextConfiguration(workpath)
 
     dirtxt=p+"\\"+f.strip(".")+"_txt-forature"
