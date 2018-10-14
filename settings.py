@@ -21,7 +21,7 @@ class Htg_txtset:
             ddd=Frame(ccc)
             ddd.pack(fill=Y)
             ddd.configure(padding=0)
-            proprio.cf.Config.read(proprio.workpath + "config.kg")
+            proprio.cf.reload()
             opt_mat=list()
             val_mat=list()
             for key in proprio.cf.Config[sez]:
@@ -54,8 +54,7 @@ class Htg_txtset:
                 while i<len(opt_mat):
                     proprio.cf.Config.set(sez, opt_mat[i], val_mat[i].get())
                     i+=1
-                with open(proprio.workpath+"config.kg", 'w') as configfile:
-                    proprio.cf.Config.write(configfile)
+                proprio.cf.save()
             proprio.butt_set=Button(ccc)
             proprio.butt_set.configure(text='salva',
                                        command=set_val)
@@ -78,7 +77,7 @@ class Htg_csvset:
             ddd=Frame(ccc)
             ddd.pack(fill=Y)
             ddd.configure(padding=0)
-            proprio.cf.Config.read(proprio.workpath + "config.kg")
+            proprio.cf.reload()
             opt_mat=list()
             val_mat=list()
             for key in proprio.cf.Config[sez]:
@@ -111,8 +110,7 @@ class Htg_csvset:
                 while i<len(opt_mat):
                     proprio.cf.Config.set(sez, opt_mat[i], val_mat[i].get())
                     i+=1
-                with open(proprio.workpath+"config.kg", 'w') as configfile:
-                    proprio.cf.Config.write(configfile)
+                proprio.cf.save()
             proprio.butt_set=Button(ccc)
             proprio.butt_set.configure(text='salva',
                                        command=set_val)
@@ -218,8 +216,7 @@ class Htg_dxfset:
                 while i<len(opt_mat):
                     proprio.cf.Config.set(sez, opt_mat[i], val_mat[i].get())
                     i+=1
-                with open(proprio.workpath+"config.kg", 'w') as configfile:
-                    proprio.cf.Config.write(configfile)
+                proprio.cf.save()
             proprio.butt_set=Button(ccc)
             proprio.butt_set.configure(text='salva',
                                        command=set_val)

@@ -4,14 +4,23 @@ import os
 
 class HtgConfiguration:
     def __init__(self, path):
+        self.path = path
         self.Config = configparser.ConfigParser()
         self.Config.read(path + "config.kg")
+
+    def reload(self):
+        self.Config.read(self.path + "config.kg")
+
+    def save(self):
+        with open(self.path+"config.kg", 'w') as configfile:
+            self.Config.write(configfile)
 
 
 class InterfaceConfiguration:
     def __init__(self, path):
         Config = configparser.ConfigParser()
         Config.read(path+"config.kg")
+
         self.arrot=int(Config.get('ambiente','cifre decimali delle coordinate'))
         self.traduttore=str(Config.get('postprocessore cnc','nome postprocessore'))
         self.separ=Config.get('formattazione csv','separatore colonne')
@@ -47,6 +56,7 @@ class PostProcessorConfiguration:
         config.read(path+translator+"\\"+translator+".pp")
         print(path+translator+"\\"+translator+".pp")
         print(os.getcwd())
+
         self.enne=str(config.get('generale','identificatore riga'))
         self.incremento_N=str(config.get('generale','incremento riga'))
         self.zzz=str(config.get('generale','Z di arrivo comune'))
