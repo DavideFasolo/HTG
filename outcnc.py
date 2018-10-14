@@ -1,3 +1,4 @@
+import math
 import os
 from infrastructure import TextConfiguration, PostProcessorConfiguration
 
@@ -32,7 +33,7 @@ def esporta_cnc(fori,p,f,workpath,traduttore):
         cnc=dircnc+"\\"+f.strip(".")+"_Diam-"+str(diametro_format).replace(".",",")+".cnc"
         out_cnc = open(cnc,"w+")
         foro_sub_diam=0
-        incremento_int=int(cf.incremento_N)
+        incremento_int = cf.incremento_N
         while foro_sub_diam<n_fori_diam[i][1]:
             x=str(fori[foro_attuale+foro_sub_diam][1]).strip("0")
             y=str(fori[foro_attuale+foro_sub_diam][2]).strip("0")
@@ -40,16 +41,16 @@ def esporta_cnc(fori,p,f,workpath,traduttore):
             nuforo=str(foro_attuale+foro_sub_diam+1)
             deforo=str(float(fori[foro_attuale+foro_sub_diam][0]))
             if cf.vt!=0:
-                giriminuto=str(int(cf.vt*1000/(math.pi*float(fori[foro_attuale+foro_sub_diam][0]))))
+                giriminuto = str(int(cf.vt*1000/(math.pi*float(fori[foro_attuale+foro_sub_diam][0]))))
             else:
-                giriminuto=cf.giriminuto
+                giriminuto = cf.giriminuto
             if cf.zzz!="no":
                 z=cf.zzz
             scrivi_riga=cf.rigaforo.replace("<x>",x).replace("<y>",y).replace("<z>",z).replace("<s>",giriminuto).replace("<n>",nuforo).replace("<d>",deforo).split("#")
             cont_riga=0
             while cont_riga<len(scrivi_riga):
                 out_cnc.write(cf.enne+"\t"+str(incremento_int)+"\t"+str(scrivi_riga[cont_riga])+"\n")
-                incremento_int+=int(cf.incremento_N)
+                incremento_int += cf.incremento_N
                 cont_riga+=1
             foro_sub_diam+=1
         foro_attuale+=foro_sub_diam

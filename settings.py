@@ -195,7 +195,7 @@ class Htg_dxfset:
                         proprio.etk=Label(proprio.contn, text=opt_mat[i])
                         proprio.etk.pack()
                         val_mat.append(StringVar())
-                        val_mat[i].set(int(proprio.cf.Config.get(sez, opt_mat[i])))
+                        val_mat[i].set(proprio.cf.Config.getint(sez, opt_mat[i]))
                         cch=Button(ddd,
                                       textvariable=val_mat[i],
                                    command=lambda i=i: colcho(proprio,i))
