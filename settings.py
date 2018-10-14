@@ -3,13 +3,13 @@ from tkinter import *
 from tkinter import ttk
 from tkinter.ttk import *
 import os
-import configparser
+
+from infrastructure import HtgConfiguration
 
 
 class Htg_txtset:
     workpath=str(os.getcwd())+"\\Configurazione\\"
-    Config = configparser.ConfigParser()
-    Config.read(workpath+"config.kg")
+    cf = HtgConfiguration(workpath)
     def __init__(proprio,genitore):
         proprio.gen_1=genitore
         def make_box(ccc,sez):
@@ -21,24 +21,24 @@ class Htg_txtset:
             ddd=Frame(ccc)
             ddd.pack(fill=Y)
             ddd.configure(padding=0)
-            proprio.Config.read(proprio.workpath+"config.kg")
+            proprio.cf.reload()
             opt_mat=list()
             val_mat=list()
-            for key in proprio.Config[sez]:
+            for key in proprio.cf.Config[sez]:
                 opt_mat.append(key)
             i=0
             while i<len(opt_mat):
                 proprio.contn=Frame(ddd)
                 proprio.contn.pack(fill=X, side=LEFT)
                 proprio.contn.configure(padding=1)
-                if (proprio.Config.get(sez,opt_mat[i])=='si' or proprio.Config.get(sez,opt_mat[i])=='no'):
+                if proprio.cf.Config.get(sez, opt_mat[i])== 'si' or proprio.cf.Config.get(sez, opt_mat[i])== 'no':
                     val_mat.append(StringVar())
                     proprio.cbox = ttk.Checkbutton(ddd,
                                     variable=val_mat[i],
                                     offvalue='no',
                                     onvalue='si',
                                     text=opt_mat[i])
-                    val_mat[i].set(proprio.Config.get(sez,opt_mat[i]))
+                    val_mat[i].set(proprio.cf.Config.get(sez, opt_mat[i]))
                     proprio.cbox.pack(side=LEFT)
                 else:
                     proprio.etk=Label(proprio.contn, text=opt_mat[i])
@@ -46,16 +46,15 @@ class Htg_txtset:
                     val_mat.append(StringVar())
                     proprio.valore=Entry(proprio.contn,
                                          textvariable=val_mat[i])
-                    val_mat[i].set(proprio.Config.get(sez,opt_mat[i]))
+                    val_mat[i].set(proprio.cf.Config.get(sez, opt_mat[i]))
                     proprio.valore.pack()
                 i+=1
             def set_val():
                 i=0
                 while i<len(opt_mat):
-                    proprio.Config.set(sez,opt_mat[i],val_mat[i].get())
+                    proprio.cf.Config.set(sez, opt_mat[i], val_mat[i].get())
                     i+=1
-                with open(proprio.workpath+"config.kg", 'w') as configfile:
-                    proprio.Config.write(configfile)
+                proprio.cf.save()
             proprio.butt_set=Button(ccc)
             proprio.butt_set.configure(text='salva',
                                        command=set_val)
@@ -66,8 +65,7 @@ class Htg_txtset:
 
 class Htg_csvset:
     workpath=str(os.getcwd())+"\\Configurazione\\"
-    Config = configparser.ConfigParser()
-    Config.read(workpath+"config.kg")
+    cf = HtgConfiguration(workpath)
     def __init__(proprio,genitore):
         proprio.gen_1=genitore
         def make_box(ccc,sez):
@@ -79,24 +77,24 @@ class Htg_csvset:
             ddd=Frame(ccc)
             ddd.pack(fill=Y)
             ddd.configure(padding=0)
-            proprio.Config.read(proprio.workpath+"config.kg")
+            proprio.cf.reload()
             opt_mat=list()
             val_mat=list()
-            for key in proprio.Config[sez]:
+            for key in proprio.cf.Config[sez]:
                 opt_mat.append(key)
             i=0
             while i<len(opt_mat):
                 proprio.contn=Frame(ddd)
                 proprio.contn.pack(fill=X, side=LEFT)
                 proprio.contn.configure(padding=1)
-                if (proprio.Config.get(sez,opt_mat[i])=='si' or proprio.Config.get(sez,opt_mat[i])=='no'):
+                if proprio.cf.Config.get(sez, opt_mat[i])== 'si' or proprio.cf.Config.get(sez, opt_mat[i])== 'no':
                     val_mat.append(StringVar())
                     proprio.cbox = ttk.Checkbutton(ddd,
                                     variable=val_mat[i],
                                     offvalue='no',
                                     onvalue='si',
                                     text=opt_mat[i])
-                    val_mat[i].set(proprio.Config.get(sez,opt_mat[i]))
+                    val_mat[i].set(proprio.cf.Config.get(sez, opt_mat[i]))
                     proprio.cbox.pack(side=LEFT)
                 else:
                     proprio.etk=Label(proprio.contn, text=opt_mat[i])
@@ -104,16 +102,15 @@ class Htg_csvset:
                     val_mat.append(StringVar())
                     proprio.valore=Entry(proprio.contn,
                                          textvariable=val_mat[i])
-                    val_mat[i].set(proprio.Config.get(sez,opt_mat[i]))
+                    val_mat[i].set(proprio.cf.Config.get(sez, opt_mat[i]))
                     proprio.valore.pack()
                 i+=1
             def set_val():
                 i=0
                 while i<len(opt_mat):
-                    proprio.Config.set(sez,opt_mat[i],val_mat[i].get())
+                    proprio.cf.Config.set(sez, opt_mat[i], val_mat[i].get())
                     i+=1
-                with open(proprio.workpath+"config.kg", 'w') as configfile:
-                    proprio.Config.write(configfile)
+                proprio.cf.save()
             proprio.butt_set=Button(ccc)
             proprio.butt_set.configure(text='salva',
                                        command=set_val)
@@ -124,8 +121,9 @@ class Htg_csvset:
 
 class Htg_dxfset:
     workpath=str(os.getcwd())+"\\Configurazione\\"
-    Config = configparser.ConfigParser()
-    Config.read(workpath+"config.kg")
+
+    cf = HtgConfiguration(workpath)
+
     colorfile=open(workpath+'coloridxf.kg','r')
     colorread=colorfile.readlines()
     colorfile.close()
@@ -149,7 +147,9 @@ class Htg_dxfset:
             ddd=Frame(ccc)
             ddd.pack(fill=X)
             ddd.configure(padding=0)
-            proprio.Config.read(proprio.workpath+"config.kg")
+
+            proprio.cf = HtgConfiguration(proprio.workpath)
+
             opt_mat=list()
             val_mat=list()
             def colcho(proprio,i):
@@ -175,27 +175,27 @@ class Htg_dxfset:
                         f+=1
                     h+=1
                     g+=1
-            for key in proprio.Config[sez]:
+            for key in proprio.cf.Config[sez]:
                 opt_mat.append(key)
             i=0
             while i<len(opt_mat):
                 proprio.contn=Frame(ddd)
                 proprio.contn.pack(fill=X, side=TOP)
-                if (proprio.Config.get(sez,opt_mat[i])=='si' or proprio.Config.get(sez,opt_mat[i])=='no'):
+                if proprio.cf.Config.get(sez, opt_mat[i])== 'si' or proprio.cf.Config.get(sez, opt_mat[i])== 'no':
                     val_mat.append(StringVar())
                     proprio.cbox = ttk.Checkbutton(ddd,
                                     variable=val_mat[i],
                                     offvalue='no',
                                     onvalue='si',
                                     text=opt_mat[i])
-                    val_mat[i].set(proprio.Config.get(sez,opt_mat[i]))
+                    val_mat[i].set(proprio.cf.Config.get(sez, opt_mat[i]))
                     proprio.cbox.pack(side=TOP)
                 else:
                     if opt_mat[i].find('colore')!=-1:
                         proprio.etk=Label(proprio.contn, text=opt_mat[i])
                         proprio.etk.pack()
                         val_mat.append(StringVar())
-                        val_mat[i].set(int(proprio.Config.get(sez,opt_mat[i])))
+                        val_mat[i].set(proprio.cf.Config.getint(sez, opt_mat[i]))
                         cch=Button(ddd,
                                       textvariable=val_mat[i],
                                    command=lambda i=i: colcho(proprio,i))
@@ -206,7 +206,7 @@ class Htg_dxfset:
                         val_mat.append(StringVar())
                         proprio.valore=Entry(proprio.contn,
                                              textvariable=val_mat[i])
-                        val_mat[i].set(proprio.Config.get(sez,opt_mat[i]))
+                        val_mat[i].set(proprio.cf.Config.get(sez, opt_mat[i]))
                         proprio.valore.pack(side=TOP, fill=X)
                 sep_m=ttk.Separator(ddd, orient="horizontal")
                 sep_m.pack(expand=2,fill=X, pady=8)
@@ -214,10 +214,9 @@ class Htg_dxfset:
             def set_val():
                 i=0
                 while i<len(opt_mat):
-                    proprio.Config.set(sez,opt_mat[i],val_mat[i].get())
+                    proprio.cf.Config.set(sez, opt_mat[i], val_mat[i].get())
                     i+=1
-                with open(proprio.workpath+"config.kg", 'w') as configfile:
-                    proprio.Config.write(configfile)
+                proprio.cf.save()
             proprio.butt_set=Button(ccc)
             proprio.butt_set.configure(text='salva',
                                        command=set_val)
