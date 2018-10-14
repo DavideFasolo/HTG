@@ -22,15 +22,23 @@ canvas.create_image(width*0.5/2, height*0.5/2, image=image)
 canvas.pack()
 root.after(5000, root.destroy)
 root.mainloop()
+
+
+class InterfaceConfiguration:
+    def __init__(self, path):
+        Config = configparser.ConfigParser()
+        Config.read(path+"config.kg")
+        self.arrot=int(Config.get('ambiente','cifre decimali delle coordinate'))
+        self.traduttore=str(Config.get('postprocessore cnc','nome postprocessore'))
+        self.separ=Config.get('formattazione csv','separatore colonne')
+        self.virgo=Config.get('formattazione csv','virgola')
+
+
 class Htg_gui:
     #aggiunta rilevazione directory di lavoro
     workpath=str(os.getcwd())+"\\Configurazione\\"
-    Config = configparser.ConfigParser()
-    Config.read(workpath+"config.kg")
-    arrot=int(Config.get('ambiente','cifre decimali delle coordinate'))
-    traduttore=str(Config.get('postprocessore cnc','nome postprocessore'))
-    separ=Config.get('formattazione csv','separatore colonne')
-    virgo=Config.get('formattazione csv','virgola')
+    cf = InterfaceConfiguration(workpath)
+
     def __init__(proprio,genitore):
         #------------------------------------------------------
         butt_main_w=32
@@ -157,7 +165,7 @@ class Htg_gui:
     def giaprocessato(proprio):
         print('il file è già stato processato, selezionane uno nuovo, esci o esporta')
     def processafile(proprio):
-        proprio.fori=leggivda(proprio.in_file,proprio.arrot)
+        proprio.fori=leggivda(proprio.in_file, proprio.cf.arrot)
         proprio.T.config(state=NORMAL)
         proprio.T.delete(1.0,END)
         i=0
@@ -178,7 +186,7 @@ class Htg_gui:
                               fg='#000000')
         print("file processato")
         def esportcsv():
-            esporta_csv(proprio.fori,proprio.f,proprio.separ,proprio.virgo)
+            esporta_csv(proprio.fori,proprio.f, proprio.cf.separ, proprio.cf.virgo)
             proprio.mw.config(state=NORMAL)
             proprio.mw.delete(1.0,END)
             proprio.mw.insert(END, 'Esportazione file csv excel completata','csv')
@@ -192,7 +200,7 @@ class Htg_gui:
             proprio.mw.config(state=DISABLED,
                               bg='mistyrose')
         def esportcnc():
-            esporta_cnc(proprio.fori,proprio.p,proprio.f,proprio.workpath,proprio.traduttore)
+            esporta_cnc(proprio.fori,proprio.p,proprio.f,proprio.workpath, proprio.cf.traduttore)
             proprio.mw.config(state=NORMAL)
             proprio.mw.delete(1.0,END)
             proprio.mw.insert(END, 'Esportazione file cnc completata','cnc')
