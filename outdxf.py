@@ -23,7 +23,10 @@ def esporta_dxf(fori,f, workpath):
         else:
             cz=0
         i+=1
-        out_dxf.write(dxf_cerchio(cx,cy,cz,cr, cf.cer_livello, cf.cer_colore))
+        # cerchio1=cerchio(cx, cy, cz, cr, cf.cer_livello, cf.cer_colore)
+        # out_dxf.write(cerchio1.dxfcode)
+        exec('cerchio%d = cerchio(%f,%f,%f,%f,"%s","%s")' % (i, cx, cy, cz, cr, cf.cer_livello, cf.cer_colore))
+        exec ("out_dxf.write(cerchio%d.dxfcode)" % i)
         out_dxf.write(dxf_testo(coord_testo_etichetta(cx,cy,cz,cr, cf.htesto, cf.angolo,'x',i, cf.etk_dmodA, cf.etk_dmodB, cf.etk_dmodAx, cf.etk_dmodBx),coord_testo_etichetta(cx,cy,cz,cr, cf.htesto, cf.angolo,'y',i, cf.etk_dmodA, cf.etk_dmodB, cf.etk_dmodAy, cf.etk_dmodBy,),cz,0,0,str(i), cf.htesto, cf.tes_livello, cf.tes_colore))
         out_dxf.write(dis_etichetta(cx,cy,cz,cr, cf.htesto, cf.angolo, cf.etk_livello,i, cf.etk_colore, cf.etk_dmodA, cf.etk_dmodB))
     ###assi
@@ -44,8 +47,10 @@ def esporta_dxf(fori,f, workpath):
         g+=1
     if miny>0:
         miny=0
-    out_dxf.write(dxf_linea(minx,0,0,maxx,0,0, cf.cer_livello, cf.ass_colore))
-    out_dxf.write(dxf_linea(0,maxy,0,0,miny,0, cf.cer_livello, cf.ass_colore))
+    assex=linea(minx,0,maxx,0, cf.cer_livello, cf.ass_colore)
+    assey=linea(0,maxy,0,miny, cf.cer_livello, cf.ass_colore)
+    out_dxf.write(assex.dxfcode)
+    out_dxf.write(assey.dxfcode)
     #######
     out_dxf.write('0\nENDSEC\n0\nEOF')
     out_dxf.close()

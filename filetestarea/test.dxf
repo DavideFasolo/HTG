@@ -9,7 +9,7 @@ ENTITIES
 0
 CIRCLE
 8
-Fori-HTC-Fasolo
+Cerchi
 10
 -51.655
 20
@@ -19,11 +19,11 @@ Fori-HTC-Fasolo
 40
 3.0
 62
-150
+152
 0
 TEXT
 8
-Fori-HTC-Fasolo-tag
+Tag
 10
 -48.63018181818182
 20
@@ -37,11 +37,11 @@ Fori-HTC-Fasolo-tag
 62
 6
 8
-Fori-HTC-Fasolo-tag
+Tag
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -48.8359
 20
@@ -59,7 +59,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -48.071
 20
@@ -77,7 +77,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -49.3012
 20
@@ -95,7 +95,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -49.3012
 20
@@ -113,7 +113,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -48.071
 20
@@ -131,7 +131,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -46.3313
 20
@@ -149,7 +149,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -45.1011
 20
@@ -167,7 +167,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -45.1011
 20
@@ -185,7 +185,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -46.3313
 20
@@ -203,7 +203,7 @@ Fori-HTC-Fasolo-etichette
 0
 CIRCLE
 8
-Fori-HTC-Fasolo
+Cerchi
 10
 -33.943
 20
@@ -213,11 +213,11 @@ Fori-HTC-Fasolo
 40
 3.0
 62
-150
+152
 0
 TEXT
 8
-Fori-HTC-Fasolo-tag
+Tag
 10
 -30.91818181818182
 20
@@ -231,11 +231,11 @@ Fori-HTC-Fasolo-tag
 62
 6
 8
-Fori-HTC-Fasolo-tag
+Tag
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -31.1239
 20
@@ -253,7 +253,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -30.359
 20
@@ -271,7 +271,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -31.5892
 20
@@ -289,7 +289,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -31.5892
 20
@@ -307,7 +307,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -30.359
 20
@@ -325,7 +325,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -28.6193
 20
@@ -343,7 +343,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -27.3891
 20
@@ -361,7 +361,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -27.3891
 20
@@ -379,7 +379,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -28.6193
 20
@@ -397,7 +397,7 @@ Fori-HTC-Fasolo-etichette
 0
 CIRCLE
 8
-Fori-HTC-Fasolo
+Cerchi
 10
 33.277
 20
@@ -407,11 +407,11 @@ Fori-HTC-Fasolo
 40
 3.0
 62
-150
+152
 0
 TEXT
 8
-Fori-HTC-Fasolo-tag
+Tag
 10
 36.30181818181818
 20
@@ -425,11 +425,11 @@ Fori-HTC-Fasolo-tag
 62
 6
 8
-Fori-HTC-Fasolo-tag
+Tag
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 36.0961
 20
@@ -447,7 +447,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 36.861
 20
@@ -465,7 +465,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 35.6308
 20
@@ -483,7 +483,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 35.6308
 20
@@ -501,7 +501,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 36.861
 20
@@ -519,7 +519,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 38.6007
 20
@@ -537,7 +537,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 39.8309
 20
@@ -555,7 +555,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 39.8309
 20
@@ -573,7 +573,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 38.6007
 20
@@ -591,7 +591,7 @@ Fori-HTC-Fasolo-etichette
 0
 CIRCLE
 8
-Fori-HTC-Fasolo
+Cerchi
 10
 50.989
 20
@@ -601,11 +601,11 @@ Fori-HTC-Fasolo
 40
 3.0
 62
-150
+152
 0
 TEXT
 8
-Fori-HTC-Fasolo-tag
+Tag
 10
 54.01381818181818
 20
@@ -619,11 +619,11 @@ Fori-HTC-Fasolo-tag
 62
 6
 8
-Fori-HTC-Fasolo-tag
+Tag
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 53.8081
 20
@@ -641,7 +641,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 54.573
 20
@@ -659,7 +659,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 53.3428
 20
@@ -677,7 +677,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 53.3428
 20
@@ -695,7 +695,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 54.573
 20
@@ -713,7 +713,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 56.3127
 20
@@ -731,7 +731,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 57.5429
 20
@@ -749,7 +749,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 57.5429
 20
@@ -767,7 +767,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 56.3127
 20
@@ -785,7 +785,7 @@ Fori-HTC-Fasolo-etichette
 0
 CIRCLE
 8
-Fori-HTC-Fasolo
+Cerchi
 10
 -131.855
 20
@@ -795,11 +795,11 @@ Fori-HTC-Fasolo
 40
 4.0
 62
-150
+152
 0
 TEXT
 8
-Fori-HTC-Fasolo-tag
+Tag
 10
 -127.89048181818181
 20
@@ -813,11 +813,11 @@ Fori-HTC-Fasolo-tag
 62
 6
 8
-Fori-HTC-Fasolo-tag
+Tag
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -128.0962
 20
@@ -835,7 +835,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -127.3313
 20
@@ -853,7 +853,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -128.5615
 20
@@ -871,7 +871,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -128.5615
 20
@@ -889,7 +889,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -127.3313
 20
@@ -907,7 +907,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -125.5916
 20
@@ -925,7 +925,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -124.3614
 20
@@ -943,7 +943,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -124.3614
 20
@@ -961,7 +961,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -125.5916
 20
@@ -979,7 +979,7 @@ Fori-HTC-Fasolo-etichette
 0
 CIRCLE
 8
-Fori-HTC-Fasolo
+Cerchi
 10
 -131.855
 20
@@ -989,11 +989,11 @@ Fori-HTC-Fasolo
 40
 4.0
 62
-150
+152
 0
 TEXT
 8
-Fori-HTC-Fasolo-tag
+Tag
 10
 -127.89048181818181
 20
@@ -1007,11 +1007,11 @@ Fori-HTC-Fasolo-tag
 62
 6
 8
-Fori-HTC-Fasolo-tag
+Tag
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -128.0962
 20
@@ -1029,7 +1029,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -127.3313
 20
@@ -1047,7 +1047,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -128.5615
 20
@@ -1065,7 +1065,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -128.5615
 20
@@ -1083,7 +1083,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -127.3313
 20
@@ -1101,7 +1101,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -125.5916
 20
@@ -1119,7 +1119,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -124.3614
 20
@@ -1137,7 +1137,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -124.3614
 20
@@ -1155,7 +1155,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -125.5916
 20
@@ -1173,7 +1173,7 @@ Fori-HTC-Fasolo-etichette
 0
 CIRCLE
 8
-Fori-HTC-Fasolo
+Cerchi
 10
 131.195
 20
@@ -1183,11 +1183,11 @@ Fori-HTC-Fasolo
 40
 4.0
 62
-150
+152
 0
 TEXT
 8
-Fori-HTC-Fasolo-tag
+Tag
 10
 135.15951818181819
 20
@@ -1201,11 +1201,11 @@ Fori-HTC-Fasolo-tag
 62
 6
 8
-Fori-HTC-Fasolo-tag
+Tag
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 134.9538
 20
@@ -1223,7 +1223,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 135.7187
 20
@@ -1241,7 +1241,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 134.4885
 20
@@ -1259,7 +1259,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 134.4885
 20
@@ -1277,7 +1277,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 135.7187
 20
@@ -1295,7 +1295,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 137.4584
 20
@@ -1313,7 +1313,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 138.6886
 20
@@ -1331,7 +1331,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 138.6886
 20
@@ -1349,7 +1349,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 137.4584
 20
@@ -1367,7 +1367,7 @@ Fori-HTC-Fasolo-etichette
 0
 CIRCLE
 8
-Fori-HTC-Fasolo
+Cerchi
 10
 131.195
 20
@@ -1377,11 +1377,11 @@ Fori-HTC-Fasolo
 40
 4.0
 62
-150
+152
 0
 TEXT
 8
-Fori-HTC-Fasolo-tag
+Tag
 10
 135.15951818181819
 20
@@ -1395,11 +1395,11 @@ Fori-HTC-Fasolo-tag
 62
 6
 8
-Fori-HTC-Fasolo-tag
+Tag
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 134.9538
 20
@@ -1417,7 +1417,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 135.7187
 20
@@ -1435,7 +1435,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 134.4885
 20
@@ -1453,7 +1453,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 134.4885
 20
@@ -1471,7 +1471,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 135.7187
 20
@@ -1489,7 +1489,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 137.4584
 20
@@ -1507,7 +1507,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 138.6886
 20
@@ -1525,7 +1525,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 138.6886
 20
@@ -1543,7 +1543,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 137.4584
 20
@@ -1561,7 +1561,7 @@ Fori-HTC-Fasolo-etichette
 0
 CIRCLE
 8
-Fori-HTC-Fasolo
+Cerchi
 10
 -20.0
 20
@@ -1571,11 +1571,11 @@ Fori-HTC-Fasolo
 40
 5.0
 62
-150
+152
 0
 TEXT
 8
-Fori-HTC-Fasolo-tag
+Tag
 10
 -15.095781818181818
 20
@@ -1589,11 +1589,11 @@ Fori-HTC-Fasolo-tag
 62
 6
 8
-Fori-HTC-Fasolo-tag
+Tag
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -15.3015
 20
@@ -1611,7 +1611,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -14.5366
 20
@@ -1629,7 +1629,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -15.7668
 20
@@ -1647,7 +1647,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -15.7668
 20
@@ -1665,7 +1665,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -14.5366
 20
@@ -1683,7 +1683,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -12.7969
 20
@@ -1701,7 +1701,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -11.5667
 20
@@ -1719,7 +1719,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -11.5667
 20
@@ -1737,7 +1737,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -12.7969
 20
@@ -1755,7 +1755,7 @@ Fori-HTC-Fasolo-etichette
 0
 CIRCLE
 8
-Fori-HTC-Fasolo
+Cerchi
 10
 0.0
 20
@@ -1765,11 +1765,11 @@ Fori-HTC-Fasolo
 40
 5.0
 62
-150
+152
 0
 TEXT
 8
-Fori-HTC-Fasolo-tag
+Tag
 10
 4.6922875
 20
@@ -1783,11 +1783,11 @@ Fori-HTC-Fasolo-tag
 62
 6
 8
-Fori-HTC-Fasolo-tag
+Tag
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 4.6985
 20
@@ -1805,7 +1805,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 5.9096
 20
@@ -1823,7 +1823,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 3.9619
 20
@@ -1841,7 +1841,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 3.9619
 20
@@ -1859,7 +1859,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 5.9096
 20
@@ -1877,7 +1877,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 8.6641
 20
@@ -1895,7 +1895,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 10.6118
 20
@@ -1913,7 +1913,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 10.6118
 20
@@ -1931,7 +1931,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 8.6641
 20
@@ -1949,7 +1949,7 @@ Fori-HTC-Fasolo-etichette
 0
 CIRCLE
 8
-Fori-HTC-Fasolo
+Cerchi
 10
 0.0
 20
@@ -1959,11 +1959,11 @@ Fori-HTC-Fasolo
 40
 5.0
 62
-150
+152
 0
 TEXT
 8
-Fori-HTC-Fasolo-tag
+Tag
 10
 4.6922875
 20
@@ -1977,11 +1977,11 @@ Fori-HTC-Fasolo-tag
 62
 6
 8
-Fori-HTC-Fasolo-tag
+Tag
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 4.6985
 20
@@ -1999,7 +1999,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 5.9096
 20
@@ -2017,7 +2017,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 3.9619
 20
@@ -2035,7 +2035,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 3.9619
 20
@@ -2053,7 +2053,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 5.9096
 20
@@ -2071,7 +2071,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 8.6641
 20
@@ -2089,7 +2089,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 10.6118
 20
@@ -2107,7 +2107,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 10.6118
 20
@@ -2125,7 +2125,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 8.6641
 20
@@ -2143,7 +2143,7 @@ Fori-HTC-Fasolo-etichette
 0
 CIRCLE
 8
-Fori-HTC-Fasolo
+Cerchi
 10
 20.0
 20
@@ -2153,11 +2153,11 @@ Fori-HTC-Fasolo
 40
 5.0
 62
-150
+152
 0
 TEXT
 8
-Fori-HTC-Fasolo-tag
+Tag
 10
 24.6922875
 20
@@ -2171,11 +2171,11 @@ Fori-HTC-Fasolo-tag
 62
 6
 8
-Fori-HTC-Fasolo-tag
+Tag
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 24.6985
 20
@@ -2193,7 +2193,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 25.9096
 20
@@ -2211,7 +2211,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 23.9619
 20
@@ -2229,7 +2229,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 23.9619
 20
@@ -2247,7 +2247,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 25.9096
 20
@@ -2265,7 +2265,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 28.6641
 20
@@ -2283,7 +2283,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 30.6118
 20
@@ -2301,7 +2301,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 30.6118
 20
@@ -2319,7 +2319,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 28.6641
 20
@@ -2337,7 +2337,7 @@ Fori-HTC-Fasolo-etichette
 0
 CIRCLE
 8
-Fori-HTC-Fasolo
+Cerchi
 10
 -131.855
 20
@@ -2347,11 +2347,11 @@ Fori-HTC-Fasolo
 40
 6.0
 62
-150
+152
 0
 TEXT
 8
-Fori-HTC-Fasolo-tag
+Tag
 10
 -126.22301250000001
 20
@@ -2365,11 +2365,11 @@ Fori-HTC-Fasolo-tag
 62
 6
 8
-Fori-HTC-Fasolo-tag
+Tag
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -126.2168
 20
@@ -2387,7 +2387,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -125.0057
 20
@@ -2405,7 +2405,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -126.9534
 20
@@ -2423,7 +2423,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -126.9534
 20
@@ -2441,7 +2441,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -125.0057
 20
@@ -2459,7 +2459,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -122.2512
 20
@@ -2477,7 +2477,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -120.3035
 20
@@ -2495,7 +2495,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -120.3035
 20
@@ -2513,7 +2513,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -122.2512
 20
@@ -2531,7 +2531,7 @@ Fori-HTC-Fasolo-etichette
 0
 CIRCLE
 8
-Fori-HTC-Fasolo
+Cerchi
 10
 -129.32
 20
@@ -2541,11 +2541,11 @@ Fori-HTC-Fasolo
 40
 6.0
 62
-150
+152
 0
 TEXT
 8
-Fori-HTC-Fasolo-tag
+Tag
 10
 -123.6880125
 20
@@ -2559,11 +2559,11 @@ Fori-HTC-Fasolo-tag
 62
 6
 8
-Fori-HTC-Fasolo-tag
+Tag
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -123.6818
 20
@@ -2581,7 +2581,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -122.4707
 20
@@ -2599,7 +2599,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -124.4184
 20
@@ -2617,7 +2617,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -124.4184
 20
@@ -2635,7 +2635,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -122.4707
 20
@@ -2653,7 +2653,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -119.7162
 20
@@ -2671,7 +2671,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -117.7685
 20
@@ -2689,7 +2689,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -117.7685
 20
@@ -2707,7 +2707,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -119.7162
 20
@@ -2725,7 +2725,7 @@ Fori-HTC-Fasolo-etichette
 0
 CIRCLE
 8
-Fori-HTC-Fasolo
+Cerchi
 10
 -117.992
 20
@@ -2735,11 +2735,11 @@ Fori-HTC-Fasolo
 40
 6.0
 62
-150
+152
 0
 TEXT
 8
-Fori-HTC-Fasolo-tag
+Tag
 10
 -112.36001250000001
 20
@@ -2753,11 +2753,11 @@ Fori-HTC-Fasolo-tag
 62
 6
 8
-Fori-HTC-Fasolo-tag
+Tag
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -112.3538
 20
@@ -2775,7 +2775,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -111.1427
 20
@@ -2793,7 +2793,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -113.0904
 20
@@ -2811,7 +2811,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -113.0904
 20
@@ -2829,7 +2829,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -111.1427
 20
@@ -2847,7 +2847,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -108.3882
 20
@@ -2865,7 +2865,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -106.4405
 20
@@ -2883,7 +2883,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -106.4405
 20
@@ -2901,7 +2901,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -108.3882
 20
@@ -2919,7 +2919,7 @@ Fori-HTC-Fasolo-etichette
 0
 CIRCLE
 8
-Fori-HTC-Fasolo
+Cerchi
 10
 -115.809
 20
@@ -2929,11 +2929,11 @@ Fori-HTC-Fasolo
 40
 6.0
 62
-150
+152
 0
 TEXT
 8
-Fori-HTC-Fasolo-tag
+Tag
 10
 -110.17701249999999
 20
@@ -2947,11 +2947,11 @@ Fori-HTC-Fasolo-tag
 62
 6
 8
-Fori-HTC-Fasolo-tag
+Tag
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -110.1708
 20
@@ -2969,7 +2969,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -108.9597
 20
@@ -2987,7 +2987,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -110.9074
 20
@@ -3005,7 +3005,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -110.9074
 20
@@ -3023,7 +3023,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -108.9597
 20
@@ -3041,7 +3041,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -106.2052
 20
@@ -3059,7 +3059,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -104.2575
 20
@@ -3077,7 +3077,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -104.2575
 20
@@ -3095,7 +3095,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -106.2052
 20
@@ -3113,7 +3113,7 @@ Fori-HTC-Fasolo-etichette
 0
 CIRCLE
 8
-Fori-HTC-Fasolo
+Cerchi
 10
 -41.855
 20
@@ -3123,11 +3123,11 @@ Fori-HTC-Fasolo
 40
 6.0
 62
-150
+152
 0
 TEXT
 8
-Fori-HTC-Fasolo-tag
+Tag
 10
 -36.2230125
 20
@@ -3141,11 +3141,11 @@ Fori-HTC-Fasolo-tag
 62
 6
 8
-Fori-HTC-Fasolo-tag
+Tag
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -36.2168
 20
@@ -3163,7 +3163,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -35.0057
 20
@@ -3181,7 +3181,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -36.9534
 20
@@ -3199,7 +3199,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -36.9534
 20
@@ -3217,7 +3217,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -35.0057
 20
@@ -3235,7 +3235,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -32.2512
 20
@@ -3253,7 +3253,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -30.3035
 20
@@ -3271,7 +3271,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -30.3035
 20
@@ -3289,7 +3289,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -32.2512
 20
@@ -3307,7 +3307,7 @@ Fori-HTC-Fasolo-etichette
 0
 CIRCLE
 8
-Fori-HTC-Fasolo
+Cerchi
 10
 -21.855
 20
@@ -3317,11 +3317,11 @@ Fori-HTC-Fasolo
 40
 6.0
 62
-150
+152
 0
 TEXT
 8
-Fori-HTC-Fasolo-tag
+Tag
 10
 -16.2230125
 20
@@ -3335,11 +3335,11 @@ Fori-HTC-Fasolo-tag
 62
 6
 8
-Fori-HTC-Fasolo-tag
+Tag
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -16.2168
 20
@@ -3357,7 +3357,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -15.0057
 20
@@ -3375,7 +3375,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -16.9534
 20
@@ -3393,7 +3393,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -16.9534
 20
@@ -3411,7 +3411,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -15.0057
 20
@@ -3429,7 +3429,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -12.2512
 20
@@ -3447,7 +3447,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -10.3035
 20
@@ -3465,7 +3465,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -10.3035
 20
@@ -3483,7 +3483,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -12.2512
 20
@@ -3501,7 +3501,7 @@ Fori-HTC-Fasolo-etichette
 0
 CIRCLE
 8
-Fori-HTC-Fasolo
+Cerchi
 10
 44.403
 20
@@ -3511,11 +3511,11 @@ Fori-HTC-Fasolo
 40
 6.0
 62
-150
+152
 0
 TEXT
 8
-Fori-HTC-Fasolo-tag
+Tag
 10
 50.0349875
 20
@@ -3529,11 +3529,11 @@ Fori-HTC-Fasolo-tag
 62
 6
 8
-Fori-HTC-Fasolo-tag
+Tag
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 50.0412
 20
@@ -3551,7 +3551,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 51.2523
 20
@@ -3569,7 +3569,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 49.3046
 20
@@ -3587,7 +3587,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 49.3046
 20
@@ -3605,7 +3605,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 51.2523
 20
@@ -3623,7 +3623,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 54.0068
 20
@@ -3641,7 +3641,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 55.9545
 20
@@ -3659,7 +3659,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 55.9545
 20
@@ -3677,7 +3677,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 54.0068
 20
@@ -3695,7 +3695,7 @@ Fori-HTC-Fasolo-etichette
 0
 CIRCLE
 8
-Fori-HTC-Fasolo
+Cerchi
 10
 77.802
 20
@@ -3705,11 +3705,11 @@ Fori-HTC-Fasolo
 40
 6.0
 62
-150
+152
 0
 TEXT
 8
-Fori-HTC-Fasolo-tag
+Tag
 10
 83.4339875
 20
@@ -3723,11 +3723,11 @@ Fori-HTC-Fasolo-tag
 62
 6
 8
-Fori-HTC-Fasolo-tag
+Tag
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 83.4402
 20
@@ -3745,7 +3745,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 84.6513
 20
@@ -3763,7 +3763,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 82.7036
 20
@@ -3781,7 +3781,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 82.7036
 20
@@ -3799,7 +3799,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 84.6513
 20
@@ -3817,7 +3817,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 87.4058
 20
@@ -3835,7 +3835,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 89.3535
 20
@@ -3853,7 +3853,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 89.3535
 20
@@ -3871,7 +3871,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 87.4058
 20
@@ -3889,7 +3889,7 @@ Fori-HTC-Fasolo-etichette
 0
 CIRCLE
 8
-Fori-HTC-Fasolo
+Cerchi
 10
 131.189
 20
@@ -3899,11 +3899,11 @@ Fori-HTC-Fasolo
 40
 6.0
 62
-150
+152
 0
 TEXT
 8
-Fori-HTC-Fasolo-tag
+Tag
 10
 136.8209875
 20
@@ -3917,11 +3917,11 @@ Fori-HTC-Fasolo-tag
 62
 6
 8
-Fori-HTC-Fasolo-tag
+Tag
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 136.8272
 20
@@ -3939,7 +3939,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 138.0383
 20
@@ -3957,7 +3957,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 136.0906
 20
@@ -3975,7 +3975,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 136.0906
 20
@@ -3993,7 +3993,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 138.0383
 20
@@ -4011,7 +4011,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 140.7928
 20
@@ -4029,7 +4029,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 142.7405
 20
@@ -4047,7 +4047,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 142.7405
 20
@@ -4065,7 +4065,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 140.7928
 20
@@ -4083,7 +4083,7 @@ Fori-HTC-Fasolo-etichette
 0
 CIRCLE
 8
-Fori-HTC-Fasolo
+Cerchi
 10
 131.189
 20
@@ -4093,11 +4093,11 @@ Fori-HTC-Fasolo
 40
 6.0
 62
-150
+152
 0
 TEXT
 8
-Fori-HTC-Fasolo-tag
+Tag
 10
 136.8209875
 20
@@ -4111,11 +4111,11 @@ Fori-HTC-Fasolo-tag
 62
 6
 8
-Fori-HTC-Fasolo-tag
+Tag
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 136.8272
 20
@@ -4133,7 +4133,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 138.0383
 20
@@ -4151,7 +4151,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 136.0906
 20
@@ -4169,7 +4169,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 136.0906
 20
@@ -4187,7 +4187,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 138.0383
 20
@@ -4205,7 +4205,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 140.7928
 20
@@ -4223,7 +4223,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 142.7405
 20
@@ -4241,7 +4241,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 142.7405
 20
@@ -4259,7 +4259,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 140.7928
 20
@@ -4277,7 +4277,7 @@ Fori-HTC-Fasolo-etichette
 0
 CIRCLE
 8
-Fori-HTC-Fasolo
+Cerchi
 10
 131.189
 20
@@ -4287,11 +4287,11 @@ Fori-HTC-Fasolo
 40
 6.0
 62
-150
+152
 0
 TEXT
 8
-Fori-HTC-Fasolo-tag
+Tag
 10
 136.8209875
 20
@@ -4305,11 +4305,11 @@ Fori-HTC-Fasolo-tag
 62
 6
 8
-Fori-HTC-Fasolo-tag
+Tag
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 136.8272
 20
@@ -4327,7 +4327,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 138.0383
 20
@@ -4345,7 +4345,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 136.0906
 20
@@ -4363,7 +4363,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 136.0906
 20
@@ -4381,7 +4381,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 138.0383
 20
@@ -4399,7 +4399,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 140.7928
 20
@@ -4417,7 +4417,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 142.7405
 20
@@ -4435,7 +4435,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 142.7405
 20
@@ -4453,7 +4453,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 140.7928
 20
@@ -4471,7 +4471,7 @@ Fori-HTC-Fasolo-etichette
 0
 CIRCLE
 8
-Fori-HTC-Fasolo
+Cerchi
 10
 131.189
 20
@@ -4481,11 +4481,11 @@ Fori-HTC-Fasolo
 40
 6.0
 62
-150
+152
 0
 TEXT
 8
-Fori-HTC-Fasolo-tag
+Tag
 10
 136.8209875
 20
@@ -4499,11 +4499,11 @@ Fori-HTC-Fasolo-tag
 62
 6
 8
-Fori-HTC-Fasolo-tag
+Tag
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 136.8272
 20
@@ -4521,7 +4521,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 138.0383
 20
@@ -4539,7 +4539,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 136.0906
 20
@@ -4557,7 +4557,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 136.0906
 20
@@ -4575,7 +4575,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 138.0383
 20
@@ -4593,7 +4593,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 140.7928
 20
@@ -4611,7 +4611,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 142.7405
 20
@@ -4629,7 +4629,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 142.7405
 20
@@ -4647,7 +4647,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 140.7928
 20
@@ -4665,7 +4665,7 @@ Fori-HTC-Fasolo-etichette
 0
 CIRCLE
 8
-Fori-HTC-Fasolo
+Cerchi
 10
 -125.0
 20
@@ -4675,11 +4675,11 @@ Fori-HTC-Fasolo
 40
 8.0
 62
-150
+152
 0
 TEXT
 8
-Fori-HTC-Fasolo-tag
+Tag
 10
 -117.48861249999999
 20
@@ -4693,11 +4693,11 @@ Fori-HTC-Fasolo-tag
 62
 6
 8
-Fori-HTC-Fasolo-tag
+Tag
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -117.4825
 20
@@ -4715,7 +4715,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -116.2713
 20
@@ -4733,7 +4733,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -118.219
 20
@@ -4751,7 +4751,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -118.219
 20
@@ -4769,7 +4769,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -116.2713
 20
@@ -4787,7 +4787,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -113.5168
 20
@@ -4805,7 +4805,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -111.5691
 20
@@ -4823,7 +4823,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -111.5691
 20
@@ -4841,7 +4841,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -113.5168
 20
@@ -4859,7 +4859,7 @@ Fori-HTC-Fasolo-etichette
 0
 CIRCLE
 8
-Fori-HTC-Fasolo
+Cerchi
 10
 -125.0
 20
@@ -4869,11 +4869,11 @@ Fori-HTC-Fasolo
 40
 8.0
 62
-150
+152
 0
 TEXT
 8
-Fori-HTC-Fasolo-tag
+Tag
 10
 -117.48861249999999
 20
@@ -4887,11 +4887,11 @@ Fori-HTC-Fasolo-tag
 62
 6
 8
-Fori-HTC-Fasolo-tag
+Tag
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -117.4825
 20
@@ -4909,7 +4909,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -116.2713
 20
@@ -4927,7 +4927,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -118.219
 20
@@ -4945,7 +4945,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -118.219
 20
@@ -4963,7 +4963,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -116.2713
 20
@@ -4981,7 +4981,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -113.5168
 20
@@ -4999,7 +4999,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -111.5691
 20
@@ -5017,7 +5017,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -111.5691
 20
@@ -5035,7 +5035,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 -113.5168
 20
@@ -5053,7 +5053,7 @@ Fori-HTC-Fasolo-etichette
 0
 CIRCLE
 8
-Fori-HTC-Fasolo
+Cerchi
 10
 125.0
 20
@@ -5063,11 +5063,11 @@ Fori-HTC-Fasolo
 40
 8.0
 62
-150
+152
 0
 TEXT
 8
-Fori-HTC-Fasolo-tag
+Tag
 10
 132.5113875
 20
@@ -5081,11 +5081,11 @@ Fori-HTC-Fasolo-tag
 62
 6
 8
-Fori-HTC-Fasolo-tag
+Tag
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 132.5175
 20
@@ -5103,7 +5103,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 133.7287
 20
@@ -5121,7 +5121,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 131.781
 20
@@ -5139,7 +5139,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 131.781
 20
@@ -5157,7 +5157,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 133.7287
 20
@@ -5175,7 +5175,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 136.4832
 20
@@ -5193,7 +5193,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 138.4309
 20
@@ -5211,7 +5211,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 138.4309
 20
@@ -5229,7 +5229,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 136.4832
 20
@@ -5247,7 +5247,7 @@ Fori-HTC-Fasolo-etichette
 0
 CIRCLE
 8
-Fori-HTC-Fasolo
+Cerchi
 10
 125.0
 20
@@ -5257,11 +5257,11 @@ Fori-HTC-Fasolo
 40
 8.0
 62
-150
+152
 0
 TEXT
 8
-Fori-HTC-Fasolo-tag
+Tag
 10
 132.5113875
 20
@@ -5275,11 +5275,11 @@ Fori-HTC-Fasolo-tag
 62
 6
 8
-Fori-HTC-Fasolo-tag
+Tag
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 132.5175
 20
@@ -5297,7 +5297,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 133.7287
 20
@@ -5315,7 +5315,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 131.781
 20
@@ -5333,7 +5333,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 131.781
 20
@@ -5351,7 +5351,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 133.7287
 20
@@ -5369,7 +5369,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 136.4832
 20
@@ -5387,7 +5387,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 138.4309
 20
@@ -5405,7 +5405,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 138.4309
 20
@@ -5423,7 +5423,7 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo-etichette
+Etichette
 10
 136.4832
 20
@@ -5441,10 +5441,13 @@ Fori-HTC-Fasolo-etichette
 0
 LINE
 8
-Fori-HTC-Fasolo
+Cerchi
 10
 -131.855
 20
+0
+LINE
+8
 0
 11
 131.195
@@ -5455,10 +5458,13 @@ Fori-HTC-Fasolo
 0
 LINE
 8
-Fori-HTC-Fasolo
+Cerchi
 10
 0
 20
+0
+LINE
+8
 200.0
 11
 0

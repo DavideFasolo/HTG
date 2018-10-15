@@ -1,63 +1,70 @@
-def dxf_linea(x1,y1,z1,x2,y2,z2,livello,colore=0,spessore=0):
-    linea='0\nLINE\n8\n'
-    linea+=livello
-    linea+='\n10\n'
-    linea+=str(x1)
-    linea+='\n20\n'
-    linea+=str(y1)
-    linea+='\n11\n'
-    linea+=str(x2)
-    linea+='\n21\n'
-    linea+=str(y2)
-    if colore:
-        linea+='\n62\n'
-        linea+=colore
-    if spessore:
-        linea+='\n39\n'
-        linea+=spessore
-    linea+='\n'
-    return linea;
+class punto:
+    def __init__(proprio,cX,cY,cZ=0):
+        proprio.x=cX
+        proprio.y=cY
+        proprio.z=cZ
 
-def dxf_cerchio(cx,cy,cz,cr,livello,colore=0,spessore=0):
-    cerchio='0\nCIRCLE\n8\n'
-    cerchio+=livello
-    cerchio+='\n10\n'
-    cerchio+=str(cx)
-    cerchio+='\n20\n'
-    cerchio+=str(cy)
-    cerchio+='\n30\n'
-    cerchio+=str(cz)
-    cerchio+='\n40\n'
-    cerchio+=str(cr)
-    if colore:
-        cerchio+='\n62\n'
-        cerchio+=colore
-    if spessore:
-        cerchio+='\n39\n'
-        cerchio+=spessore
-    cerchio+='\n'
-    return cerchio;
+class linea:
+    def __init__(proprio, x1, y1, x2, y2, livello=0, colore=0):
+        proprio.P1=punto(float(x1),float(y1))
+        proprio.P2=punto(float(x2),float(y2))
+        proprio.dxfcode = '0\nLINE\n8\n'
+        proprio.dxfcode += livello
+        proprio.dxfcode += '\n10\n'
+        proprio.dxfcode += str(x1)
+        proprio.dxfcode += '\n20\n'
+        proprio.dxfcode += '0\nLINE\n8\n'
+        proprio.dxfcode += str(y1)
+        proprio.dxfcode += '\n11\n'
+        proprio.dxfcode += str(x2)
+        proprio.dxfcode += '\n21\n'
+        proprio.dxfcode += str(y2)
+        if colore:
+            proprio.dxfcode += '\n62\n'
+            proprio.dxfcode += colore
+        proprio.dxfcode += '\n'
 
-def dxf_testo(cx,cy,cz,ofx,ofy,caratteri,h,livello,colore=0,spessore=0):
-    testo='0\nTEXT\n8\n'
-    testo+=livello
-    testo+='\n10\n'
-    testo+=str(cx+ofx)
-    testo+='\n20\n'
-    testo+=str(cy+ofy)
-    testo+='\n30\n'
-    testo+=str(cz)
-    testo+='\n40\n'
-    testo+=h
-    testo+='\n1\n'
-    testo+=caratteri
+
+class cerchio:
+    def __init__(proprio,cx, cy, cz, cr, livello, colore=0):
+        proprio.centro=punto(float(cx),float(cy),float(cz))
+        proprio.raggio=float(cr)
+        proprio.diametro=cr*2
+        proprio.dxfcode = '0\nCIRCLE\n8\n'
+        proprio.dxfcode += livello
+        proprio.dxfcode += '\n10\n'
+        proprio.dxfcode += str(cx)
+        proprio.dxfcode += '\n20\n'
+        proprio.dxfcode += str(cy)
+        proprio.dxfcode += '\n30\n'
+        proprio.dxfcode += str(cz)
+        proprio.dxfcode += '\n40\n'
+        proprio.dxfcode += str(cr)
+        if colore:
+            proprio.dxfcode += '\n62\n'
+            proprio.dxfcode += colore
+        proprio.dxfcode += '\n'
+
+def dxf_testo(cx, cy, cz, ofx, ofy, caratteri, h, livello, colore=0, spessore=0):
+    testo = '0\nTEXT\n8\n'
+    testo += livello
+    testo += '\n10\n'
+    testo += str(cx + ofx)
+    testo += '\n20\n'
+    testo += str(cy + ofy)
+    testo += '\n30\n'
+    testo += str(cz)
+    testo += '\n40\n'
+    testo += h
+    testo += '\n1\n'
+    testo += caratteri
     if colore:
-        testo+='\n62\n'
-        testo+=colore
-    testo+='\n8\n'
-    testo+=livello
+        testo += '\n62\n'
+        testo += colore
+    testo += '\n8\n'
+    testo += livello
     if spessore:
-        testo+='\n39\n'
-        testo+=spessore
-    testo+='\n'
+        testo += '\n39\n'
+        testo += spessore
+    testo += '\n'
     return testo;
