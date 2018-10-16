@@ -1,0 +1,39 @@
+[postprocessore cnc]
+nome postprocessore = isograph
+
+[ambiente]
+esporta coordinate z dei cerchi = true
+cifre decimali delle coordinate = 3
+
+[stile cerchi]
+colore del tratto = 152
+livello = Cerchi
+
+[stile assi]
+colore tratto = 102
+
+[stile etichette]
+colore tratto = 200
+altezza caratteri = 3.5
+angolazione = 20
+livello = Etichette
+livello testo = Tag
+colore testo = 6
+
+[formattazione csv]
+separatore colonne = ;
+virgola = ,
+
+[formattazione txt]
+etichette coordinate = si
+coordinate z = no
+intestazione = si
+
+[avanzate]
+scala dimensioni testo due cifre = 1.9
+fattore offset tag due cifre x = 1.6
+fattore offset tag due cifre y = 1.25
+scala dimensioni testo una cifra = 1.2
+fattore offset tag una cifra x = 2.2
+fattore offset tag una cifra y = 1.8
+
