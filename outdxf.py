@@ -1,4 +1,3 @@
-from etik import *
 from KG_dxf import *
 from infrastructure import DrawingExchangeFormatConfigurations
 
