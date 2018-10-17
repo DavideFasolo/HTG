@@ -1,152 +1,163 @@
 import math
-class punto:
-    def __init__(proprio,cX,cY,cZ=0):
-        proprio.x=cX
-        proprio.y=cY
-        proprio.z=cZ
 
-class linea:
-    def __init__(proprio, x1, y1, x2, y2, livello=0, colore=0):
-        proprio.P1=punto(float(x1),float(y1))
-        proprio.P2=punto(float(x2),float(y2))
-        proprio.dxfcode = '0\nLINE\n8\n'
-        proprio.dxfcode += livello
-        proprio.dxfcode += '\n10\n'
-        proprio.dxfcode += str(x1)
-        proprio.dxfcode += '\n20\n'
-        proprio.dxfcode += str(y1)
-        proprio.dxfcode += '\n11\n'
-        proprio.dxfcode += str(x2)
-        proprio.dxfcode += '\n21\n'
-        proprio.dxfcode += str(y2)
+
+class Punto:
+    def __init__(self, c_x: float = 0, c_y: float = 0, c_z: float = 0):
+        self.x = c_x
+        self.y = c_y
+        self.z = c_z
+
+
+class Linea:
+    def __init__(self, x1: float = 0, y1: float = 0, x2: float = 0, y2: float = 0,
+                 livello: str = 'assi', colore: int = 0):
+        self.P1 = Punto(float(x1), float(y1))
+        self.P2 = Punto(float(x2), float(y2))
+        self.dxfcode = '0\nLINE\n8\n'
+        self.dxfcode += str(livello)
+        self.dxfcode += '\n10\n'
+        self.dxfcode += str(x1)
+        self.dxfcode += '\n20\n'
+        self.dxfcode += str(y1)
+        self.dxfcode += '\n11\n'
+        self.dxfcode += str(x2)
+        self.dxfcode += '\n21\n'
+        self.dxfcode += str(y2)
         if colore:
-            proprio.dxfcode += '\n62\n'
-            proprio.dxfcode += colore
-        proprio.dxfcode += '\n'
+            self.dxfcode += '\n62\n'
+            self.dxfcode += str(colore)
+        self.dxfcode += '\n'
 
 
 class Cerchio:
-    def __init__(proprio,cx, cy, cz, cr, livello, colore='0'):
-        proprio.centro=punto(float(cx),float(cy),float(cz))
-        proprio.raggio=float(cr)
-        proprio.diametro=cr*2
-        proprio.dxfcode = '0\nCIRCLE\n8\n'
-        proprio.dxfcode += livello
-        proprio.dxfcode += '\n10\n'
-        proprio.dxfcode += str(cx)
-        proprio.dxfcode += '\n20\n'
-        proprio.dxfcode += str(cy)
-        proprio.dxfcode += '\n30\n'
-        proprio.dxfcode += str(cz)
-        proprio.dxfcode += '\n40\n'
-        proprio.dxfcode += str(cr)
+    def __init__(self, cx: float = 0, cy: float = 0, cz: float = 0, cr: float = 0, livello: str = 'Fori',
+                 colore: int = 0):
+        self.centro = Punto(float(cx), float(cy), float(cz))
+        self.raggio = float(cr)
+        self.diametro = float(cr) * 2
+        self.dxfcode = '0\nCIRCLE\n8\n'
+        self.dxfcode += str(livello)
+        self.dxfcode += '\n10\n'
+        self.dxfcode += str(cx)
+        self.dxfcode += '\n20\n'
+        self.dxfcode += str(cy)
+        self.dxfcode += '\n30\n'
+        self.dxfcode += str(cz)
+        self.dxfcode += '\n40\n'
+        self.dxfcode += str(cr)
         if colore:
-            proprio.dxfcode += '\n62\n'
-            proprio.dxfcode += colore
-        proprio.dxfcode += '\n'
+            self.dxfcode += '\n62\n'
+            self.dxfcode += str(colore)
+        self.dxfcode += '\n'
+
 
 class Testo:
-    def __init__(proprio,cx, cy, ofx, ofy, stringa, h, livello, colore='0'):
-        proprio.padx=float(ofx)
-        proprio.pady=float(ofy)
-        proprio.valore=str(stringa)
-        proprio.caratteri=len(str(stringa))
-        proprio.dimensione=float(h)
-        proprio.origine=punto(float(cx+proprio.padx),float(cy+proprio.pady))
-        proprio.dxfcode = '0\nTEXT\n8\n'
-        proprio.dxfcode += livello
-        proprio.dxfcode += '\n10\n'
-        proprio.dxfcode += str(proprio.origine.x)
-        proprio.dxfcode += '\n20\n'
-        proprio.dxfcode += str(proprio.origine.y)
-        proprio.dxfcode += '\n40\n'
-        proprio.dxfcode += str(proprio.dimensione)
-        proprio.dxfcode += '\n1\n'
-        proprio.dxfcode += str(proprio.valore)
+    def __init__(self, cx: float = 0, cy: float = 0, ofx: float = 0, ofy: float = 0, stringa: int = 100, h: float = 3.5,
+                 livello: str = 'numeri', colore: int = 0):
+        self.padx = float(ofx)
+        self.pady = float(ofy)
+        self.valore = str(stringa)
+        self.caratteri = len(str(stringa))
+        self.dimensione = float(h)
+        self.origine = Punto(float(cx) + self.padx, float(cy) + self.pady)
+        self.dxfcode = '0\nTEXT\n8\n'
+        self.dxfcode += str(livello)
+        self.dxfcode += '\n10\n'
+        self.dxfcode += str(self.origine.x)
+        self.dxfcode += '\n20\n'
+        self.dxfcode += str(self.origine.y)
+        self.dxfcode += '\n40\n'
+        self.dxfcode += str(self.dimensione)
+        self.dxfcode += '\n1\n'
+        self.dxfcode += str(self.valore)
         if colore:
-            proprio.dxfcode += '\n62\n'
-            proprio.dxfcode += colore
-        proprio.dxfcode += '\n'
+            self.dxfcode += '\n62\n'
+            self.dxfcode += str(colore)
+        self.dxfcode += '\n'
+
 
 class Etichetta:
-    def __init__(proprio, nume=100, htesto=3.5, px=0, py=0, pz=0, angolo=20, coloretik='0', livelloetik='etichette', appros=4):
-        dmodA=2.6
-        dmodB=2.1
-        dmodC=1.6
+    def __init__(self, nume: int = 100, htesto: float = 3.5, px: float = 0, py: float = 0, pz: float = 0,
+                 angolo: float = 20,
+                 coloretik: int = 0, livelloetik: str = 'etichette', appros: int = 4):
+        dmd_a = 2.6
+        dmd_b = 2.1
+        dmd_c = 1.6
         htesto = float(htesto)
         if float(nume) > 99:
-            dtesto = htesto * dmodA
+            dtesto = htesto * dmd_a
         else:
             if float(nume) > 9:
-                dtesto = htesto * dmodB
+                dtesto = htesto * dmd_b
             else:
-                dtesto = htesto * dmodC
-        proprio.lato = round(dtesto * math.tan(math.pi / 8), 4)
-        proprio.P0 = punto(round(px,appros),
-                           round(py,appros),
-                           round(pz,appros))
-        proprio.P1 = punto(round(px + proprio.lato * math.cos(angolo * math.pi / 180) - proprio.lato / 2, appros),
-                            round(py + proprio.lato * math.sin(angolo * math.pi / 180), appros),
-                            proprio.P0.z)
-        proprio.P2 = punto(round(proprio.P1.x - proprio.lato * math.sin(math.pi / 4), appros),
-                           round(proprio.P1.y + proprio.lato * math.sin(math.pi / 4), appros),
-                           proprio.P0.z)
-        proprio.P3 = punto(round(proprio.P2.x, appros),
-                           round(proprio.P2.y + proprio.lato, appros),
-                           proprio.P0.z)
-        proprio.P4 = punto(round(proprio.P3.x + proprio.lato * math.sin(math.pi / 4), appros),
-                           round(proprio.P3.y + proprio.lato * math.sin(math.pi / 4), appros),
-                           proprio.P0.z)
-        proprio.P5 = punto(round(proprio.P4.x + proprio.lato, appros),
-                           round(proprio.P4.y, appros),
-                           proprio.P0.z)
-        proprio.P6 = punto(round(proprio.P5.x + proprio.lato * math.sin(math.pi / 4), appros),
-                           round(proprio.P5.y - proprio.lato * math.sin(math.pi / 4), appros),
-                           proprio.P0.z)
-        proprio.P7 = punto(round(proprio.P6.x, appros),
-                           round(proprio.P6.y - proprio.lato, appros),
-                           proprio.P0.z)
-        proprio.P8 = punto(round(proprio.P7.x - proprio.lato * math.sin(math.pi / 4), appros),
-                           round(proprio.P7.y - proprio.lato * math.sin(math.pi / 4), appros),
-                           proprio.P0.z)
-        proprio.P9 = punto(proprio.P0.x, proprio.P0.y, proprio.P0.z)
+                dtesto = htesto * dmd_c
+        self.lato = round(dtesto * math.tan(math.pi / 8), 4)
+        self.P0 = Punto(round(px, appros),
+                        round(py, appros),
+                        round(pz, appros))
+        self.P1 = Punto(round(px + self.lato * math.cos(angolo * math.pi / 180) - self.lato / 2, appros),
+                        round(py + self.lato * math.sin(angolo * math.pi / 180), appros),
+                        self.P0.z)
+        self.P2 = Punto(round(self.P1.x - self.lato * math.sin(math.pi / 4), appros),
+                        round(self.P1.y + self.lato * math.sin(math.pi / 4), appros),
+                        self.P0.z)
+        self.P3 = Punto(round(self.P2.x, appros),
+                        round(self.P2.y + self.lato, appros),
+                        self.P0.z)
+        self.P4 = Punto(round(self.P3.x + self.lato * math.sin(math.pi / 4), appros),
+                        round(self.P3.y + self.lato * math.sin(math.pi / 4), appros),
+                        self.P0.z)
+        self.P5 = Punto(round(self.P4.x + self.lato, appros),
+                        round(self.P4.y, appros),
+                        self.P0.z)
+        self.P6 = Punto(round(self.P5.x + self.lato * math.sin(math.pi / 4), appros),
+                        round(self.P5.y - self.lato * math.sin(math.pi / 4), appros),
+                        self.P0.z)
+        self.P7 = Punto(round(self.P6.x, appros),
+                        round(self.P6.y - self.lato, appros),
+                        self.P0.z)
+        self.P8 = Punto(round(self.P7.x - self.lato * math.sin(math.pi / 4), appros),
+                        round(self.P7.y - self.lato * math.sin(math.pi / 4), appros),
+                        self.P0.z)
+        self.P9 = Punto(self.P0.x, self.P0.y, self.P0.z)
 
-        if nume>9:
-            proprio.padx=proprio.lato / math.sqrt(2) /2.8
+        if int(nume) > 9:
+            self.padx = self.lato / math.sqrt(2) / 2.8
         else:
-            proprio.padx = proprio.lato / math.sqrt(2) / 2.3
-        proprio.pady=0-(htesto-proprio.lato)/2
+            self.padx = self.lato / math.sqrt(2) / 2.3
+        self.pady = 0 - (float(htesto) - self.lato) / 2
         i = 0
-        proprio.dxfcode = str()
+        self.dxfcode = str()
         while i < 9:
-            proprio.dxfcode += '0\nLINE\n8\n'
-            proprio.dxfcode += livelloetik
-            proprio.dxfcode += '\n10\n'
-            proprio.dxfcode += str(eval('proprio.P%d.x' % i))
-            proprio.dxfcode += '\n20\n'
-            proprio.dxfcode += str(eval('proprio.P%d.y' % i))
-            proprio.dxfcode += '\n11\n'
-            proprio.dxfcode += str(eval('proprio.P%d.x' % (i + 1)))
-            proprio.dxfcode += '\n21\n'
-            proprio.dxfcode += str(eval('proprio.P%d.y' % (i + 1)))
-            proprio.dxfcode += '\n62\n'
-            proprio.dxfcode += coloretik
-            proprio.dxfcode += '\n'
+            self.dxfcode += '0\nLINE\n8\n'
+            self.dxfcode += str(livelloetik)
+            self.dxfcode += '\n10\n'
+            self.dxfcode += str(eval('self.P%d.x' % i))
+            self.dxfcode += '\n20\n'
+            self.dxfcode += str(eval('self.P%d.y' % i))
+            self.dxfcode += '\n11\n'
+            self.dxfcode += str(eval('self.P%d.x' % (i + 1)))
+            self.dxfcode += '\n21\n'
+            self.dxfcode += str(eval('self.P%d.y' % (i + 1)))
+            self.dxfcode += '\n62\n'
+            self.dxfcode += str(coloretik)
+            self.dxfcode += '\n'
             i += 1
 
+
 class Forotag:
-    def __init__(proprio,cx=0, cy=0, cz=0, raggioforo=2, htesto=3.5, angolo=20, nume=2,appros=4, colorecer='0',
-                 livellocer='cerchi',coloretik='0',livelloetik='etichette',livellotes='testo',coloretes='0'):
-        proprio.centro=punto(round(cx,appros),round(cy,appros),round(cz,appros))
-        proprio.cerchio=Cerchio(proprio.centro.x,proprio.centro.y,proprio.centro.z,raggioforo,livellocer,colorecer)
-        proprio.etichetta=Etichetta(nume,htesto,
-                                    round(proprio.centro.x + proprio.cerchio.raggio * math.cos(angolo * math.pi / 180), appros),
-                                    round(proprio.centro.y + proprio.cerchio.raggio * math.sin(angolo * math.pi / 180), appros),
-                                    proprio.centro.z,angolo,coloretik,livelloetik,appros)
-        proprio.testo=Testo(proprio.etichetta.P2.x,proprio.etichetta.P2.y,
-                            proprio.etichetta.padx,proprio.etichetta.pady,nume,htesto,livellotes,coloretes)
+    def __init__(self, cx: float = 0, cy: float = 0, cz: float = 0, raggioforo: float = 2, htesto: float = 3.5,
+                 angolo: float = 20, nume: int = 2, appros: int = 4, colorecer: int = 0, livellocer: str = 'cerchi',
+                 coloretik: int = 0, livelloetik: str = 'etichette', livellotes: str = 'testo', coloretes: int = 0):
+        self.centro = Punto(round(float(cx), int(appros)), round(float(cy), int(appros)), round(float(cz), int(appros)))
+        self.cerchio = Cerchio(self.centro.x, self.centro.y, self.centro.z, float(raggioforo), livellocer, colorecer)
+        self.etichetta = Etichetta(nume, htesto,
+                                   round(self.centro.x + self.cerchio.raggio * math.cos(angolo * math.pi / 180),
+                                         appros),
+                                   round(self.centro.y + self.cerchio.raggio * math.sin(angolo * math.pi / 180),
+                                         appros),
+                                   self.centro.z, angolo, coloretik, livelloetik, appros)
+        self.testo = Testo(self.etichetta.P2.x, self.etichetta.P2.y,
+                           self.etichetta.padx, self.etichetta.pady, nume, htesto, livellotes, coloretes)
 
-        proprio.dxfcode=proprio.cerchio.dxfcode+proprio.etichetta.dxfcode+proprio.testo.dxfcode
-
-foroforo=Forotag()
-print(foroforo.dxfcode)
+        self.dxfcode = self.cerchio.dxfcode + self.etichetta.dxfcode + self.testo.dxfcode
