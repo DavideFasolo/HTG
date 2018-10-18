@@ -81,11 +81,8 @@ class HtgGui:
         self.T['yscrollcommand'] = self.S.set
 
     def apri_file(self):
-        t = aprivda()
-        if t:
-            self.p = t.p
-            self.f = t.f
-            self.in_file = t.in_file
+        self.file = aprivda()
+        if self.file:
             self.processa_file()
         else:
             self.T.config(state=NORMAL)
@@ -97,7 +94,7 @@ class HtgGui:
             self.butt_cnc.pulsante.configure(state=DISABLED)
 
     def processa_file(self):
-        self.fori = leggivda(self.in_file, self.cf.arrot)
+        self.fori = leggivda(self.file, self.cf.arrot)
         self.T.config(state=NORMAL)
         self.T.delete(1.0, END)
         i = 0
@@ -159,6 +156,7 @@ class HtgGui:
             i += 1
         self.asse_x = Linea(self.min_x, 0, self.max_x, 0, self.cfdxf.cer_livello, self.cfdxf.ass_colore)
         self.asse_y = Linea(0, self.max_y, 0, self.min_y, self.cfdxf.cer_livello, self.cfdxf.ass_colore)
+<<<<<<< HEAD
         i = 0
 ########################################################################################################################
 #   Disegno
@@ -215,6 +213,9 @@ class HtgGui:
 ########################################################################################################################
 #   Fine Disegno
 ########################################################################################################################
+=======
+
+>>>>>>> use tuple for holes, start moving vda file logic to file reader
         self.T.insert(END, texfori)
         self.T.config(state=DISABLED)
         self.mw.config(state=NORMAL)
@@ -223,14 +224,27 @@ class HtgGui:
         self.mw.config(state=DISABLED, fg='#000000')
 
         def esportcsv():
-            esporta_csv(self.fori, self.f, self.cf.separ, self.cf.virgo)
+            esporta_csv(self.fori, self.file.f, self.cf.separ, self.cf.virgo)
             self.mw.config(state=NORMAL)
             self.mw.delete(1.0, END)
             self.mw.insert(END, 'Esportazione file csv excel completata', 'csv')
             self.mw.config(state=DISABLED, bg='honeydew')
 
         def esportdxf():
+<<<<<<< HEAD
             cdf = self.f + "dxf"
+=======
+            self.canv_pad = 50
+            self.canv_height = self.area_operativa.winfo_height()
+            self.canv_y = (self.max_y-self.min_y)+self.canv_pad*2
+            self.canv_x = (self.max_x-self.min_x)+self.canv_pad*2
+            self.canv_scale = self.canv_y / self.canv_height
+            self.canv_width = self.canv_x / self.canv_scale
+            self.disegno = Canvas(master=self.area_disegno,
+                                  width=self.canv_width, height=self.canv_height,
+                                  bg='black')
+            cdf = self.file.f + "dxf"
+>>>>>>> use tuple for holes, start moving vda file logic to file reader
             intestazione = DxfFormat(cdf)
             out_dxf = open(cdf, "w+")
             out_dxf.write(intestazione.dxf_start)
@@ -252,14 +266,14 @@ class HtgGui:
             self.mw.config(state=DISABLED, bg='mistyrose')
 
         def esportcnc():
-            esporta_cnc(self.fori, self.p, self.f, self.workpath, self.cf.traduttore)
+            esporta_cnc(self.fori, self.file.p, self.file.f, self.workpath, self.cf.traduttore)
             self.mw.config(state=NORMAL)
             self.mw.delete(1.0, END)
             self.mw.insert(END, 'Esportazione file cnc completata', 'cnc')
             self.mw.config(state=DISABLED, bg='lavender')
 
         def esporttxt():
-            esporta_txt(self.fori, self.p, self.f, self.workpath)
+            esporta_txt(self.fori, self.file.p, self.file.f, self.workpath)
             self.mw.config(state=NORMAL)
             self.mw.delete(1.0, END)
             self.mw.insert(END, 'Esportazione file txt completata', 'txt')

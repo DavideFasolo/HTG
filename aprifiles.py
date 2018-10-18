@@ -8,6 +8,18 @@ class ReturnFile(object):
         self.in_file = in_file
         self.f = f
 
+    def jump_and_read(self):
+        self.in_file.seek(0, 0)
+        # salta le prime 21 righe
+        i = 0
+        while i < 21:
+            self.in_file.readline()
+            i += 1
+        #############################
+        lines = self.in_file.readlines()
+        self.in_file.close()
+        return lines
+
 
 def aprivda():
     filename = filedialog.askopenfilename(initialdir="C:\\", title="Seleziona vda",
