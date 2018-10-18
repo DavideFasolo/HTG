@@ -1,6 +1,16 @@
 import math
 
 
+class DxfFormat:
+    def __init__(self, f: str):
+        self.dxf_start = '999\nFile "' + str(f) + '" esportato tramite "Hole Table Generator" by "Kill Goliath"\n'
+        self.dxf_start += '999\nPowered by Davide Fasolo 2018\n'
+        self.dxf_start += '0\nSECTION\n'
+        self.dxf_start += '2\nENTITIES\n'
+        ##############
+        self.dxf_end = '0\nENDSEC\n0\nEOF'
+
+
 class Punto:
     def __init__(self, c_x: float = 0, c_y: float = 0, c_z: float = 0):
         self.x = c_x

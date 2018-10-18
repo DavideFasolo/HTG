@@ -1,7 +1,3 @@
-import tkinter as tk
-from tkinter import *
-from tkinter import ttk
-from tkinter.ttk import *
 from aprifiles import *
 from creamatrix import *
 from infrastructure import InterfaceConfiguration
@@ -9,244 +5,185 @@ from outcsv import *
 from outcnc import *
 from outdxf import *
 from settings import *
+from gui_classi import *
 
 ######################################################################
+from settings import Htg_dxfset
+
 root = tk.Tk()
 root.overrideredirect(True)
 width = root.winfo_screenwidth()
 height = root.winfo_screenheight()
-root.geometry('%dx%d+%d+%d' % (width*0.5, height*0.5, width*0.1, height*0.1))
+root.geometry('%dx%d+%d+%d' % (width * 0.5, height * 0.5, width * 0.1, height * 0.1))
 image_file = 'Configurazione\\assets\\KG-Splash.png'
 image = tk.PhotoImage(file=image_file)
-canvas = tk.Canvas(root, height=height*0.5, width=width*0.5, bg="black")
-canvas.create_image(width*0.5/2, height*0.5/2, image=image)
+canvas = tk.Canvas(root, height=height * 0.5, width=width * 0.5, bg="black")
+canvas.create_image(width * 0.5 / 2, height * 0.5 / 2, image=image)
 canvas.pack()
-root.after(5000, root.destroy)
+root.after(4000, root.destroy)
 root.mainloop()
 
 
-class Htg_gui:
-    #aggiunta rilevazione directory di lavoro
-    workpath=str(os.getcwd())+"\\Configurazione\\"
+class HtgGui:
+    workpath = str(os.getcwd()) + "\\Configurazione\\"
     cf = InterfaceConfiguration(workpath)
 
-    def __init__(proprio,genitore):
-        #------------------------------------------------------
-        butt_main_w=32
-        butt_menu_w=24
-        text_w=85
-        butt_p=5
-        butt_py="0.4m"
-        icnsize_main=32
-        icnsize_menu=24
-        #------------------------------------------------------
-        proprio.icn_apri=tk.PhotoImage(file=proprio.workpath+
-                               "icns\\folder-orange-open.png")
-        proprio.icn_csv=tk.PhotoImage(file=proprio.workpath+
-                               "icns\\csv-file.png")
-        proprio.icn_dxf=tk.PhotoImage(file=proprio.workpath+
-                               "icns\\file-dxf.png")
-        proprio.icn_cnc=tk.PhotoImage(file=proprio.workpath+
-                               "icns\\file-cnc.png")
-        proprio.icn_txt=tk.PhotoImage(file=proprio.workpath+
-                               "icns\\file-txt.png")
-        stile = ttk.Style()
-        stile.configure("TButton", foreground="black",
-                        height=32,
-                        width=32)
+    def __init__(self, genitore):
+        larghezza_testo_principale = 85
+        padding_pulsanti = 5
 
-        proprio.gen_1=genitore
-        proprio.container1=Frame(genitore)
-        proprio.container1.pack(fill=X)
-        proprio.container1.configure(padding=butt_p)
+        self.gen_1 = genitore
 
-        proprio.msgwrite=Frame(genitore)
-        proprio.msgwrite.pack(fill=X)
-        proprio.msgwrite.configure(padding=butt_p)
+        self.area_menu = Frame(genitore)
+        self.area_menu.pack(fill=X)
+        self.area_menu.configure(padding=padding_pulsanti)
 
-        proprio.container3=Frame(genitore)
-        proprio.container3.pack(fill=X)
-        proprio.container3.configure(padding=butt_p)
+        self.testo_output = Frame(genitore)
+        self.testo_output.pack(fill=X)
+        self.testo_output.configure(padding=padding_pulsanti)
 
-        proprio.butt_apri=Button(proprio.container1)
-        proprio.butt_apri.configure(text='apri vda',
-                                    image=proprio.icn_apri,
-                                    width=butt_main_w,
-                                    style='TButton',
-                                    command=proprio.aprifile)
-        proprio.butt_apri.pack(side=LEFT)
+        self.info_comandi = Frame(genitore)
+        self.info_comandi.pack(side=TOP, expand=1, fill=tk.BOTH)
+        self.info_comandi.configure(padding=padding_pulsanti)
 
-        proprio.butt_csv=Button(proprio.container1)
-        proprio.butt_csv.configure(text='salva csv',
-                                   image=proprio.icn_csv)
-        proprio.butt_csv.pack(side=LEFT)
-        proprio.butt_csv.configure(state=DISABLED)
+        self.butt_opn = PulsanteMenu(self.area_menu, self.workpath, 'file-opn.png', self.apri_file, 1)
+        self.butt_csv = PulsanteMenu(self.area_menu, self.workpath, 'file-csv.png')
+        self.butt_dxf = PulsanteMenu(self.area_menu, self.workpath, 'file-dxf.png')
+        self.butt_txt = PulsanteMenu(self.area_menu, self.workpath, 'file-txt.png')
+        self.butt_cnc = PulsanteMenu(self.area_menu, self.workpath, 'file-cnc.png')
 
-        proprio.butt_dxf=Button(proprio.container1)
-        proprio.butt_dxf.configure(text='salva dxf',
-                                   image=proprio.icn_dxf)
-        proprio.butt_dxf.pack(side=LEFT)
-        proprio.butt_dxf.configure(state=DISABLED)
+        self.mw = Text(self.testo_output, height=1)
+        self.mw.tag_configure('normale', foreground='#476042', font=('Tempus Sans ITC', 8))
+        self.mw.tag_configure('csv', foreground='green', font=('Tempus Sans ITC', 8))
+        self.mw.tag_configure('dxf', foreground='crimson', font=('Tempus Sans ITC', 8))
+        self.mw.tag_configure('cnc', foreground='indigo', font=('Tempus Sans ITC', 8))
+        self.mw.tag_configure('txt', foreground='mediumblue', font=('Tempus Sans ITC', 8))
+        self.mw.insert(END, 'selezionare un file vda', 'normale')
+        self.mw.config(relief=FLAT, bg='#E1E1E1', state=DISABLED)
+        self.mw.pack(side=LEFT, expand=1, fill=tk.X)
 
-        proprio.butt_cnc=Button(proprio.container1)
-        proprio.butt_cnc.configure(text='salva cnc',
-                                   image=proprio.icn_cnc)
-        proprio.butt_cnc.pack(side=LEFT)
-        proprio.butt_cnc.configure(state=DISABLED)
+        self.S = Scrollbar(self.info_comandi)
+        self.S.pack(side=RIGHT, fill=Y)
+        self.T = Text(self.info_comandi, height=20, width=larghezza_testo_principale)
+        self.T.pack(side=TOP, expand=1, fill=tk.BOTH)
+        self.S.config(command=self.T.yview)
+        self.T.config(wrap=NONE, relief=FLAT)
+        self.T.insert(END, "per cominciare, seleziona un file vda usando il pulsante apposito\n")
+        self.T.config(state=DISABLED)
+        self.T['yscrollcommand'] = self.S.set
 
-        proprio.butt_txt=Button(proprio.container1)
-        proprio.butt_txt.configure(text='salva txt',
-                                   image=proprio.icn_txt)
-        proprio.butt_txt.pack(side=LEFT)
-        proprio.butt_txt.configure(state=DISABLED)
-
-        proprio.container2=Frame(genitore)
-        proprio.container2.pack(side=TOP,expand=1,fill=tk.BOTH)
-        proprio.container2.configure(padding=butt_p)
-
-        proprio.mw = Text(proprio.msgwrite, height=1)
-        proprio.mw.tag_configure('normale', foreground='#476042',
-						font=('Tempus Sans ITC', 8))
-        proprio.mw.tag_configure('csv',
-                                 foreground='green',
-                                 font=('Tempus Sans ITC', 8))
-        proprio.mw.tag_configure('dxf',
-                                 foreground='crimson',
-                                 font=('Tempus Sans ITC', 8))
-        proprio.mw.tag_configure('cnc',
-                                 foreground='indigo',
-                                 font=('Tempus Sans ITC', 8))
-        proprio.mw.tag_configure('txt',
-                                 foreground='mediumblue',
-                                 font=('Tempus Sans ITC', 8))
-
-
-        proprio.mw.insert(END, 'selezionare un file vda','normale')
-
-        proprio.mw.config(relief=FLAT,
-                          bg='#E1E1E1',
-                          state=DISABLED)
-        proprio.mw.pack(side=LEFT,expand=1,fill=tk.X)
-
-        proprio.S = Scrollbar(proprio.container2)
-        proprio.S.pack(side=RIGHT, fill=Y)
-        proprio.T = Text(proprio.container2, height=20, width=text_w)
-        proprio.T.pack(side=TOP,expand=1,fill=tk.BOTH)
-        proprio.S.config(command=proprio.T.yview)
-        proprio.T.config(wrap=NONE,
-                         relief=FLAT)
-        proprio.T.insert(END, "per cominciare, seleziona un file vda usando il pulsante apposito\n")
-        proprio.T.config(state=DISABLED)
-        proprio.T['yscrollcommand'] = proprio.S.set
-        
-    def aprifile(proprio):
-        t=aprivda()
+    def apri_file(self):
+        t = aprivda()
         if t:
-            proprio.p=t.p
-            proprio.f=t.f
-            proprio.in_file=t.in_file
-            print('\nTrovato il file\n')
-            print(proprio.f)
-            print('\nnella cartella\n')
-            print(proprio.f)
-            proprio.processafile()
+            self.p = t.p
+            self.f = t.f
+            self.in_file = t.in_file
+            self.processa_file()
         else:
-            print('\nNessun file selezionato\n')
-            proprio.butt_csv.configure(state=DISABLED)
-    def giaprocessato(proprio):
-        print('il file è già stato processato, selezionane uno nuovo, esci o esporta')
-    def processafile(proprio):
-        proprio.fori=leggivda(proprio.in_file, proprio.cf.arrot)
-        proprio.T.config(state=NORMAL)
-        proprio.T.delete(1.0,END)
-        i=0
-        texfori=str('Pos\t\tDiam\t\tX\t\tY\t\tZ\n')
-        while i<len(proprio.fori):
-            texfori+=str(i+1)+'\t\t'
-            texfori+=str(proprio.fori[i][0])+'\t\t'
-            texfori+=str(proprio.fori[i][1])+'\t\t'
-            texfori+=str(proprio.fori[i][2])+'\t\t'
-            texfori+=str(proprio.fori[i][3])+'\n'
-            i+=1
-        proprio.T.insert(END, texfori)
-        proprio.T.config(state=DISABLED)
-        proprio.mw.config(state=NORMAL)
-        proprio.mw.delete(1.0,END)
-        proprio.mw.insert(END, 'File vda importato correttamente','normale')
-        proprio.mw.config(state=DISABLED,
-                              fg='#000000')
+            self.T.config(state=NORMAL)
+            self.T.replace(1.0,END,'File non trovato\n\nPer favore ritenta')
+            self.T.config(state=DISABLED)
+            self.butt_csv.pulsante.configure(state=DISABLED)
+            self.butt_dxf.pulsante.configure(state=DISABLED)
+            self.butt_txt.pulsante.configure(state=DISABLED)
+            self.butt_cnc.pulsante.configure(state=DISABLED)
+
+    def processa_file(self):
+        self.fori = leggivda(self.in_file, self.cf.arrot)
+        self.T.config(state=NORMAL)
+        self.T.delete(1.0, END)
+        i = 0
+        texfori = '\nFile vda processato\n'
+        texfori += "Rilevati e memorizzati i seguenti fori nell'ordine:\n\n"
+        texfori += 'Pos\t\tDiam\t\tX\t\tY\t\tZ\n'
+        while i < len(self.fori):
+            texfori += str(i + 1) + '\t\t'
+            texfori += str(self.fori[i][0]) + '\t\t'
+            texfori += str(self.fori[i][1]) + '\t\t'
+            texfori += str(self.fori[i][2]) + '\t\t'
+            texfori += str(self.fori[i][3]) + '\n'
+            i += 1
+
+        self.T.insert(END, texfori)
+        self.T.config(state=DISABLED)
+        self.mw.config(state=NORMAL)
+        self.mw.delete(1.0, END)
+        self.mw.insert(END, 'File vda importato correttamente', 'normale')
+        self.mw.config(state=DISABLED, fg='#000000')
         print("file processato")
+
         def esportcsv():
-            esporta_csv(proprio.fori,proprio.f, proprio.cf.separ, proprio.cf.virgo)
-            proprio.mw.config(state=NORMAL)
-            proprio.mw.delete(1.0,END)
-            proprio.mw.insert(END, 'Esportazione file csv excel completata','csv')
-            proprio.mw.config(state=DISABLED,
-                              bg='honeydew')
+            esporta_csv(self.fori, self.f, self.cf.separ, self.cf.virgo)
+            self.mw.config(state=NORMAL)
+            self.mw.delete(1.0, END)
+            self.mw.insert(END, 'Esportazione file csv excel completata', 'csv')
+            self.mw.config(state=DISABLED, bg='honeydew')
+
         def esportdxf():
-            esporta_dxf(proprio.fori, proprio.f, proprio.workpath)
-            proprio.mw.config(state=NORMAL)
-            proprio.mw.delete(1.0,END)
-            proprio.mw.insert(END, 'Esportazione file dxf R12 completata','dxf')
-            proprio.mw.config(state=DISABLED,
-                              bg='mistyrose')
+            esporta_dxf(self.fori, self.f, self.workpath)
+            self.mw.config(state=NORMAL)
+            self.mw.delete(1.0, END)
+            self.mw.insert(END, 'Esportazione file dxf R12 completata', 'dxf')
+            self.mw.config(state=DISABLED, bg='mistyrose')
+
         def esportcnc():
-            esporta_cnc(proprio.fori,proprio.p,proprio.f,proprio.workpath, proprio.cf.traduttore)
-            proprio.mw.config(state=NORMAL)
-            proprio.mw.delete(1.0,END)
-            proprio.mw.insert(END, 'Esportazione file cnc completata','cnc')
-            proprio.mw.config(state=DISABLED,
-                              bg='lavender')
+            esporta_cnc(self.fori, self.p, self.f, self.workpath, self.cf.traduttore)
+            self.mw.config(state=NORMAL)
+            self.mw.delete(1.0, END)
+            self.mw.insert(END, 'Esportazione file cnc completata', 'cnc')
+            self.mw.config(state=DISABLED, bg='lavender')
+
         def esporttxt():
-            esporta_txt(proprio.fori,proprio.p,proprio.f,proprio.workpath)
-            proprio.mw.config(state=NORMAL)
-            proprio.mw.delete(1.0,END)
-            proprio.mw.insert(END, 'Esportazione file txt completata','txt')
-            proprio.mw.config(state=DISABLED,
-                              bg='lightcyan')
-        proprio.butt_csv.configure(state=NORMAL,
-                                   command=esportcsv)
-        proprio.butt_dxf.configure(state=NORMAL,
-                                   command=esportdxf)
-        proprio.butt_cnc.configure(state=NORMAL,
-                                   command=esportcnc)
-        proprio.butt_txt.configure(state=NORMAL,
-                                   command=esporttxt)
+            esporta_txt(self.fori, self.p, self.f, self.workpath)
+            self.mw.config(state=NORMAL)
+            self.mw.delete(1.0, END)
+            self.mw.insert(END, 'Esportazione file txt completata', 'txt')
+            self.mw.config(state=DISABLED, bg='lightcyan')
+
+        self.butt_csv.pulsante.configure(state=NORMAL, command=esportcsv)
+        self.butt_dxf.pulsante.configure(state=NORMAL, command=esportdxf)
+        self.butt_cnc.pulsante.configure(state=NORMAL, command=esportcnc)
+        self.butt_txt.pulsante.configure(state=NORMAL, command=esporttxt)
+
 
 def esciii():
     radice.destroy()
-def sett_1():
-    impostazioni = Toplevel()
-    impostazioni.title("Impostazioni file di testo")
-    impostazioni.iconbitmap(Htg_txtset.workpath+"\\icns\\conf.ico")
-    set_txt=Htg_txtset(impostazioni)
-    impostazioni.mainloop()
-def sett_2():
-    impostazioni = Toplevel()
-    impostazioni.title("Impostazioni file csv")
-    impostazioni.iconbitmap(Htg_csvset.workpath+"\\icns\\conf.ico")
-    set_csv_gui=Htg_csvset(impostazioni)
-    impostazioni.mainloop()
-def sett_3():
-    impostazioni = Toplevel()
-    impostazioni.title("Impostazioni dxf")
-    impostazioni.iconbitmap(Htg_dxfset.workpath+"\\icns\\conf.ico")
-    set_dxf_gui=Htg_dxfset(impostazioni)
-    impostazioni.mainloop()
+
+
+def imposta_txt():
+    impostazioni_txt_window = Toplevel()
+    impostazioni_txt_window.title("Impostazioni file di testo")
+    impostazioni_txt_window.iconbitmap(Htg_txtset.workpath + "\\icns\\conf.ico")
+    set_txt = Htg_txtset(impostazioni_txt_window)
+    impostazioni_txt_window.mainloop()
+
+
+def imposta_csv():
+    impostazioni_csv_window = Toplevel()
+    impostazioni_csv_window.title("Impostazioni file csv")
+    impostazioni_csv_window.iconbitmap(Htg_csvset.workpath + "\\icns\\conf.ico")
+    set_csv_gui = Htg_csvset(impostazioni_csv_window)
+    impostazioni_csv_window.mainloop()
+
+
+def imposta_dxf():
+    impostazioni_dxf_window = Toplevel()
+    impostazioni_dxf_window.title("Impostazioni dxf")
+    impostazioni_dxf_window.iconbitmap(Htg_dxfset.workpath + "\\icns\\conf.ico")
+    set_dxf_gui = Htg_dxfset(impostazioni_dxf_window)
+    impostazioni_dxf_window.mainloop()
+
+
 radice = Tk()
 radice.title("Hole Table Generator by Kill Goliath")
-radice.iconbitmap(Htg_gui.workpath+"\\icns\\icona.ico")
-heg_gui=Htg_gui(radice)
-butt_sett=Menu(radice)
-impostazioni=Menu(butt_sett,tearoff=0)
-impostazioni.add_command(label="file di testo",
-                              command=sett_1)
-impostazioni.add_command(label="file csv",
-                              command=sett_2)
-impostazioni.add_command(label="file dxf",
-                              command=sett_3)
+radice.iconbitmap(HtgGui.workpath + "\\icns\\icona.ico")
+heg_gui = HtgGui(radice)
+butt_sett = Menu(radice)
+impostazioni = Menu(butt_sett, tearoff=0)
+impostazioni.add_command(label="file di testo", command=imposta_txt)
+impostazioni.add_command(label="file csv", command=imposta_csv)
+impostazioni.add_command(label="file dxf", command=imposta_dxf)
 butt_sett.add_cascade(label="Impostazioni", menu=impostazioni)
-butt_sett.add_command(label='esci',
-                      command=esciii)
+butt_sett.add_command(label='esci', command=esciii)
 radice.config(menu=butt_sett)
 radice.mainloop()
