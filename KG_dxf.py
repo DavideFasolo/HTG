@@ -62,20 +62,22 @@ class Cerchio:
 
 
 class Testo:
-    def __init__(self, cx: float = 0, cy: float = 0, ofx: float = 0, ofy: float = 0, stringa: int = 100, h: float = 3.5,
+    def __init__(self, cx: float = 0, cy: float = 0, cz: float = 0, ofx: float = 0, ofy: float = 0, stringa: int = 100, h: float = 3.5,
                  livello: str = 'numeri', colore: int = 0):
         self.padx = float(ofx)
         self.pady = float(ofy)
         self.valore = str(stringa)
         self.caratteri = len(str(stringa))
         self.dimensione = float(h)
-        self.origine = Punto(float(cx) + self.padx, float(cy) + self.pady)
+        self.origine = Punto(float(cx) + self.padx, float(cy) + self.pady, float(cz))
         self.dxfcode = '0\nTEXT\n8\n'
         self.dxfcode += str(livello)
         self.dxfcode += '\n10\n'
         self.dxfcode += str(self.origine.x)
         self.dxfcode += '\n20\n'
         self.dxfcode += str(self.origine.y)
+        self.dxfcode += '\n30\n'
+        self.dxfcode += str(self.origine.z)
         self.dxfcode += '\n40\n'
         self.dxfcode += str(self.dimensione)
         self.dxfcode += '\n1\n'
@@ -88,8 +90,7 @@ class Testo:
 
 class Etichetta:
     def __init__(self, nume: int = 100, htesto: float = 3.5, px: float = 0, py: float = 0, pz: float = 0,
-                 angolo: float = 20,
-                 coloretik: int = 0, livelloetik: str = 'etichette', appros: int = 4):
+                 angolo: float = 20, coloretik: int = 0, livelloetik: str = 'etichette', appros: int = 4):
         dmd_a = 2.6
         dmd_b = 2.1
         dmd_c = 1.6
@@ -145,10 +146,14 @@ class Etichetta:
             self.dxfcode += str(eval('self.P%d.x' % i))
             self.dxfcode += '\n20\n'
             self.dxfcode += str(eval('self.P%d.y' % i))
+            self.dxfcode += '\n30\n'
+            self.dxfcode += str(eval('self.P%d.z' % i))
             self.dxfcode += '\n11\n'
             self.dxfcode += str(eval('self.P%d.x' % (i + 1)))
             self.dxfcode += '\n21\n'
             self.dxfcode += str(eval('self.P%d.y' % (i + 1)))
+            self.dxfcode += '\n31\n'
+            self.dxfcode += str(eval('self.P%d.z' % (i + 1)))
             self.dxfcode += '\n62\n'
             self.dxfcode += str(coloretik)
             self.dxfcode += '\n'
@@ -167,7 +172,7 @@ class Forotag:
                                    round(self.centro.y + self.cerchio.raggio * math.sin(angolo * math.pi / 180),
                                          appros),
                                    self.centro.z, angolo, coloretik, livelloetik, appros)
-        self.testo = Testo(self.etichetta.P2.x, self.etichetta.P2.y,
+        self.testo = Testo(self.etichetta.P2.x, self.etichetta.P2.y, self.etichetta.P2.z,
                            self.etichetta.padx, self.etichetta.pady, nume, htesto, livellotes, coloretes)
 
         self.dxfcode = self.cerchio.dxfcode + self.etichetta.dxfcode + self.testo.dxfcode
