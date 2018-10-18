@@ -101,7 +101,6 @@ class HtgGui:
         self.T.config(state=NORMAL)
         self.T.delete(1.0, END)
         i = 0
-        q = 0
         v = 0
         self.min_x = self.fori[i][1] - self.fori[i][0] / 2
         self.max_x = self.fori[i][1] + self.fori[i][0] / 2
@@ -146,7 +145,7 @@ class HtgGui:
             i += 1
         texfori = 'Trovati i seguenti ' + str(len(self.fori)) + ' fori:\n\n'
         i = 0
-        q=1
+        q = 1
         while i < len(self.fori_obj):
             texfori += 'N. ' + str(len(self.fori_obj[i][1])) + ' fori di diametro ' +\
                        str(self.fori_obj[i][0]) + ' mm:\n'
@@ -161,7 +160,61 @@ class HtgGui:
         self.asse_x = Linea(self.min_x, 0, self.max_x, 0, self.cfdxf.cer_livello, self.cfdxf.ass_colore)
         self.asse_y = Linea(0, self.max_y, 0, self.min_y, self.cfdxf.cer_livello, self.cfdxf.ass_colore)
         i = 0
-
+########################################################################################################################
+#   Disegno
+########################################################################################################################
+        self.canv_pad = 50
+        self.canv_height = self.area_operativa.winfo_height()
+        self.canv_y = (self.max_y - self.min_y) + self.canv_pad * 2
+        self.canv_x = (self.max_x - self.min_x) + self.canv_pad * 2
+        self.canv_scale = self.canv_y / self.canv_height
+        self.canv_width = self.canv_x / self.canv_scale
+        self.disegno = Canvas(master=self.area_disegno,
+                              width=self.canv_width, height=self.canv_height,
+                              bg='black')
+        in_colore = open(self.workpath + 'coloridxf.kg', 'r')
+        in_colore.seek(0, 0)
+        mm = int(self.cfdxf.cer_colore)
+        while mm > 0:
+            col_cer = in_colore.readline().split(',')
+            mm -= 1
+        self.colore_cerchi = '#%02x%02x%02x' % (int(col_cer[0]), int(col_cer[1]), int(col_cer[2]))
+        in_colore.close()
+        while i < len(self.fori_obj):
+            u = 0
+            while u < len(self.fori_obj[i][1]):
+                oval_x1 = self.fori_obj[i][1][u].centro.x - self.fori_obj[i][1][u].cerchio.raggio - self.min_x \
+                          + self.canv_pad
+                oval_y1 = self.max_y - self.fori_obj[i][1][u].centro.y - self.fori_obj[i][1][u].cerchio.raggio \
+                          + self.canv_pad
+                oval_x2 = self.fori_obj[i][1][u].centro.x + self.fori_obj[i][1][u].cerchio.raggio - self.min_x \
+                          + self.canv_pad
+                oval_y2 = self.max_y - self.fori_obj[i][1][u].centro.y + self.fori_obj[i][1][u].cerchio.raggio \
+                          + self.canv_pad
+                self.disegno.create_oval(oval_x1 / self.canv_scale,
+                                         oval_y1 / self.canv_scale,
+                                         oval_x2 / self.canv_scale,
+                                         oval_y2 / self.canv_scale,
+                                         outline=self.colore_cerchi,
+                                         width=1.5)
+                u += 1
+            i += 1
+        self.disegno.create_line(self.canv_pad / self.canv_scale,
+                                 (self.max_y + self.canv_pad) / self.canv_scale,
+                                 (self.max_x - self.min_x + self.canv_pad) / self.canv_scale,
+                                 (self.max_y + self.canv_pad) / self.canv_scale,
+                                 dash=(7, 1, 2, 1),
+                                 fill='red')
+        self.disegno.create_line((self.canv_pad - self.min_x) / self.canv_scale,
+                                 self.canv_pad / self.canv_scale,
+                                 (self.canv_pad - self.min_x) / self.canv_scale,
+                                 (self.max_y - self.min_y + self.canv_pad) / self.canv_scale,
+                                 dash=(7, 1, 2, 1),
+                                 fill='red')
+        self.disegno.pack(expand=YES, fill=BOTH, side=RIGHT)
+########################################################################################################################
+#   Fine Disegno
+########################################################################################################################
         self.T.insert(END, texfori)
         self.T.config(state=DISABLED)
         self.mw.config(state=NORMAL)
@@ -177,15 +230,6 @@ class HtgGui:
             self.mw.config(state=DISABLED, bg='honeydew')
 
         def esportdxf():
-            self.canv_pad = 50
-            self.canv_height = self.area_operativa.winfo_height()
-            self.canv_y = (self.max_y-self.min_y)+self.canv_pad*2
-            self.canv_x = (self.max_x-self.min_x)+self.canv_pad*2
-            self.canv_scale = self.canv_y / self.canv_height
-            self.canv_width = self.canv_x / self.canv_scale
-            self.disegno = Canvas(master=self.area_disegno,
-                                  width=self.canv_width, height=self.canv_height,
-                                  bg='black')
             cdf = self.f + "dxf"
             intestazione = DxfFormat(cdf)
             out_dxf = open(cdf, "w+")
@@ -197,28 +241,8 @@ class HtgGui:
                 u = 0
                 while u < len(self.fori_obj[i][1]):
                     out_dxf.write(self.fori_obj[i][1][u].dxfcode)
-                    oval_x1 = self.fori_obj[i][1][u].centro.x - self.fori_obj[i][1][u].cerchio.raggio - self.min_x + self.canv_pad
-                    oval_y1 = self.max_y - self.fori_obj[i][1][u].centro.y - self.fori_obj[i][1][u].cerchio.raggio + self.canv_pad
-                    oval_x2 = self.fori_obj[i][1][u].centro.x + self.fori_obj[i][1][u].cerchio.raggio - self.min_x + self.canv_pad
-                    oval_y2 = self.max_y - self.fori_obj[i][1][u].centro.y + self.fori_obj[i][1][u].cerchio.raggio + self.canv_pad
-                    self.disegno.create_oval(oval_x1 / self.canv_scale,
-                                             oval_y1 / self.canv_scale,
-                                             oval_x2 / self.canv_scale,
-                                             oval_y2 / self.canv_scale,
-                                             fill='blue')
                     u += 1
                 i += 1
-            self.disegno.create_line(self.canv_pad/self.canv_scale,
-                                     (self.max_y+self.canv_pad)/self.canv_scale,
-                                     (self.max_x-self.min_x+self.canv_pad)/self.canv_scale,
-                                     (self.max_y+self.canv_pad)/self.canv_scale,
-                                     fill='red')
-            self.disegno.create_line((self.canv_pad-self.min_x)/self.canv_scale,
-                                     self.canv_pad/self.canv_scale,
-                                     (self.canv_pad-self.min_x)/self.canv_scale,
-                                     (self.max_y-self.min_y+self.canv_pad)/self.canv_scale,
-                                     fill='red')
-            self.disegno.pack(expand=YES, fill=BOTH, side=RIGHT)
             out_dxf.write(intestazione.dxf_end)
             out_dxf.close()
             
