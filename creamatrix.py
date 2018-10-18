@@ -52,6 +52,7 @@ def leggivda(in_file, arrot):
     if totpun > 0:
         messaggio += str(totpun) + " punti ignorati\n"
 
+    print(messaggio)
     #################
 
     return fori
