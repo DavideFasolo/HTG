@@ -8,6 +8,7 @@ from outcnc import *
 from settings import *
 from gui_classi import *
 from settings import Htg_dxfset
+from ctypes import windll, byref, create_unicode_buffer, create_string_buffer
 
 ######################################################################
 
@@ -21,9 +22,30 @@ image = tk.PhotoImage(file=image_file)
 canvas = tk.Canvas(root, height=height * 0.5, width=width * 0.5, bg="black")
 canvas.create_image(width * 0.5 / 2, height * 0.5 / 2, image=image)
 canvas.pack()
-root.after(4000, root.destroy)
+root.after(400, root.destroy)
 root.mainloop()
 
+FR_PRIVATE = 0x10
+FR_NOT_ENUM = 0x20
+
+workpath = str(os.getcwd()) + "\\Configurazione\\"
+def loadfont(fontpath, private=True, enumerable=False):
+    if isinstance(fontpath, bytes):
+        pathbuf = create_string_buffer(fontpath)
+        AddFontResourceEx = windll.gdi32.AddFontResourceExA
+    elif isinstance(fontpath, str):
+        pathbuf = create_unicode_buffer(fontpath)
+        AddFontResourceEx = windll.gdi32.AddFontResourceExW
+    else:
+        raise TypeError('fontpath must be of type str or unicode')
+
+    flags = (FR_PRIVATE if private else 0) | (FR_NOT_ENUM if not enumerable else 0)
+    numFontsAdded = AddFontResourceEx(byref(pathbuf), flags, 0)
+    return bool(numFontsAdded)
+
+
+loadfont(workpath + 'assets\\Inconsolata.otf')
+loadfont(workpath + 'assets\\timeburnerbold.ttf')
 
 class HtgGui:
     workpath = str(os.getcwd()) + "\\Configurazione\\"
@@ -31,28 +53,43 @@ class HtgGui:
     cfdxf = DrawingExchangeFormatConfigurations(workpath)
 
     def __init__(self, genitore):
-        larghezza_testo_principale = 85
-        padding_pulsanti = 5
+        # variabili grafiche
+        self.canv_bool = 0
+        larghezza_testo_principale = 8
+        altezza_testo_principale = 2
+        padding_pulsanti = 8
+        gui_style = ttk.Style()
+        gui_style.configure('My.TButton', foreground='#2d2926')
+        gui_style.configure('My.TFrame', background='#2d2926')
+        # variabili grafiche
 
         self.gen_1 = genitore
 
-        self.area_operativa = Frame(genitore)
-        self.area_operativa.pack(side=LEFT)
+        self.area_operativa = tk.Frame(genitore,  bg='#2d2926')
+        self.area_operativa.pack(side=LEFT, expand=0, fill=BOTH)
+        self.area_operativa.configure(width=radice.winfo_screenwidth()/2.5,
+                                      height=radice.winfo_screenheight()/1.2,
+                                    bd=0, highlightbackground='#423831',
+                                    highlightthickness=1)
 
-        self.area_disegno = Frame(genitore)
-        self.area_disegno.pack(fill=Y)
+        self.area_disegno = tk.Frame(genitore, bg='#2d2926')
+        self.area_disegno.pack(expand=0, fill=BOTH)
+        self.area_disegno.configure(width=radice.winfo_screenwidth()/2.5,
+                                      height=radice.winfo_screenheight()/1.2,
+                                    bd=0, highlightbackground='#423831',
+                                    highlightthickness=1)
 
         self.area_menu = Frame(self.area_operativa)
-        self.area_menu.pack(fill=X)
-        self.area_menu.configure(padding=padding_pulsanti)
+        self.area_menu.pack(expand=0, fill=X)
+        self.area_menu.configure(padding=padding_pulsanti, style='My.TFrame')
 
         self.testo_output = Frame(self.area_operativa)
-        self.testo_output.pack(fill=X)
-        self.testo_output.configure(padding=padding_pulsanti)
+        self.testo_output.pack(expand=0, fill=X)
+        self.testo_output.configure(padding=padding_pulsanti, style='My.TFrame')
 
         self.info_comandi = Frame(self.area_operativa)
-        self.info_comandi.pack(side=TOP, expand=1, fill=tk.BOTH)
-        self.info_comandi.configure(padding=padding_pulsanti)
+        self.info_comandi.pack(side=TOP, expand=1, fill=BOTH)
+        self.info_comandi.configure(padding=padding_pulsanti, style='My.TFrame')
 
         self.butt_opn = PulsanteMenu(self.area_menu, self.workpath, 'file-opn.png', self.apri_file, 1)
         self.butt_csv = PulsanteMenu(self.area_menu, self.workpath, 'file-csv.png')
@@ -61,24 +98,21 @@ class HtgGui:
         self.butt_cnc = PulsanteMenu(self.area_menu, self.workpath, 'file-cnc.png')
 
         self.mw = Text(self.testo_output, height=1)
-        self.mw.tag_configure('normale', foreground='#476042', font=('Tempus Sans ITC', 8))
-        self.mw.tag_configure('csv', foreground='green', font=('Tempus Sans ITC', 8))
-        self.mw.tag_configure('dxf', foreground='crimson', font=('Tempus Sans ITC', 8))
-        self.mw.tag_configure('cnc', foreground='indigo', font=('Tempus Sans ITC', 8))
-        self.mw.tag_configure('txt', foreground='mediumblue', font=('Tempus Sans ITC', 8))
+        self.mw.tag_configure('normale', foreground='white', font=('TimeBurner', 10))
+        self.mw.tag_configure('csv', foreground='green', font=('TimeBurner', 10))
+        self.mw.tag_configure('dxf', foreground='crimson', font=('TimeBurner', 10))
+        self.mw.tag_configure('cnc', foreground='indigo', font=('TimeBurner', 10))
+        self.mw.tag_configure('txt', foreground='mediumblue', font=('TimeBurner', 10))
         self.mw.insert(END, 'selezionare un file vda', 'normale')
-        self.mw.config(relief=FLAT, bg='#E1E1E1', state=DISABLED)
+        self.mw.config(relief=FLAT, bg='#423d39', state=DISABLED)
         self.mw.pack(side=LEFT, expand=1, fill=tk.X)
 
-        self.S = Scrollbar(self.info_comandi)
-        self.S.pack(side=RIGHT, fill=Y)
-        self.T = Text(self.info_comandi, height=40, width=larghezza_testo_principale)
+        self.T = Text(self.info_comandi, height=altezza_testo_principale, width=larghezza_testo_principale)
+        self.T.tag_configure('normale', foreground='white', font=('TimeBurner', 10))
         self.T.pack(side=TOP, expand=1, fill=tk.BOTH)
-        self.S.config(command=self.T.yview)
-        self.T.config(wrap=NONE, relief=FLAT)
+        self.T.config(wrap=NONE, relief=FLAT, font=('Inconsolata', 12), background='#2d2926', foreground='white')
         self.T.insert(END, "per cominciare, seleziona un file vda usando il pulsante apposito\n")
         self.T.config(state=DISABLED)
-        self.T['yscrollcommand'] = self.S.set
 
     def apri_file(self):
         t = aprivda()
@@ -88,13 +122,17 @@ class HtgGui:
             self.in_file = t.in_file
             self.processa_file()
         else:
+            # reimposta tutto
             self.T.config(state=NORMAL)
             self.T.replace(1.0,END,'File non trovato\n\nPer favore ritenta')
             self.T.config(state=DISABLED)
-            self.butt_csv.pulsante.configure(state=DISABLED)
-            self.butt_dxf.pulsante.configure(state=DISABLED)
-            self.butt_txt.pulsante.configure(state=DISABLED)
-            self.butt_cnc.pulsante.configure(state=DISABLED)
+            self.mw.config(state=NORMAL)
+            self.mw.delete(1.0, END)
+            self.mw.insert(END, 'selezionare un file vda', 'normale')
+            self.mw.config(relief=FLAT, bg='#423d39', state=DISABLED)
+            if self.canv_bool:
+                self.disegno.destroy()
+            # reimposta tutto
 
     def processa_file(self):
         self.fori = leggivda(self.in_file, self.cf.arrot)
@@ -169,9 +207,12 @@ class HtgGui:
         self.canv_x = (self.max_x - self.min_x) + self.canv_pad * 2
         self.canv_scale = self.canv_y / self.canv_height
         self.canv_width = self.canv_x / self.canv_scale
-        self.disegno = Canvas(master=self.area_disegno,
+        if self.canv_bool:
+            self.disegno.destroy()
+        self.disegno = tk.Canvas(master=self.area_disegno,
                               width=self.canv_width, height=self.canv_height,
-                              bg='black')
+                              bg='#2d2926', bd=0, relief=FLAT, highlightthickness=0, takefocus=0)
+        self.canv_bool = 1
         in_colore = open(self.workpath + 'coloridxf.kg', 'r')
         in_colore.seek(0, 0)
         mm = int(self.cfdxf.cer_colore)
@@ -300,15 +341,18 @@ def imposta_dxf():
 
 
 radice = Tk()
+wid = int(radice.winfo_screenwidth()/8)
+hei = int(radice.winfo_screenheight() / 20)
+radice.geometry('+%d+%d' % (wid, hei))
 radice.title("Hole Table Generator by Kill Goliath")
 radice.iconbitmap(HtgGui.workpath + "\\icns\\icona.ico")
 heg_gui = HtgGui(radice)
 butt_sett = Menu(radice)
 impostazioni = Menu(butt_sett, tearoff=0)
-impostazioni.add_command(label="file di testo", command=imposta_txt)
-impostazioni.add_command(label="file csv", command=imposta_csv)
-impostazioni.add_command(label="file dxf", command=imposta_dxf)
+impostazioni.add_command(label="File txt", command=imposta_txt)
+impostazioni.add_command(label="File csv", command=imposta_csv)
+impostazioni.add_command(label="File dxf", command=imposta_dxf)
 butt_sett.add_cascade(label="Impostazioni", menu=impostazioni)
-butt_sett.add_command(label='esci', command=esciii)
-radice.config(menu=butt_sett)
+butt_sett.add_command(label='Esci', command=esciii)
+radice.config(menu=butt_sett, bg='#2d2926')
 radice.mainloop()
