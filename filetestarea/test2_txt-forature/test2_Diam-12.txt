@@ -1,0 +1,9 @@
+Coordinate dei fori diametro 12
+
+X-158.5			Y348.
+X-126.5			Y141.
+X136.5			Y101.
+X158.5			Y348.
+
+
+Fori dal 34 al 37 della tabella fori

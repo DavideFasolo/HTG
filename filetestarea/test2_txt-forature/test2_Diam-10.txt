@@ -1,0 +1,17 @@
+Coordinate dei fori diametro 10
+
+X-158.			Y84.
+X-158.			Y126.
+X-152.			Y41.
+X-112.304			Y17.915
+X-112.08			Y57.058
+X-0.			Y18.
+X-0.			Y56.745
+X26.			Y357.
+X51.			Y327.
+X85.			Y286.
+X106.942			Y54.5
+X121.			Y244.
+
+
+Fori dal 22 al 33 della tabella fori

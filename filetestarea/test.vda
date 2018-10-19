@@ -3,7 +3,7 @@ MEZZA-C = HEADER / 20                                                   00001000
 VDAFS VERSION                   : 2.0                                   00001020
 DATA ABOUT SENDER ----------------------------------------------------  00001030
 SENDING COMPANY                 :                                       00001040
-SENDER'S NAME                   : Enrico Pinato                         00001050
+SENDER'S NAME                   : Davide Fasolo                         00001050
 TELEPHONE NO.                   :                                       00001060
 ADDRESS                         :                                       00001070
 SENDING SYSTEM                  :                                       00001080
@@ -19,7 +19,7 @@ DATE EFFECTIVE                  :                                       00001170
 RECEIVING COMPANY'S NAME        :                                       00001180
 RECEIVER'S NAME                 :                                       00001190
 **********************************************************************  00001200
-MEZZA-CASSA-EUROMAC = BEGINSET                                          00001210
+MEZZA-CASSA-DE-POMI = BEGINSET                                          00001210
 CU1 = CURVE / 1,0.,1.,2,-2.515E2,0.,-2.2438E2,0.,-1.00000000052039E2,   00001220
 7.E1                                                                    00001230
 CU2 = CURVE / 1,0.,1.,2,6.85E1,0.,2.1562E2,0.,-1.00000000052039E2,7.E1  00001240
@@ -226,5 +226,5 @@ CI12,CI13,CI14,CI15,CI16,CI17,CI18,CI19,CI20,CI21,CI22,CI23,CI24,CI25,  00003240
 CI26,CI27,CI28,CI29,CI30,CI31,CI32,CI33,CI34,CI35,CI36,CI37,CI38,CI39,  00003250
 CI40,CI41,CI42,CI43,CI44,CI45,CI46,CI47,CI48,CI49,CI50,CI51,CI52,CI53,  00003260
 CI54,CI55,CI56                                                          00003270
-MEZZA-CASSA-EUROMAC = ENDSET                                            00003280
+MEZZA-CASSA-DE-POMI = ENDSET                                            00003280
 MEZZA-C = END                                                           00003290
