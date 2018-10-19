@@ -8,7 +8,7 @@ from outcnc import *
 from settings import *
 from gui_classi import *
 from settings import Htg_dxfset
-from ctypes import windll, byref, create_unicode_buffer, create_string_buffer
+from tkinter.ttk import *
 
 ######################################################################
 
@@ -25,27 +25,10 @@ canvas.pack()
 root.after(400, root.destroy)
 root.mainloop()
 
-FR_PRIVATE = 0x10
-FR_NOT_ENUM = 0x20
-
 workpath = str(os.getcwd()) + "\\Configurazione\\"
-def loadfont(fontpath, private=True, enumerable=False):
-    if isinstance(fontpath, bytes):
-        pathbuf = create_string_buffer(fontpath)
-        AddFontResourceEx = windll.gdi32.AddFontResourceExA
-    elif isinstance(fontpath, str):
-        pathbuf = create_unicode_buffer(fontpath)
-        AddFontResourceEx = windll.gdi32.AddFontResourceExW
-    else:
-        raise TypeError('fontpath must be of type str or unicode')
+loadfont(workpath + 'assets\\RENT_0.ttf')
+loadfont(workpath + 'assets\\erbos_draco_1st_open_nbp.ttf')
 
-    flags = (FR_PRIVATE if private else 0) | (FR_NOT_ENUM if not enumerable else 0)
-    numFontsAdded = AddFontResourceEx(byref(pathbuf), flags, 0)
-    return bool(numFontsAdded)
-
-
-loadfont(workpath + 'assets\\Inconsolata.otf')
-loadfont(workpath + 'assets\\timeburnerbold.ttf')
 
 class HtgGui:
     workpath = str(os.getcwd()) + "\\Configurazione\\"
@@ -55,7 +38,7 @@ class HtgGui:
     def __init__(self, genitore):
         # variabili grafiche
         self.canv_bool = 0
-        larghezza_testo_principale = 8
+        larghezza_testo_principale = 6
         altezza_testo_principale = 2
         padding_pulsanti = 8
         gui_style = ttk.Style()
@@ -67,7 +50,7 @@ class HtgGui:
 
         self.area_operativa = tk.Frame(genitore,  bg='#2d2926')
         self.area_operativa.pack(side=LEFT, expand=0, fill=BOTH)
-        self.area_operativa.configure(width=radice.winfo_screenwidth()/2.5,
+        self.area_operativa.configure(width=radice.winfo_screenwidth()/7,
                                       height=radice.winfo_screenheight()/1.2,
                                     bd=0, highlightbackground='#423831',
                                     highlightthickness=1)
@@ -81,7 +64,7 @@ class HtgGui:
 
         self.area_menu = Frame(self.area_operativa)
         self.area_menu.pack(expand=0, fill=X)
-        self.area_menu.configure(padding=padding_pulsanti, style='My.TFrame')
+        self.area_menu.configure(width=radice.winfo_screenwidth()/7,padding=padding_pulsanti, style='My.TFrame')
 
         self.testo_output = Frame(self.area_operativa)
         self.testo_output.pack(expand=0, fill=X)
@@ -98,20 +81,20 @@ class HtgGui:
         self.butt_cnc = PulsanteMenu(self.area_menu, self.workpath, 'file-cnc.png')
 
         self.mw = Text(self.testo_output, height=1)
-        self.mw.tag_configure('normale', foreground='white', font=('TimeBurner', 10))
-        self.mw.tag_configure('csv', foreground='green', font=('TimeBurner', 10))
-        self.mw.tag_configure('dxf', foreground='crimson', font=('TimeBurner', 10))
-        self.mw.tag_configure('cnc', foreground='indigo', font=('TimeBurner', 10))
-        self.mw.tag_configure('txt', foreground='mediumblue', font=('TimeBurner', 10))
+        self.mw.tag_configure('normale', foreground='white', font=('Erbos Draco 1st Open NBP', 10))
+        self.mw.tag_configure('csv', foreground='green', font=('Erbos Draco 1st Open NBP', 10))
+        self.mw.tag_configure('dxf', foreground='crimson', font=('Erbos Draco 1st Open NBP', 10))
+        self.mw.tag_configure('cnc', foreground='indigo', font=('Erbos Draco 1st Open NBP', 10))
+        self.mw.tag_configure('txt', foreground='mediumblue', font=('Erbos Draco 1st Open NBP', 10))
         self.mw.insert(END, 'selezionare un file vda', 'normale')
         self.mw.config(relief=FLAT, bg='#423d39', state=DISABLED)
-        self.mw.pack(side=LEFT, expand=1, fill=tk.X)
+        self.mw.pack(side=LEFT, expand=1)
 
         self.T = Text(self.info_comandi, height=altezza_testo_principale, width=larghezza_testo_principale)
-        self.T.tag_configure('normale', foreground='white', font=('TimeBurner', 10))
+        self.T.tag_configure('normale', foreground='white', font=('Erbos Draco 1st Open NBP', 10))
         self.T.pack(side=TOP, expand=1, fill=tk.BOTH)
-        self.T.config(wrap=NONE, relief=FLAT, font=('Inconsolata', 12), background='#2d2926', foreground='white')
-        self.T.insert(END, "per cominciare, seleziona un file vda usando il pulsante apposito\n")
+        self.T.config(wrap=NONE, relief=FLAT, font=('Roentgen NBP', 11), background='#2d2926', foreground='white')
+        self.T.insert(END, "per cominciare, seleziona un file vda\nusando il pulsante apposito\n")
         self.T.config(state=DISABLED)
 
     def apri_file(self):
@@ -189,8 +172,9 @@ class HtgGui:
                        str(self.fori_obj[i][0]) + ' mm:\n'
             u = 0
             while u < len(self.fori_obj[i][1]):
-                texfori += str(q) + ':\t' + 'x:\t' + str(self.fori_obj[i][1][u].centro.x)
-                texfori += '\t\t\ty:\t' + str(self.fori_obj[i][1][u].centro.y) + '\n'
+                texfori += str(q) + ':\t' + 'x ' + str(self.fori_obj[i][1][u].centro.x)
+                texfori += '\t\ty ' + str(self.fori_obj[i][1][u].centro.y)
+                texfori += '\t\tz ' + str(self.fori_obj[i][1][u].centro.z) + '\n'
                 q += 1
                 u += 1
             texfori += '\n'

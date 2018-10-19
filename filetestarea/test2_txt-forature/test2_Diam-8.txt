@@ -1,0 +1,9 @@
+Coordinate dei fori diametro 8
+
+X-110.868			Y86.398
+X.			Y86.6
+X68.914			Y21.719
+X69.001			Y134.55
+
+
+Fori dal 18 al 21 della tabella fori

@@ -1,0 +1,7 @@
+Coordinate dei fori diametro 4
+
+X44.24			Y344.356
+X112.849			Y264.871
+
+
+Fori dal 1 al 2 della tabella fori
