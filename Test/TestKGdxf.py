@@ -1,13 +1,16 @@
 import unittest
 
-from KG_dxf import Forotag, Cerchio
+from KG_dxf import Forotag, Cerchio, Punto
 from infrastructure import DrawingExchangeFormatConfigurations
 
 
 class TestKgDxf(unittest.TestCase):
 
+    def setUp(self):
+        self.point = Punto(10, 20, 30)
+
     def test_initialize_circle(self):
-        actual = Cerchio(10, 20, 30, 40, 'Bori', 50)
+        actual = Cerchio(self.point, 40, 'Bori', 50)
 
         expected = """0
 CIRCLE
@@ -27,7 +30,7 @@ Bori
         self.assertEqual(actual.dxfcode, expected)
 
     def test_initialize_circle_no_colour(self):
-        actual = Cerchio(10, 20, 30, 40, 'Bori')
+        actual = Cerchio(self.point, 40, 'Bori')
 
         expected = """0
 CIRCLE

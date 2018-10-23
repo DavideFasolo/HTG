@@ -39,8 +39,8 @@ class Linea:
 
 
 class Cerchio:
-    def __init__(self, cx: float = 0, cy: float = 0, cz: float = 0, cr: float = 0, livello: str = 'Fori', colore: int = 0):
-        self.centro = Punto(cx, cy, cz)
+    def __init__(self, point: Punto, cr: float = 0, livello: str = 'Fori', colore: int = 0):
+        self.centro = point
         self.raggio = cr
         self.diametro = cr * 2
         self.dxfcode = '0\nCIRCLE\n8\n{0}\n10\n{1}\n20\n{2}\n30\n{3}\n40\n{4}\n62\n{5}\n'\
@@ -151,7 +151,7 @@ class Forotag:
                  angolo: float = 20, nume: int = 2, appros: int = 4, colorecer: int = 0, livellocer: str = 'cerchi',
                  coloretik: int = 0, livelloetik: str = 'etichette', livellotes: str = 'testo', coloretes: int = 0):
         self.centro = Punto(round(float(cx), int(appros)), round(float(cy), int(appros)), round(float(cz), int(appros)))
-        self.cerchio = Cerchio(self.centro.x, self.centro.y, self.centro.z, float(raggioforo), livellocer, colorecer)
+        self.cerchio = Cerchio(self.centro, float(raggioforo), livellocer, colorecer)
         self.etichetta = Etichetta(nume, htesto,
                                    round(self.centro.x + self.cerchio.raggio * math.cos(angolo * math.pi / 180),
                                          appros),
