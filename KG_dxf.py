@@ -19,8 +19,7 @@ class Punto:
 
 
 class Linea:
-    def __init__(self, x1: float = 0, y1: float = 0, x2: float = 0, y2: float = 0,
-                 livello: str = 'assi', colore: int = 0):
+    def __init__(self, x1: float = 0, y1: float = 0, x2: float = 0, y2: float = 0, livello: str = 'assi', colore: int = 0):
         self.P1 = Punto(float(x1), float(y1))
         self.P2 = Punto(float(x2), float(y2))
         self.dxfcode = '0\nLINE\n8\n'
@@ -40,25 +39,12 @@ class Linea:
 
 
 class Cerchio:
-    def __init__(self, cx: float = 0, cy: float = 0, cz: float = 0, cr: float = 0, livello: str = 'Fori',
-                 colore: int = 0):
-        self.centro = Punto(float(cx), float(cy), float(cz))
-        self.raggio = float(cr)
-        self.diametro = float(cr) * 2
-        self.dxfcode = '0\nCIRCLE\n8\n'
-        self.dxfcode += str(livello)
-        self.dxfcode += '\n10\n'
-        self.dxfcode += str(cx)
-        self.dxfcode += '\n20\n'
-        self.dxfcode += str(cy)
-        self.dxfcode += '\n30\n'
-        self.dxfcode += str(cz)
-        self.dxfcode += '\n40\n'
-        self.dxfcode += str(cr)
-        if colore:
-            self.dxfcode += '\n62\n'
-            self.dxfcode += str(colore)
-        self.dxfcode += '\n'
+    def __init__(self, cx: float = 0, cy: float = 0, cz: float = 0, cr: float = 0, livello: str = 'Fori', colore: int = 0):
+        self.centro = Punto(cx, cy, cz)
+        self.raggio = cr
+        self.diametro = cr * 2
+        self.dxfcode = '0\nCIRCLE\n8\n{0}\n10\n{1}\n20\n{2}\n30\n{3}\n40\n{4}\n62\n{5}\n'\
+            .format(livello, self.centro.x, self.centro.y, self.centro.z, cr, colore)
 
 
 class Testo:
