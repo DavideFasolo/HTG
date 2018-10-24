@@ -8,10 +8,12 @@ class ReturnFile(object):
         self.in_file = in_file
         self.f = f
 
-
-def aprivda():
-    filename = filedialog.askopenfilename(initialdir="C:\\", title="Seleziona vda",
+def apri_file_diag():
+    return filedialog.askopenfilename(initialdir="C:\\", title="Seleziona vda",
                                           filetypes=(("File vda", "*.vda"), ("all files", "*.*")))
+
+
+def aprivda(filename):
     if filename:
         path = filename
         name = path.split('/')

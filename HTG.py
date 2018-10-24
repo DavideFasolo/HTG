@@ -98,7 +98,7 @@ class HtgGui:
         self.T.config(state=DISABLED)
 
     def apri_file(self):
-        t = aprivda()
+        t = aprivda(apri_file_diag())
         if t:
             self.p = t.p
             self.f = t.f

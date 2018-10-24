@@ -1,7 +1,6 @@
 import unittest
 
-from KG_dxf import Forotag, Cerchio, Punto
-from infrastructure import DrawingExchangeFormatConfigurations
+from KG_dxf import Cerchio, Punto
 
 
 class TestKgDxf(unittest.TestCase):
