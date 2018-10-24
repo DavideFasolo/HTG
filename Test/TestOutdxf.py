@@ -25,6 +25,9 @@ class TestKgDxf(unittest.TestCase):
                                      cf.etk_colore,cf.etk_livello,
                                      cf.tes_livello,cf.tes_colore))
 
+    def test(selfself):
+        print(5 if 1 else 7)
+
 
 if __name__ == '__main__':
     unittest.main()

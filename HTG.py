@@ -1,6 +1,7 @@
 from aprifiles import *
 from creamatrix import *
 from KG_dxf import *
+from creatabellafori import crea_tab_fori
 from infrastructure import InterfaceConfiguration
 from infrastructure import DrawingExchangeFormatConfigurations
 from outcsv import *
@@ -121,49 +122,7 @@ class HtgGui:
         self.fori = leggivda(self.in_file, self.cf.arrot)
         self.T.config(state=NORMAL)
         self.T.delete(1.0, END)
-        i = 0
-        v = 0
-        self.min_x = self.fori[i][1] - self.fori[i][0] / 2
-        self.max_x = self.fori[i][1] + self.fori[i][0] / 2
-        self.min_y = self.fori[i][2] - self.fori[i][0] / 2
-        self.max_y = self.fori[i][2] + self.fori[i][0] / 2
-        self.fori_obj = list()
-        self.fori_stesso_diam = list()
-        while i < len(self.fori):
-            cr = self.fori[i][0] / 2
-            cx = self.fori[i][1]
-            cy = self.fori[i][2]
-            if self.cfdxf.coord_z:
-                cz = self.fori[i][3]
-            else:
-                cz = 0
-
-            if cx - cr < self.min_x:
-                self.min_x = cx - cr
-            if cx + cr > self.max_x:
-                self.max_x = cx + cr
-            if cy - cr < self.min_y:
-                self.min_y = cy - cr
-            if cy + cr > self.max_y:
-                self.max_y = cy + cr
-
-            foro000 = Forotag(cx, cy, cz, cr, self.cfdxf.htesto, self.cfdxf.angolo, i + 1, 4, self.cfdxf.cer_colore,
-                              self.cfdxf.cer_livello, self.cfdxf.etk_colore, self.cfdxf.etk_livello,
-                              self.cfdxf.tes_livello, self.cfdxf.tes_colore)
-
-            cr *= 2
-            if i == 0:
-                self.fori_stesso_diam.append(foro000)
-                self.fori_obj.append([cr, self.fori_stesso_diam])
-            else:
-                if cr != self.fori_obj[v][0]:
-                    self.fori_stesso_diam = [foro000]
-                    self.fori_obj.append([cr, self.fori_stesso_diam])
-                    v += 1
-                else:
-                    if cr == self.fori_obj[v][0]:
-                        self.fori_obj[v][1].append(foro000)
-            i += 1
+        self.fori_obj, self.assi = crea_tab_fori(self.fori, self.cfdxf)
         texfori = 'Trovati i seguenti ' + str(len(self.fori)) + ' fori:\n\n'
         i = 0
         q = 1
@@ -179,16 +138,15 @@ class HtgGui:
                 u += 1
             texfori += '\n'
             i += 1
-        self.asse_x = Linea(self.min_x, 0, self.max_x, 0, self.cfdxf.cer_livello, self.cfdxf.ass_colore)
-        self.asse_y = Linea(0, self.max_y, 0, self.min_y, self.cfdxf.cer_livello, self.cfdxf.ass_colore)
+
         i = 0
 ########################################################################################################################
 #   Disegno
 ########################################################################################################################
         self.canv_pad = 50
         self.canv_height = self.area_operativa.winfo_height()
-        self.canv_y = (self.max_y - self.min_y) + self.canv_pad * 2
-        self.canv_x = (self.max_x - self.min_x) + self.canv_pad * 2
+        self.canv_y = (self.assi.max_y() - self.assi.min_y()) + self.canv_pad * 2
+        self.canv_x = (self.assi.max_x() - self.assi.min_x()) + self.canv_pad * 2
         self.canv_scale = self.canv_y / self.canv_height
         self.canv_width = self.canv_x / self.canv_scale
         if self.canv_bool:
@@ -208,13 +166,13 @@ class HtgGui:
         while i < len(self.fori_obj):
             u = 0
             while u < len(self.fori_obj[i][1]):
-                oval_x1 = self.fori_obj[i][1][u].centro.x - self.fori_obj[i][1][u].cerchio.raggio - self.min_x \
+                oval_x1 = self.fori_obj[i][1][u].centro.x - self.fori_obj[i][1][u].cerchio.raggio - self.assi.min_x() \
                           + self.canv_pad
-                oval_y1 = self.max_y - self.fori_obj[i][1][u].centro.y - self.fori_obj[i][1][u].cerchio.raggio \
+                oval_y1 = self.assi.max_y() - self.fori_obj[i][1][u].centro.y - self.fori_obj[i][1][u].cerchio.raggio \
                           + self.canv_pad
-                oval_x2 = self.fori_obj[i][1][u].centro.x + self.fori_obj[i][1][u].cerchio.raggio - self.min_x \
+                oval_x2 = self.fori_obj[i][1][u].centro.x + self.fori_obj[i][1][u].cerchio.raggio - self.assi.min_x() \
                           + self.canv_pad
-                oval_y2 = self.max_y - self.fori_obj[i][1][u].centro.y + self.fori_obj[i][1][u].cerchio.raggio \
+                oval_y2 = self.assi.max_y() - self.fori_obj[i][1][u].centro.y + self.fori_obj[i][1][u].cerchio.raggio \
                           + self.canv_pad
                 self.disegno.create_oval(oval_x1 / self.canv_scale,
                                          oval_y1 / self.canv_scale,
@@ -225,15 +183,15 @@ class HtgGui:
                 u += 1
             i += 1
         self.disegno.create_line(self.canv_pad / self.canv_scale,
-                                 (self.max_y + self.canv_pad) / self.canv_scale,
-                                 (self.max_x - self.min_x + self.canv_pad) / self.canv_scale,
-                                 (self.max_y + self.canv_pad) / self.canv_scale,
+                                 (self.assi.max_y() + self.canv_pad) / self.canv_scale,
+                                 (self.assi.max_x() - self.assi.min_x() + self.canv_pad) / self.canv_scale,
+                                 (self.assi.max_y() + self.canv_pad) / self.canv_scale,
                                  dash=(7, 1, 2, 1),
                                  fill='red')
-        self.disegno.create_line((self.canv_pad - self.min_x) / self.canv_scale,
+        self.disegno.create_line((self.canv_pad - self.assi.min_x()) / self.canv_scale,
                                  self.canv_pad / self.canv_scale,
-                                 (self.canv_pad - self.min_x) / self.canv_scale,
-                                 (self.max_y - self.min_y + self.canv_pad) / self.canv_scale,
+                                 (self.canv_pad - self.assi.min_x()) / self.canv_scale,
+                                 (self.assi.max_y() - self.assi.min_y() + self.canv_pad) / self.canv_scale,
                                  dash=(7, 1, 2, 1),
                                  fill='red')
         self.disegno.pack(expand=YES, fill=BOTH, side=RIGHT)
@@ -259,8 +217,8 @@ class HtgGui:
             intestazione = DxfFormat(cdf)
             out_dxf = open(cdf, "w+")
             out_dxf.write(intestazione.dxf_start)
-            out_dxf.write(self.asse_x.dxfcode)
-            out_dxf.write(self.asse_y.dxfcode)
+            out_dxf.write(self.assi.x.dxfcode)
+            out_dxf.write(self.assi.y.dxfcode)
             i = 0
             while i < len(self.fori_obj):
                 u = 0

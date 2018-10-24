@@ -46,6 +46,18 @@ class Cerchio:
         self.dxfcode = '0\nCIRCLE\n8\n{0}\n10\n{1}\n20\n{2}\n30\n{3}\n40\n{4}\n62\n{5}\n'\
             .format(livello, self.centro.x, self.centro.y, self.centro.z, cr, colore)
 
+    def min_x(self):
+        return self.centro.x - self.raggio
+
+    def min_y(self):
+        return self.centro.y - self.raggio
+
+    def max_x(self):
+        return self.centro.x + self.raggio
+
+    def max_y(self):
+        return self.centro.y + self.raggio
+
 
 class Testo:
     def __init__(self, cx: float = 0, cy: float = 0, cz: float = 0, ofx: float = 0, ofy: float = 0, stringa: int = 100, h: float = 3.5,
@@ -147,11 +159,11 @@ class Etichetta:
 
 
 class Forotag:
-    def __init__(self, cx: float = 0, cy: float = 0, cz: float = 0, raggioforo: float = 2, htesto: float = 3.5,
+    def __init__(self, circle: Cerchio, htesto: float = 3.5,
                  angolo: float = 20, nume: int = 2, appros: int = 4, colorecer: int = 0, livellocer: str = 'cerchi',
                  coloretik: int = 0, livelloetik: str = 'etichette', livellotes: str = 'testo', coloretes: int = 0):
-        self.centro = Punto(round(float(cx), int(appros)), round(float(cy), int(appros)), round(float(cz), int(appros)))
-        self.cerchio = Cerchio(self.centro, float(raggioforo), livellocer, colorecer)
+        self.centro = circle.centro
+        self.cerchio = Cerchio(self.centro, circle.raggio, livellocer, colorecer)
         self.etichetta = Etichetta(nume, htesto,
                                    round(self.centro.x + self.cerchio.raggio * math.cos(angolo * math.pi / 180),
                                          appros),
