@@ -8,9 +8,10 @@ class ReturnFile(object):
         self.in_file = in_file
         self.f = f
 
+
 def apri_file_diag():
     return filedialog.askopenfilename(initialdir="C:\\", title="Seleziona vda",
-                                          filetypes=(("File vda", "*.vda"), ("all files", "*.*")))
+                                      filetypes=(("File vda", "*.vda"), ("all files", "*.*")))
 
 
 def aprivda(filename):
@@ -26,11 +27,25 @@ def aprivda(filename):
                 p = p + name[i]
             else:
                 p = p + '/' + name[i]
-        os.chdir(p)
-        in_file = open(filename, "r")
-        return ReturnFile(p, f, in_file)
+        try:
+            os.chdir(p)
+        except OSError:
+            p = 0
+            f = 0
+            in_file = 0
+            return ReturnFile(p, f, in_file)
+        else:
+            try:
+                in_file = open(filename, "r")
+            except OSError:
+                p = 0
+                f = 0
+                in_file = 0
+                return ReturnFile(p, f, in_file)
+            else:
+                return ReturnFile(p, f, in_file)
     else:
         p = 0
         f = 0
         in_file = 0
-        ReturnFile(p, f, in_file)
+        return ReturnFile(p, f, in_file)
