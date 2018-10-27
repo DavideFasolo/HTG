@@ -1,10 +1,10 @@
-filename = 'C:/drawing/cad/tabelle fori XYZ/Hole Table Generator/sorgenti/filetestarea/test.vda'
+filename = 'C:/Users/Amon/Documents/coding/HTG/filetestarea/test.vda'
 
 
 def file_get_full_name(p): return p.split('/').pop()
 
 
-def file_get_name(f): return (file_get_full_name(f).split('.')[0])
+def file_get_name(f): return file_get_full_name(f).split('.')[0]
 
 
 def file_get_ext(f): return '.' + file_get_full_name(f).split('.')[1]
@@ -25,17 +25,48 @@ def path_get(p): return ''.join(path_map(p)).rstrip('/')
 def file_read(f): return open(f, "r").readlines()[21:-1]
 
 
-def line_select(line):
-    return (line.count("CIRCLE /") or line.count("CIRCLE/")) and line[0:72].strip()
+def round_value():
+    try:
+        int(cf.arrot)
+    except NameError:
+        return 3
+    else:
+        return int(cf.arrot)
 
 
-def line_map(f): return list(map(line_select, file_read(f)))
+def round_var(v): return round(float(v), round_value())
 
-line = 't,r,f,g,h,j,k,n,b,t,'
-(line.count(",") <= 11 and line[-1:] == ',')
+
+def matrix_def(text):
+    fori = list()
+    i = 0
+    while i < len(text):
+        if text[i].count("CIRCLE /") + text[i].count("CIRCLE/"):
+            foro = text[i][text[i].find("/")+1:72].strip()
+            g = 1
+            while foro.count(",") <= 11 and foro[len(foro) - 1] == ",":
+                foro += text[i + g][0:72].strip()
+                g += 1
+            foro = [round_var(foro.split(',')[3])*2, list(map(round_var, foro.split(',')))[0:-9]]
+            fori.append(foro)
+        i += 1
+    fori = [x for n, x in enumerate(fori) if x not in fori[:n]]
+    fori.sort()
+    return fori
+
+
+pippo = matrix_def(file_read(filename))
+i = 0
+for item in pippo:
+    print(str(pippo[i][0]) + ' \t' + '  \t      \t  '.join(str(pippo[i][1]).strip('[]').split(',')))
+    i += 1
+# print(matrix_def(file_read(filename)))
+
+#print(''.join(ciccio))
+
 #    in_file.close()
 # print(path_get(filename))
 # print(file_get_name(filename))
 # print(file_get_ext(filename))
-print((line.count(",") <= 11 and line[-1:] == ','))
+
 
