@@ -25,6 +25,13 @@ class StructConfig:
         self.round_val = config.getint('struct', 'floating point')
 
 
+class DrawConfig:
+    def __init__(self, path):
+        config = configparser.ConfigParser()
+        config.read(path + CONFIGURATION_FILENAME)
+        self.tag_angle = config.getfloat('struct', 'floating point')
+
+
 class ColorConfig:
     def __init__(self, path):
         config = configparser.ConfigParser()

@@ -1,4 +1,5 @@
 from infrastructure import *
+import math
 
 
 def file_get_full_name(p): return p.split('/').pop()
@@ -191,13 +192,36 @@ def dxf_p1(coord): return '\n10\n{0}\n20\n{1}\n30\n{2}'.format(str(coord[0]), st
 def dxf_p2(coord): return '\n11\n{0}\n21\n{1}\n31\n{2}'.format(str(coord[0]), str(coord[1]), str(coord[2]))
 
 
-def dxf_diam(diameter): return '\n40\n{0}'.format(diameter)
+def dxf_diam(diameter): return '\n40\n{0}'.format(diameter/2)
 
 
 def dxf_circle(diameter, coord): return '\n0\nCIRCLE{0}{1}{2}{3}'.format(dxf_level(level_conf.circle_level),
                                                                          dxf_p1(coord),
                                                                          dxf_diam(diameter),
                                                                          dxf_color(color_conf.circle_color))
+
+
+def dxf_axis(coord1, coord2): return '\n0\nLINE{0}{1}{2}{3}'.format(dxf_level(level_conf.axis_level),
+                                                                    dxf_p1(coord1),
+                                                                    dxf_p2(coord2),
+                                                                    dxf_color(color_conf.axis_color))
+
+
+def dxf_axes(matrice): return ''.join(list(map(dxf_axis, *min_max(matrice))))
+
+
+def rad_ang(angle): return angolo * math.pi / 180
+
+
+def set_tag_start(coord, diameter):
+    return [coord[0] + diameter / 2 * math.cos(rad_ang(draw_conf.tag_angle)),
+            coord[1] + diameter / 2 * math.sin(rad_ang(draw_conf.tag_angle)),
+            coord[2]]
+
+
+def dxf_tag(coord, diameter):
+    p_0 = set_tag_start(coord, diameter)
+    
 
 
 def min_max(matrice):
@@ -211,7 +235,7 @@ def min_max(matrice):
             max_x = max(max_x, foro[1][0] + tabella[0] / 2)
             min_y = min(min_y, foro[1][1] - tabella[0] / 2)
             max_y = max(max_y, foro[1][1] + tabella[0] / 2)
-    return min_x, max_x, min_y, max_y
+    return [[min_x, 0, 0], [0, min_y, 0]], [[max_x, 0, 0], [0, max_y, 0]]
 
 
 def dxf_output(matrice):
@@ -225,20 +249,25 @@ def dxf_output(matrice):
             dxf_out += dxf_comment('foro N°{0} Ø{1}'.format(str(foro[0]),
                                                             str(tabella[0])))
             dxf_out += (dxf_circle(tabella[0], foro[1]))
+    dxf_out += dxf_axes(matrice)
     dxf_out += dxf_footer()
     return dxf_out
 
 
 workpath = os.getcwd() + '\\Configurazione\\'
-filename = 'C:/Users/Amon/Documents/coding/HTG/filetestarea/test.vda'
+filename = 'C:\\drawing\\cad\\tabelle fori XYZ\\Hole Table Generator\\sorgenti\\filetestarea\\test.vda'
 struct_conf = StructConfig(workpath)
 color_conf = ColorConfig(workpath)
 level_conf = LevelConfig(workpath)
 csv_conf = CsvConfig(workpath)
+draw_conf = DrawConfig(workpath)
 
 matrice = hole_matrix(clean_and_sort(parse_vda(file_read(filename))))
 
 print(report_table(matrice))
-print(csv_table(matrice))
-print(dxf_output(matrice))
-print(min_max(matrice))
+out_csv = open('C:\\Users\\davide.fasolo\\Desktop\\asd.csv', 'w+')
+out_csv.write(csv_table(matrice))
+out_csv.close()
+out_dxf = open('C:\\Users\\davide.fasolo\\Desktop\\asd.dxf', 'w+')
+out_dxf.write(dxf_output(matrice))
+out_dxf.close()
