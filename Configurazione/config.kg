@@ -40,6 +40,9 @@ fattore offset tag una cifra y = 1.8
 [struct]
 floating point = 3
 
+[draw]
+tag angle = 25
+
 [colors]
 circle = 152
 axis = 102
