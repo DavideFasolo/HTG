@@ -37,3 +37,22 @@ scala dimensioni testo una cifra = 1.2
 fattore offset tag una cifra x = 2.2
 fattore offset tag una cifra y = 1.8
 
+[struct]
+floating point = 3
+
+[colors]
+circle = 152
+axis = 102
+tag = 200
+text = 6
+
+[levels]
+circle = HTG-Cerchi
+axis = HTG-Assi
+tag = HTG-Etichette
+text = HTG-Testo
+
+[csv export]
+separator = ;
+decimal mark = ,
+

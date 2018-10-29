@@ -18,6 +18,42 @@ class HtgConfiguration:
             self.Config.write(configfile)
 
 
+class StructConfig:
+    def __init__(self, path):
+        config = configparser.ConfigParser()
+        config.read(path + CONFIGURATION_FILENAME)
+        self.round_val = config.getint('struct', 'floating point')
+
+
+class ColorConfig:
+    def __init__(self, path):
+        config = configparser.ConfigParser()
+        config.read(path + CONFIGURATION_FILENAME)
+        self.circle_color = config.getint('colors', 'circle')
+        self.axis_color = config.getint('colors', 'axis')
+        self.tag_color = config.getint('colors', 'tag')
+        self.text_color = config.getint('colors', 'text')
+        
+        
+class LevelConfig:
+    def __init__(self, path):
+        config = configparser.ConfigParser()
+        config.read(path + CONFIGURATION_FILENAME)
+        self.circle_level = config.get('levels', 'circle')
+        self.axis_level = config.get('levels', 'axis')
+        self.tag_level = config.get('levels', 'tag')
+        self.text_level = config.get('levels', 'text')
+
+
+class CsvConfig:
+    def __init__(self, path):
+        config = configparser.ConfigParser()
+        config.read(path + CONFIGURATION_FILENAME)
+        self.separator = config.get('csv export', 'separator')
+        self.d_mark = config.get('csv export', 'decimal mark')
+
+
+######################################################################
 class InterfaceConfiguration:
     def __init__(self, path):
         config = configparser.ConfigParser()
