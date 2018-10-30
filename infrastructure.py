@@ -29,7 +29,9 @@ class DrawConfig:
     def __init__(self, path):
         config = configparser.ConfigParser()
         config.read(path + CONFIGURATION_FILENAME)
-        self.tag_angle = config.getfloat('struct', 'floating point')
+        self.tag_angle = config.getfloat('draw', 'tag angle')
+        self.text_height = config.getfloat('draw', 'text height')
+        self.font_ratio = config.getfloat('draw', 'font ratio')
 
 
 class ColorConfig:

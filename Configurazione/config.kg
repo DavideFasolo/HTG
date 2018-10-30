@@ -42,6 +42,8 @@ floating point = 3
 
 [draw]
 tag angle = 25
+text height = 3.5
+font ratio = 0.7
 
 [colors]
 circle = 152
