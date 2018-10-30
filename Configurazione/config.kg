@@ -41,9 +41,9 @@ fattore offset tag una cifra y = 1.8
 floating point = 3
 
 [draw]
-tag angle = 25
+tag angle = 35
 text height = 3.5
-font ratio = 0.7
+font ratio = 0.95
 
 [colors]
 circle = 152
