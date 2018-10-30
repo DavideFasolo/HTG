@@ -219,10 +219,24 @@ def text_width(text): return draw_conf.text_height * draw_conf.font_ratio * len(
 def text_box(text): return [draw_conf.text_height, text_width(text)]
 
 
+def dxf_text_format(): return '\n40\n{0}\n41\n{1}'.format(draw_conf.text_height,
+                                                          draw_conf.font_ratio)
+
+
+def dxf_text(coord, text):
+    return '\n0\nTEXT{0}{2}{4}\n1\n{1}\n72\n1\n73\n2{5}{3}'.format(dxf_level(level_conf.text_level),
+                                                                   str(text),
+                                                                   dxf_p1(coord),
+                                                                   dxf_color(color_conf.text_color),
+                                                                   dxf_text_format(),
+                                                                   dxf_p2(coord))
+
+
 def tag_side(): return draw_conf.text_height * 0.6
 
 
-def tag_b(text): return max(0.001, 0.35 * (len(str(text))-2.4) * draw_conf.text_height)
+def tag_b(text): return max(0.001, draw_conf.font_ratio / 4 * (len(str(text))-draw_conf.font_ratio) * draw_conf.text_height)
+
 
 
 def tag_point_matrix(coord, diameter, text):
@@ -259,8 +273,8 @@ def tag_point_matrix(coord, diameter, text):
     p_10 = [p_09[0] - tag_b(text),
             p_09[1],
             coord[0]]
-    p_tx = [p_01[0] + tag_side() / 2 - text_width(text) / 2,
-           p_02[1] * 7 * math.sin(math.pi / 4) / 20,
+    p_tx = [p_01[0] + tag_side() / 2,
+           p_01[1] + (p_05[1] - p_01[1]) / 2,
            coord[0]]
     return [[p_00, p_01, p_02, p_03, p_04, p_05, p_06, p_07, p_08, p_09, p_10], p_tx]
 
@@ -272,10 +286,11 @@ def dxf_polyline_seq(coord_matrix): return ''.join(list(map(dxf_polyline_vertex,
 
 
 def dxf_tag(point_matrix, text):
-    return '\n0\nPOLYLINE{0}{1}\n30\n{3}\n70\n1{2}\n0\nSEQEND'.format(dxf_color(color_conf.tag_color),
-                                                                      dxf_level(level_conf.tag_level),
-                                                                      dxf_polyline_seq(point_matrix),
-                                                                      point_matrix[0][2])
+    return '\n0\nPOLYLINE{0}{1}\n30\n{3}\n70\n1{2}\n0\nSEQEND{4}'.format(dxf_color(color_conf.tag_color),
+                                                                         dxf_level(level_conf.tag_level),
+                                                                         dxf_polyline_seq(point_matrix[0]),
+                                                                         point_matrix[0][0][0],
+                                                                         dxf_text(point_matrix[1], text))
 
 
 def min_max(matrice):
@@ -301,14 +316,14 @@ def dxf_output(matrice):
             dxf_out += dxf_comment('foro N°{0} Ø{1}'.format(str(foro[0]),
                                                             str(tabella[0])))
             dxf_out += (dxf_circle(tabella[0], foro[1]))
-            dxf_out += dxf_tag(tag_point_matrix(foro[1], tabella[0], foro[0])[0], foro[0])
+            dxf_out += dxf_tag(tag_point_matrix(foro[1], tabella[0], foro[0]), foro[0])
     dxf_out += dxf_axes(matrice)
     dxf_out += dxf_footer()
     return dxf_out
 
 
 workpath = os.getcwd() + '\\Configurazione\\'
-filename = 'C:\\Users\\Amon\\Documents\\coding\\HTG\\filetestarea\\test.vda'
+filename = 'C:\\drawing\\cad\\tabelle fori XYZ\\Hole Table Generator\\HTG-new_vers\\filetestarea\\test.vda'
 struct_conf = StructConfig(workpath)
 color_conf = ColorConfig(workpath)
 level_conf = LevelConfig(workpath)
@@ -318,10 +333,10 @@ draw_conf = DrawConfig(workpath)
 matrice = hole_matrix(clean_and_sort(parse_vda(file_read(filename))))
 
 print(report_table(matrice))
-out_csv = open('C:\\Users\\Amon\\Desktop\\asd.csv', 'w+')
+out_csv = open('C:\\Users\\davide.fasolo\\Desktop\\asd.csv', 'w+')
 out_csv.write(csv_table(matrice))
 out_csv.close()
-out_dxf = open('C:\\Users\\Amon\\Desktop\\asd.dxf', 'w+')
+out_dxf = open('C:\\Users\\davide.fasolo\\Desktop\\asd.dxf', 'w+')
 out_dxf.write(dxf_output(matrice))
 out_dxf.close()
 
