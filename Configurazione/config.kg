@@ -61,3 +61,8 @@ text = HTG-Testo
 separator = ;
 decimal mark = ,
 
+[dxf advanced parameters]
+axis style name = AXIS
+axis style description = Axis --- - --- -
+axis dash pattern = 15 -3 3 -3
+

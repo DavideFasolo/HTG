@@ -1,32 +1,45 @@
-from infrastructure import *
 import math
+from infrastructure import *
 
 
-def file_get_full_name(p): return p.split('/').pop()
+def rad_ang(angle):
+    return angle * math.pi / 180
 
 
-def file_get_name(f): return file_get_full_name(f).split('.')[0]
+def file_get_full_name(p):
+    return p.split('/').pop()
 
 
-def file_get_ext(f): return '.' + file_get_full_name(f).split('.')[1]
+def file_get_name(f):
+    return file_get_full_name(f).split('.')[0]
 
 
-def path_add_slash(s): return s + '/'
+def file_get_ext(f):
+    return '.' + file_get_full_name(f).split('.')[1]
 
 
-def path_get_list(p): return p.split('/')[0:-1]
+def path_add_slash(s):
+    return s + '/'
 
 
-def path_map(p): return map(path_add_slash, path_get_list(p))
+def path_get_list(p):
+    return p.split('/')[0:-1]
 
 
-def path_get(p): return ''.join(path_map(p)).rstrip('/')
+def path_map(p):
+    return map(path_add_slash, path_get_list(p))
 
 
-def file_read(file): return open(file, "r").readlines()
+def path_get(p):
+    return ''.join(path_map(p)).rstrip('/')
 
 
-def round_value(): return int(struct_conf.round_val)
+def file_read(file):
+    return open(file, "r").readlines()
+
+
+def round_value():
+    return int(struct_conf.round_val)
 
 
 def round_var(v): return round(float(v), round_value())
@@ -41,7 +54,7 @@ def circle_line_check(s):
     return s.count(",") <= 11 and s[-1] == ","
 
 
-def arrange_foro(s):
+def arrange_hole(s):
     return [round_var(s.split(',')[3]) * 2, list(map(round_var, s.split(',')))[0:-9]]
 
 
@@ -59,12 +72,12 @@ def parse_vda(vda_read):
     i = 0
     while i < len(vda_read):
         if circle_check(vda_read[i]):
-            foro = strip_first(vda_read[i])
+            hole = strip_first(vda_read[i])
             g = 1
-            while circle_line_check(foro):
-                foro += strip_next(vda_read[i + g])
+            while circle_line_check(hole):
+                hole += strip_next(vda_read[i + g])
                 g += 1
-            parsed.append(arrange_foro(foro))
+            parsed.append(arrange_hole(hole))
         i += 1
     return parsed
 
@@ -128,17 +141,17 @@ def report_table(matrix):
     len_x = len_num(matrix, 0)
     len_y = len_num(matrix, 1)
     len_z = len_num(matrix, 2)
-    for tabella in matrix:
-        report += 'N. {0} fori di diametro {1} mm:\n'.format(str(len(tabella[1])),
-                                                             str(tabella[0]))
-        for foro in tabella[1]:
-            foro_x = arrange_coord(foro[1][0], len_x)
-            foro_y = arrange_coord(foro[1][1], len_y)
-            foro_z = arrange_coord(foro[1][2], len_z)
-            report += '{0}:\tx {1}\t\ty {2}\t\tz {3}\n'.format(str(foro[0]),
-                                                               foro_x,
-                                                               foro_y,
-                                                               foro_z)
+    for hole_group in matrix:
+        report += 'N. {0} fori di diametro {1} mm:\n'.format(str(len(hole_group[1])),
+                                                             str(hole_group[0]))
+        for hole in hole_group[1]:
+            hole_x = arrange_coord(hole[1][0], len_x)
+            hole_y = arrange_coord(hole[1][1], len_y)
+            hole_z = arrange_coord(hole[1][2], len_z)
+            report += '{0}:\tx {1}\t\ty {2}\t\tz {3}\n'.format(str(hole[0]),
+                                                               hole_x,
+                                                               hole_y,
+                                                               hole_z)
         report += '\n'
     return report
 
@@ -152,39 +165,115 @@ def csv_table(matrix):
                  'X' + csv_conf.separator +\
                  'Y' + csv_conf.separator +\
                  'Z' + '\n'
-    for tabella in matrix:
-        for foro in tabella[1]:
-            csv_export += csv_value(foro[0]) + csv_conf.separator +\
-                          csv_value(tabella[0]) + csv_conf.separator +\
-                          csv_value(foro[1][0]) + csv_conf.separator +\
-                          csv_value(foro[1][1]) + csv_conf.separator +\
-                          csv_value(foro[1][2]) + '\n'
+    for hole_group in matrix:
+        for hole in hole_group[1]:
+            csv_export += csv_value(hole[0]) + csv_conf.separator +\
+                          csv_value(hole_group[0]) + csv_conf.separator +\
+                          csv_value(hole[1][0]) + csv_conf.separator +\
+                          csv_value(hole[1][1]) + csv_conf.separator +\
+                          csv_value(hole[1][2]) + '\n'
     return csv_export
 
 
 def color(aci): return aci, file_read(workpath + 'aci_colors.kg')[aci][:-1]
 
 
-def dxf_comment(comment): return '\n999\n' + comment
+def text_width(text): return draw_conf.text_height * draw_conf.font_ratio * len(str(text))
 
 
-def dxf_heading(file_name):
-    dxf_start = dxf_comment('Hole Table Generator by KG-Soft')[1:]
-    dxf_start += dxf_comment('Davide Fasolo 2018')
-    dxf_start += dxf_comment('pianta fori da file "' + file_get_full_name(file_name) + '"')
-    dxf_start += '\n0\nSECTION'
-    dxf_start += '\n2\nTABLES'
-    dxf_start += '\n0\nTABLE'
-    dxf_start += '\n2\nLTYPE\n70\n2'
-    dxf_start += '\n0\nLTYPE'
-    dxf_start += '\n2\nAXIS\n70\n0'
-    dxf_start += '\n3\nCenter (.5x) ___ _ ___ _ ___ _ ___ _ ___ _ ___'
-    dxf_start += '\n72\n65\n73\n4\n40\n28.575\n49\n19.05\n49\n-3.175\n49\n3.175\n49\n-3.175'
-    dxf_start += '\n0\nENDTAB'
-    dxf_start += '\n0\nENDSEC'
-    dxf_start += '\n0\nSECTION'
-    dxf_start += '\n2\nENTITIES'
-    return dxf_start
+def tag_side(): return draw_conf.text_height * 0.6
+
+
+def tag_b(text):
+    return max(0.001, draw_conf.font_ratio / 3.5 * (len(str(text))-draw_conf.font_ratio) * draw_conf.text_height)
+
+
+def tag_point_matrix(coord, diameter, text):
+    p_00 = [coord[0] + diameter / 2 * math.cos(rad_ang(draw_conf.tag_angle)),
+            coord[1] + diameter / 2 * math.sin(rad_ang(draw_conf.tag_angle)),
+            coord[2]]
+    p_01 = [p_00[0] + tag_side() * math.cos(rad_ang(draw_conf.tag_angle)) - tag_side() / 2,
+            p_00[1] + tag_side() * math.sin(rad_ang(draw_conf.tag_angle)),
+            coord[2]]
+    p_02 = [p_01[0] - tag_b(text),
+            p_01[1],
+            coord[2]]
+    p_03 = [p_02[0] - tag_side() * math.sin(math.pi / 4),
+            p_02[1] + tag_side() * math.sin(math.pi / 4),
+            coord[2]]
+    p_04 = [p_03[0],
+            p_03[1] + tag_side(),
+            coord[2]]
+    p_05 = [p_02[0],
+            p_04[1] + tag_side() * math.sin(math.pi / 4),
+            coord[2]]
+    p_06 = [p_01[0] + tag_side() + tag_b(text),
+            p_05[1],
+            coord[2]]
+    p_07 = [p_06[0] + tag_side() * math.sin(math.pi / 4),
+            p_04[1],
+            coord[2]]
+    p_08 = [p_07[0],
+            p_03[1],
+            coord[2]]
+    p_09 = [p_06[0],
+            p_01[1],
+            coord[2]]
+    p_10 = [p_09[0] - tag_b(text),
+            p_09[1],
+            coord[2]]
+    p_tx = [p_01[0] + tag_side() / 2,
+            p_01[1] + (p_05[1] - p_01[1]) / 2,
+            coord[2]]
+    return [[p_00, p_01, p_02, p_03, p_04, p_05, p_06, p_07, p_08, p_09, p_10], p_tx]
+
+
+def min_max(min_max_matrix):
+    min_x = max_x = min_max_matrix[0][1][0][1][0] - min_max_matrix[0][0] / 2
+    min_y = max_y = min_max_matrix[0][1][0][1][1] - min_max_matrix[0][0] / 2
+    for hole_group in min_max_matrix:
+        for hole in hole_group[1]:
+            min_x = min(min_x, hole[1][0] - hole_group[0] / 2)
+            max_x = max(max_x, hole[1][0] + hole_group[0] / 2)
+            min_y = min(min_y, hole[1][1] - hole_group[0] / 2)
+            max_y = max(max_y, hole[1][1] + hole_group[0] / 2)
+    return [[min_x, 0, 0], [0, min_y, 0]], [[max_x, 0, 0], [0, max_y, 0]]
+
+
+def dxf_section(section_content):
+    return '\n0\nSECTION{0}\n0\nENDSEC'.format(section_content)
+
+
+def dxf_tables(tables_content):
+    return '\n2\nTABLES{0}\n0\nENDTAB'.format(tables_content)
+
+
+def dxf_table(table_content):
+    return '\n0\nTABLE{0}'.format(table_content)
+
+
+def dxf_ltype_table(ltype_table_content):
+    return dxf_table('\n2\nLTYPE{0}'.format(ltype_table_content))
+
+
+def dxf_ltype(ltype_content):
+    return '\n0\nLTYPE{0}'.format(ltype_content)
+
+
+def dxf_dash(dash_length):
+    return '\n49\n{0}'.format(str(dash_length))
+
+
+def dxf_dashes(pattern: list):
+    return '\n73\n{2}\n40\n{0}{1}'.format(sum(pattern),
+                                          ''.join(list(map(dxf_dash, pattern))),
+                                          len(pattern))
+
+
+def dxf_dash_style(ds_name, ds_descr, dash_code):
+    return dxf_ltype('\n2\n{0}\n3\n{1}\n72\n65{2}'.format(ds_name,
+                                                          ds_descr,
+                                                          dxf_dashes(dash_code)))
 
 
 def dxf_footer(): return '\n0\nENDSEC\n0\nEOF'
@@ -211,82 +300,40 @@ def dxf_circle(diameter, coord): return '\n0\nCIRCLE{0}{1}{2}{3}'.format(dxf_lev
                                                                          dxf_color(color_conf.circle_color))
 
 
-def dxf_axis(coord1, coord2): return '\n0\nLINE\n6\nAXIS{0}{1}{2}{3}'.format(dxf_level(level_conf.axis_level),
-                                                                             dxf_p1(coord1),
-                                                                             dxf_p2(coord2),
-                                                                             dxf_color(color_conf.axis_color))
+def dxf_axis(coord1, coord2): return '\n0\nLINE\n6\n{4}{0}{1}{2}{3}'.format(dxf_level(level_conf.axis_level),
+                                                                            dxf_p1(coord1),
+                                                                            dxf_p2(coord2),
+                                                                            dxf_color(color_conf.axis_color),
+                                                                            dxf_conf.axis_name)
 
 
 def dxf_axes(matrix_): return ''.join(list(map(dxf_axis, *min_max(matrix_))))
 
 
-def rad_ang(angle): return angle * math.pi / 180
+def dxf_text_format(format_code): return '\n72\n1\n73\n2\n40\n{0}\n41\n{1}'.format(draw_conf.text_height,
+                                                                                   draw_conf.font_ratio)
 
 
-def text_width(text): return draw_conf.text_height * draw_conf.font_ratio * len(str(text))
+def dxf_text_head():
+    return '\n0\nTEXT'
 
 
-def text_box(text): return [draw_conf.text_height, text_width(text)]
+def dxf_text_value(text_value):
+    return '\n1\n{0}'.format(
+        text_value
+    )
 
 
-def dxf_text_format(): return '\n40\n{0}\n41\n{1}'.format(draw_conf.text_height,
-                                                          draw_conf.font_ratio)
-
-
-def dxf_text(coord, text):
-    return '\n0\nTEXT{0}{2}{4}\n1\n{1}\n72\n1\n73\n2{5}{3}'.format(dxf_level(level_conf.text_level),
-                                                                   str(text),
-                                                                   dxf_p1(coord),
-                                                                   dxf_color(color_conf.text_color),
-                                                                   dxf_text_format(),
-                                                                   dxf_p2(coord))
-
-
-def tag_side(): return draw_conf.text_height * 0.6
-
-
-def tag_b(text): return max(0.001, draw_conf.font_ratio / 4 * (len(str(text))-draw_conf.font_ratio) * draw_conf.text_height)
-
-
-
-def tag_point_matrix(coord, diameter, text):
-    p_00 = [coord[0] + diameter / 2 * math.cos(rad_ang(draw_conf.tag_angle)),
-           coord[1] + diameter / 2 * math.sin(rad_ang(draw_conf.tag_angle)),
-           coord[2]]
-    p_01 = [p_00[0] + tag_side() * math.cos(rad_ang(draw_conf.tag_angle)) - tag_side() / 2,
-           p_00[1] + tag_side() * math.sin(rad_ang(draw_conf.tag_angle)),
-           coord[2]]
-    p_02 = [p_01[0] - tag_b(text),
-           p_01[1],
-           coord[0]]
-    p_03 = [p_02[0] - tag_side() * math.sin(math.pi / 4),
-           p_02[1] + tag_side() * math.sin(math.pi / 4),
-           coord[0]]
-    p_04 = [p_03[0],
-           p_03[1] + tag_side(),
-           coord[0]]
-    p_05 = [p_02[0],
-           p_04[1] + tag_side() * math.sin(math.pi / 4),
-           coord[0]]
-    p_06 = [p_01[0] + tag_side() + tag_b(text),
-           p_05[1],
-           coord[0]]
-    p_07 = [p_06[0] + tag_side() * math.sin(math.pi / 4),
-           p_04[1],
-           coord[0]]
-    p_08 = [p_07[0],
-           p_03[1],
-           coord[0]]
-    p_09 = [p_06[0],
-           p_01[1],
-           coord[0]]
-    p_10 = [p_09[0] - tag_b(text),
-            p_09[1],
-            coord[0]]
-    p_tx = [p_01[0] + tag_side() / 2,
-           p_01[1] + (p_05[1] - p_01[1]) / 2,
-           coord[0]]
-    return [[p_00, p_01, p_02, p_03, p_04, p_05, p_06, p_07, p_08, p_09, p_10], p_tx]
+def dxf_entity_text(text_level, text_color, text_format, text_coord, text):
+    return '{0}{1}{2}{3}{4}{5}{6}'.format(
+        dxf_text_head(),
+        dxf_level(text_level),
+        dxf_text_format(text_format),
+        dxf_p2(text_coord),
+        dxf_color(text_color),
+        dxf_p1(text_coord),
+        dxf_text_value(text)
+    )
 
 
 def dxf_polyline_vertex(coord): return '\n0\nVERTEX{0}'.format(dxf_p1(coord))
@@ -295,29 +342,74 @@ def dxf_polyline_vertex(coord): return '\n0\nVERTEX{0}'.format(dxf_p1(coord))
 def dxf_polyline_seq(coord_matrix): return ''.join(list(map(dxf_polyline_vertex, coord_matrix)))
 
 
-def dxf_tag(point_matrix, text):
+def dxf_comment(comment): return '\n999\n' + comment
+
+
+def dxf_heading(heading_filename):
+    dxf_start = dxf_out_header_comments(heading_filename)
+    dxf_start += dxf_out_tables()
+    dxf_start += '\n0\nSECTION'
+    dxf_start += '\n2\nENTITIES'
+    return dxf_start
+
+
+#                                                                                                               _
+#                                            CONFIGURAZIONE DXF                                                 _
+#                                                                                                               _
+
+DASISTEMARE = 'boh'
+
+workpath = os.getcwd() + '\\Configurazione\\'
+filename = 'C:\\Users\\Amon\Documents\\coding\\HTG\\filetestarea\\test.vda'
+color_conf = ColorConfig(workpath)
+level_conf = LevelConfig(workpath)
+draw_conf = DrawConfig(workpath)
+dxf_conf = DxfConfig(workpath)
+
+
+def dxf_out_header_comments(filename_comment):
+    return "{0}{1}{2}".format(
+        dxf_comment('Hole Table Generator by KG-Soft')[1:],
+        dxf_comment('Davide Fasolo 2018'),
+        dxf_comment('pianta fori da file "' + filename_comment + '"')
+    )
+
+
+def dxf_out_tables():
+    return dxf_section(
+        dxf_tables(
+            dxf_table(
+                dxf_ltype_table(
+                    dxf_dash_style(dxf_conf.axis_name,
+                                   dxf_conf.axis_description,
+                                   dxf_conf.axis_pattern)
+                )
+            )
+        )
+    )
+
+
+def dxf_out_text(coord, text):
+    return dxf_entity_text(
+        level_conf.text_level,
+        color_conf.text_color,
+        DASISTEMARE,
+        coord,
+        text
+    )
+
+
+def dxf_out_tag(point_matrix, text):
     return '\n0\nPOLYLINE{0}{1}\n30\n{3}\n70\n1{2}\n0\nSEQEND{4}'.format(dxf_color(color_conf.tag_color),
                                                                          dxf_level(level_conf.tag_level),
                                                                          dxf_polyline_seq(point_matrix[0]),
-                                                                         point_matrix[0][0][0],
-                                                                         dxf_text(point_matrix[1], text))
+                                                                         point_matrix[0][0][2],
+                                                                         dxf_out_text(point_matrix[1], text))
 
 
-def min_max(matrice):
-    min_x = max_x = matrice[0][1][0][1][0] - matrice[0][0] / 2
-    min_y = max_y = matrice[0][1][0][1][1] - matrice[0][0] / 2
-    for tabella in matrice:
-        for foro in tabella[1]:
-            min_x = min(min_x, foro[1][0] - tabella[0] / 2)
-            max_x = max(max_x, foro[1][0] + tabella[0] / 2)
-            min_y = min(min_y, foro[1][1] - tabella[0] / 2)
-            max_y = max(max_y, foro[1][1] + tabella[0] / 2)
-    return [[min_x, 0, 0], [0, min_y, 0]], [[max_x, 0, 0], [0, max_y, 0]]
-
-
-def dxf_output(matrice):
-    dxf_out = dxf_heading(filename)
-    for tabella in matrice:
+def dxf_output(hole_matrix_out, vda_filename):
+    dxf_out = dxf_heading(file_get_full_name(vda_filename))
+    for tabella in hole_matrix_out:
         dxf_out += dxf_comment('#'*80)
         dxf_out += dxf_comment('N°{0} fori di diametro {1}'.format(str(len(tabella[1])),
                                                                    str(tabella[0])))
@@ -326,28 +418,23 @@ def dxf_output(matrice):
             dxf_out += dxf_comment('foro N°{0} Ø{1}'.format(str(foro[0]),
                                                             str(tabella[0])))
             dxf_out += (dxf_circle(tabella[0], foro[1]))
-            dxf_out += dxf_tag(tag_point_matrix(foro[1], tabella[0], foro[0]), foro[0])
-    dxf_out += dxf_axes(matrice)
+            dxf_out += dxf_out_tag(tag_point_matrix(foro[1], tabella[0], foro[0]), foro[0])
+    dxf_out += dxf_axes(hole_matrix_out)
     dxf_out += dxf_footer()
     return dxf_out
 
 
-workpath = os.getcwd() + '\\Configurazione\\'
-filename = 'C:\\drawing\\cad\\tabelle fori XYZ\\Hole Table Generator\\HTG-new_vers\\filetestarea\\test.vda'
+###################################################################################################
 struct_conf = StructConfig(workpath)
-color_conf = ColorConfig(workpath)
-level_conf = LevelConfig(workpath)
 csv_conf = CsvConfig(workpath)
-draw_conf = DrawConfig(workpath)
 
 matrice = hole_matrix(clean_and_sort(parse_vda(file_read(filename))))
-
-print(report_table(matrice))
-out_csv = open('C:\\Users\\davide.fasolo\\Desktop\\asd.csv', 'w+')
+#print(report_table(matrice))
+out_csv = open('C:\\Users\\Amon\\Desktop\\asd.csv', 'w+')
 out_csv.write(csv_table(matrice))
 out_csv.close()
-out_dxf = open('C:\\Users\\davide.fasolo\\Desktop\\asd.dxf', 'w+')
-out_dxf.write(dxf_output(matrice))
+out_dxf = open('C:\\Users\\Amon\\Desktop\\asd.dxf', 'w+')
+out_dxf.write(dxf_output(matrice, filename))
 out_dxf.close()
 
 

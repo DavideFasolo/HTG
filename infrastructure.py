@@ -34,6 +34,15 @@ class DrawConfig:
         self.font_ratio = config.getfloat('draw', 'font ratio')
 
 
+class DxfConfig:
+    def __init__(self, path):
+        config = configparser.ConfigParser()
+        config.read(path + CONFIGURATION_FILENAME)
+        self.axis_name = config.get('dxf advanced parameters', 'axis style name')
+        self.axis_description = config.get('dxf advanced parameters', 'axis style description')
+        self.axis_pattern = list(map(float, config.get('dxf advanced parameters', 'axis dash pattern').split(' ')))
+
+
 class ColorConfig:
     def __init__(self, path):
         config = configparser.ConfigParser()
