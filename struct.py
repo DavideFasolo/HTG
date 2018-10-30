@@ -172,8 +172,18 @@ def dxf_heading(file_name):
     dxf_start = dxf_comment('Hole Table Generator by KG-Soft')[1:]
     dxf_start += dxf_comment('Davide Fasolo 2018')
     dxf_start += dxf_comment('pianta fori da file "' + file_get_full_name(file_name) + '"')
-    dxf_start += '\n0\nSECTION\n'
-    dxf_start += '2\nENTITIES'
+    dxf_start += '\n0\nSECTION'
+    dxf_start += '\n2\nTABLES'
+    dxf_start += '\n0\nTABLE'
+    dxf_start += '\n2\nLTYPE\n70\n2'
+    dxf_start += '\n0\nLTYPE'
+    dxf_start += '\n2\nAXIS\n70\n0'
+    dxf_start += '\n3\nCenter (.5x) ___ _ ___ _ ___ _ ___ _ ___ _ ___'
+    dxf_start += '\n72\n65\n73\n4\n40\n28.575\n49\n19.05\n49\n-3.175\n49\n3.175\n49\n-3.175'
+    dxf_start += '\n0\nENDTAB'
+    dxf_start += '\n0\nENDSEC'
+    dxf_start += '\n0\nSECTION'
+    dxf_start += '\n2\nENTITIES'
     return dxf_start
 
 
@@ -201,10 +211,10 @@ def dxf_circle(diameter, coord): return '\n0\nCIRCLE{0}{1}{2}{3}'.format(dxf_lev
                                                                          dxf_color(color_conf.circle_color))
 
 
-def dxf_axis(coord1, coord2): return '\n0\nLINE{0}{1}{2}{3}'.format(dxf_level(level_conf.axis_level),
-                                                                    dxf_p1(coord1),
-                                                                    dxf_p2(coord2),
-                                                                    dxf_color(color_conf.axis_color))
+def dxf_axis(coord1, coord2): return '\n0\nLINE\n6\nAXIS{0}{1}{2}{3}'.format(dxf_level(level_conf.axis_level),
+                                                                             dxf_p1(coord1),
+                                                                             dxf_p2(coord2),
+                                                                             dxf_color(color_conf.axis_color))
 
 
 def dxf_axes(matrix_): return ''.join(list(map(dxf_axis, *min_max(matrix_))))
