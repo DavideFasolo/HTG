@@ -115,3 +115,18 @@ print('Y min = ' + str(get_min_y(pippo)))
 print('Y max = ' + str(get_max_y(pippo)))
 print('Z min = ' + str(get_min_z(pippo)))
 print('Z max = ' + str(get_max_z(pippo)))
+
+
+########################################################################################################################
+
+
+def min_max(min_max_matrix):
+    min_x = max_x = min_max_matrix[0][1][0][1][0] - min_max_matrix[0][0] / 2
+    min_y = max_y = min_max_matrix[0][1][0][1][1] - min_max_matrix[0][0] / 2
+    for hole_group in min_max_matrix:
+        for hole in hole_group[1]:
+            min_x = min(min_x, hole[1][0] - hole_group[0] / 2)
+            max_x = max(max_x, hole[1][0] + hole_group[0] / 2)
+            min_y = min(min_y, hole[1][1] - hole_group[0] / 2)
+            max_y = max(max_y, hole[1][1] + hole_group[0] / 2)
+    return [[min_x, 0, 0], [0, min_y, 0]], [[max_x, 0, 0], [0, max_y, 0]]
