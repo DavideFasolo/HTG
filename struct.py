@@ -429,6 +429,10 @@ struct_conf = StructConfig(workpath)
 csv_conf = CsvConfig(workpath)
 
 matrice = hole_matrix(clean_and_sort(parse_vda(file_read(filename))))
+
+#print(min(matrice[[1]]))
+
+
 #print(report_table(matrice))
 out_csv = open('C:\\Users\\Amon\\Desktop\\asd.csv', 'w+')
 out_csv.write(csv_table(matrice))
@@ -436,6 +440,8 @@ out_csv.close()
 out_dxf = open('C:\\Users\\Amon\\Desktop\\asd.dxf', 'w+')
 out_dxf.write(dxf_output(matrice, filename))
 out_dxf.close()
+
+
 
 
 # http://paulbourke.net/dataformats/dxf/
