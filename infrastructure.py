@@ -30,8 +30,8 @@ class DrawConfig:
         config = configparser.ConfigParser()
         config.read(path + CONFIGURATION_FILENAME)
         self.tag_angle = config.getfloat('draw', 'tag angle')
-        self.text_height = config.getfloat('draw', 'text height')
-        self.font_ratio = config.getfloat('draw', 'font ratio')
+        self.text_height = config.getfloat('draw', 'tag text height')
+        self.font_ratio = config.getfloat('draw', 'tag font ratio')
 
 
 class DxfConfig:
@@ -41,6 +41,12 @@ class DxfConfig:
         self.axis_name = config.get('dxf advanced parameters', 'axis style name')
         self.axis_description = config.get('dxf advanced parameters', 'axis style description')
         self.axis_pattern = list(map(float, config.get('dxf advanced parameters', 'axis dash pattern').split(' ')))
+        self.tag_text_format = [
+            config.getint('dxf advanced parameters', 'tag text align x'),
+            config.getint('dxf advanced parameters', 'tag text align y'),
+            config.getfloat('draw', 'tag text height'),
+            config.getfloat('draw', 'tag font ratio')
+        ]
 
 
 class ColorConfig:

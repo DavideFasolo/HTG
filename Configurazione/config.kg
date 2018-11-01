@@ -42,8 +42,8 @@ floating point = 3
 
 [draw]
 tag angle = 35
-text height = 3.5
-font ratio = 0.95
+tag text height = 3.5
+tag font ratio = 0.95
 
 [colors]
 circle = 152
@@ -64,5 +64,7 @@ decimal mark = ,
 [dxf advanced parameters]
 axis style name = AXIS
 axis style description = Axis --- - --- -
-axis dash pattern = 15 -3 3 -3
+axis dash pattern = 15 3 3 3
+tag text align x = 1
+tag text align y = 2
 
