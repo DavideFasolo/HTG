@@ -1,3 +1,37 @@
+#                                                                                                                      _
+#                                                   UTILITY                                                            _
+#                                                                                                                      _
+
+
+def len_matrix(matrix):
+    numero_fori = int()
+    for gruppo in matrix:
+        numero_fori += len(gruppo[1])
+    return numero_fori
+
+
+def len_num(matrix, c):
+    length_a = int()
+    length_b = int()
+    for tabella in matrix:
+        for foro in tabella[1]:
+            length_a = max(length_a, len(str(foro[1][c]).split('.')[0]))
+            length_b = max(length_b, len(str(foro[1][c]).split('.')[1]))
+    return length_a, length_b
+
+
+def arrange_coord(value, digits):
+    value = str(value).split('.')
+    if digits[0] > len(value[0]):
+        value[0] = ' ' * (digits[0] - len(value[0])) + value[0]
+    if digits[1] > len(value[1]):
+        value[1] = value[1] + ' ' * (digits[1] - len(value[1]))
+    return '.'.join(value)
+
+
+##
+
+
 def proc_tables(matrix):
     return matrix[1]
 

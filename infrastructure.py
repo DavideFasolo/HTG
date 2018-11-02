@@ -1,5 +1,4 @@
 import configparser
-import os
 
 CONFIGURATION_FILENAME = "config.kg"
 
@@ -47,6 +46,15 @@ class DxfConfig:
             config.getfloat('draw', 'tag text height'),
             config.getfloat('draw', 'tag font ratio')
         ]
+        self.circle_level = config.get('levels', 'circle')
+        self.axis_level = config.get('levels', 'axis')
+        self.tag_level = config.get('levels', 'tag')
+        self.text_level = config.get('levels', 'text')
+        self.circle_color = config.getint('colors', 'circle')
+        self.axis_color = config.getint('colors', 'axis')
+        self.tag_color = config.getint('colors', 'tag')
+        self.text_color = config.getint('colors', 'text')
+        self.tag_angle = config.getfloat('draw', 'tag angle')
 
 
 class ColorConfig:
@@ -59,7 +67,7 @@ class ColorConfig:
         self.text_color = config.getint('colors', 'text')
         
         
-class LevelConfig:
+class LevelAndColorConfig:
     def __init__(self, path):
         config = configparser.ConfigParser()
         config.read(path + CONFIGURATION_FILENAME)
@@ -67,6 +75,10 @@ class LevelConfig:
         self.axis_level = config.get('levels', 'axis')
         self.tag_level = config.get('levels', 'tag')
         self.text_level = config.get('levels', 'text')
+        self.circle_color = config.getint('colors', 'circle')
+        self.axis_color = config.getint('colors', 'axis')
+        self.tag_color = config.getint('colors', 'tag')
+        self.text_color = config.getint('colors', 'text')
 
 
 class CsvConfig:
@@ -117,7 +129,6 @@ class PostProcessorConfiguration:
         config = configparser.ConfigParser()
         config.read(path + translator + "\\" + translator + ".pp")
         print(path + translator + "\\" + translator + ".pp")
-        print(os.getcwd())
 
         self.enne = config.get('generale', 'identificatore riga')
         self.incremento_N = config.getint('generale', 'incremento riga')
