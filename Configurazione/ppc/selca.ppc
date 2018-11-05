@@ -2,7 +2,18 @@
 name = selca 4000
 
 [cnc structure]
-header = G17
+header = [
+    [Richiesta parametri
+    [
+    P40=?    [Immettere valore giri/min S=
+    P41=?    [Immettere valore avanzamento F=
+    P42=?    [Immettere valore incremento foratura I=
+    P43=?    [Immettere quota di arrivo a fine foro Z=
+    P44=?    [Immettere quota di disompegno Q=
+    [
+    [Inizio programma
+    [
+    G17
     F{0} M03 S{1}
 hole line = G83 Z{0} I{1} J{2} Q{3}
     X{4} Y{5}

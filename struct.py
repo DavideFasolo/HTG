@@ -24,6 +24,15 @@ ppc_list = Ppcs(workpath)
 matrice = build_matrix_vda(filename, struct_conf)
 
 selected_ppc = ppc_list.plist[0]
+selected_tab = 3
+
+
+def get_table_id(table_matrix):
+    return 'Fori Ø{0}'.format(table_matrix[0])
+
+
+def get_table_list(tab_matrix):
+    return list(map(get_table_id, tab_matrix))
 
 
 def cnc_set_z(hole_matrix_tab):
@@ -31,11 +40,13 @@ def cnc_set_z(hole_matrix_tab):
 
 
 def hole_cnc_build(ppc, hole_list, zsec):
-    return '\n{0}'.format(ppc.hole_line.format(ppc.zend,
-                                               ppc.step,
-                                               hole_list[1][2],
-                                               zsec,
-                                               hole_list[1][0], hole_list[1][1],))
+    return '\n[\n[foro N°{1}\n[\n{0}'.format(ppc.hole_line.format('P43',
+                                                                  'P42',
+                                                                  hole_list[1][2],
+                                                                  'P44',
+                                                                  hole_list[1][0],
+                                                                  hole_list[1][1]),
+                                             hole_list[0])
 
 
 def cnc_list_hole(ppc, matrix, hole_list):
@@ -43,12 +54,19 @@ def cnc_list_hole(ppc, matrix, hole_list):
 
 
 def cnc_build(matrix, tab, ppc):
-    return '{0}{1}{2}'.format(ppc.header.format(ppc.feed, ppc.srpm),
-                              cnc_list_hole(ppc, matrix, matrix[tab][1]),
-                              ppc.footer.format(ppc.zfin))
+    return '[\n[FORI Ø{3}\n[\n[----------\n[\n{0}{1}{2}'.format(ppc.header.format('P41', 'P40'),
+                                                                cnc_list_hole(ppc, matrix, matrix[tab][1]),
+                                                                ppc.footer.format(ppc.zfin),
+                                                                matrix[tab][0]).split('\n')
 
 
-print(cnc_build(matrice, 3, PostProcessor(workpath, selected_ppc)))
+pippo = cnc_build(matrice, selected_tab, PostProcessor(workpath, selected_ppc))
+ciccio = str()
+
+for (number, line) in enumerate(pippo, 1):
+    ciccio += 'N\t{0}\t\t{1}\n'.format(number, line)
+
+print(ciccio)
 
 
 # print(report_table(matrice))
