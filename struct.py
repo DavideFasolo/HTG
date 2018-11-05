@@ -19,11 +19,15 @@ filename = os.getcwd() + '\\filetestarea\\test.vda'
 dxf_conf = DxfConfig(workpath)
 struct_conf = StructConfig(workpath)
 csv_conf = CsvConfig(workpath)
+ppc_list = Ppcs(workpath)
 
 matrice = build_matrix_vda(filename, struct_conf)
 
+selected_ppc = ppc_list.plist[0]
+print(selected_ppc)
+post_driver = PostProcessor(workpath, selected_ppc)
 
-print(report_table(matrice))
+# print(report_table(matrice))
 
 
 # out_csv = open('C:\\Users\\Amon\\Desktop\\asd.csv', 'w+')

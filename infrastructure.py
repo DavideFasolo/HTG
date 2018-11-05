@@ -1,6 +1,7 @@
 import configparser
 
 CONFIGURATION_FILENAME = "config.kg"
+POST_FILENAME = "ppc.kg"
 
 
 class HtgConfiguration:
@@ -87,6 +88,19 @@ class CsvConfig:
         config.read(path + CONFIGURATION_FILENAME)
         self.separator = config.get('csv export', 'separator')
         self.d_mark = config.get('csv export', 'decimal mark')
+
+
+class Ppcs:
+    def __init__(self, path):
+        config = configparser.ConfigParser()
+        config.read(path + POST_FILENAME)
+        self.plist = config.get('avaiable ppcs', 'ppcs').split(',')
+
+
+class PostProcessor:
+    def __init__(self, path, ppc_name):
+        config = configparser.ConfigParser()
+        config.read(path + 'ppcs\\' + ppc_name)
 
 
 ######################################################################
