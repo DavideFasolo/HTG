@@ -105,12 +105,12 @@ class PostProcessor:
         self.header = config.get('cnc structure', 'header')
         self.hole_line = config.get('cnc structure', 'hole line')
         self.footer = config.get('cnc structure', 'footer')
-        self.feed = config.get('defaults', 'feed')
-        self.srpm = config.get('defaults', 'srpm')
-        self.step = config.get('defaults', 'step')
-        self.zend = config.get('defaults', 'zend')
-        self.zsec = config.get('defaults', 'zsec')
-        self.zfin = config.get('defaults', 'zfin')
+        self.feed = config.getfloat('defaults', 'feed')
+        self.srpm = config.getfloat('defaults', 'srpm')
+        self.step = config.getfloat('defaults', 'step')
+        self.zend = config.getfloat('defaults', 'zend')
+        self.zsec = config.getfloat('defaults', 'zsec')
+        self.zfin = config.getfloat('defaults', 'zfin')
 
 
 ######################################################################

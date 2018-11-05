@@ -26,30 +26,30 @@ matrice = build_matrix_vda(filename, struct_conf)
 selected_ppc = ppc_list.plist[0]
 
 
-def cnc_build(ppc: PostProcessor):
-    cnc_out = '{0}\n{1}\n{2}'.format(ppc.header.format(ppc.feed,
-                                                       ppc.srpm),
-                                     ppc.hole_line.format(ppc.zend,
-                                                          ppc.step,
-                                                          -12.35,
-                                                          ppc.zsec,
-                                                          23.56, 15.33,),
-                                     ppc.footer.format(ppc.zfin))
-    return cnc_out
+def cnc_set_z(hole_matrix_tab):
+    return get_max_z(hole_matrix_tab) + 100
 
 
-def hole_cnc_build(ppc):
+def hole_cnc_build(ppc, hole_list, zsec):
     return '\n{0}'.format(ppc.hole_line.format(ppc.zend,
                                                ppc.step,
-                                               -12.35,
-                                               ppc.zsec,
-                                               23.56, 15.33,))
+                                               hole_list[1][2],
+                                               zsec,
+                                               hole_list[1][0], hole_list[1][1],))
 
 
-pippo = list(map(hole_cnc_build, cycle([PostProcessor(workpath, selected_ppc)]), matrice[0][1][1]))
+def cnc_list_hole(ppc, matrix, hole_list):
+    return ''.join(list(map(hole_cnc_build, cycle([ppc]), hole_list, cycle([max(get_max_z(matrix) + 100, ppc.zsec)]))))
 
 
-print(pippo)
+def cnc_build(matrix, tab, ppc):
+    return '{0}{1}{2}'.format(ppc.header.format(ppc.feed, ppc.srpm),
+                              cnc_list_hole(ppc, matrix, matrix[tab][1]),
+                              ppc.footer.format(ppc.zfin))
+
+
+print(cnc_build(matrice, 3, PostProcessor(workpath, selected_ppc)))
+
 
 # print(report_table(matrice))
 
