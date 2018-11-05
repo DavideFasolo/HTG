@@ -100,7 +100,17 @@ class Ppcs:
 class PostProcessor:
     def __init__(self, path, ppc_name):
         config = configparser.ConfigParser()
-        config.read(path + 'ppcs\\' + ppc_name)
+        config.read(path + 'ppc\\' + ppc_name + '.ppc')
+        self.name = config.get('identity', 'name')
+        self.header = config.get('cnc structure', 'header')
+        self.hole_line = config.get('cnc structure', 'hole line')
+        self.footer = config.get('cnc structure', 'footer')
+        self.feed = config.get('defaults', 'feed')
+        self.srpm = config.get('defaults', 'srpm')
+        self.step = config.get('defaults', 'step')
+        self.zend = config.get('defaults', 'zend')
+        self.zsec = config.get('defaults', 'zsec')
+        self.zfin = config.get('defaults', 'zfin')
 
 
 ######################################################################
