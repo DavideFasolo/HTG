@@ -1,0 +1,26 @@
+[identity]
+name = heidenhein skel
+
+[cnc structure]
+header = BEGIN PGM {2} MM
+hole line = L X{4} Y{5}
+footer = END PGM {2} MM
+
+[defaults]
+feed = 150
+srpm = 1000
+step = 3
+zend = 0
+zsec = 100
+zfin = 200
+
+[comments]
+header =
+hole line =
+footer =
+
+[line format]
+numbers = false
+line start number = 0
+line step = 1
+line id = N

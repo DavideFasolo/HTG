@@ -3,6 +3,8 @@ name = selca 4000
 
 [cnc structure]
 header = [
+	[{2}
+	[
     [Richiesta parametri
     [
     P40=?    [Immettere valore giri/min S=
@@ -28,3 +30,22 @@ step = 3
 zend = 0
 zsec = 100
 zfin = 200
+
+[comments]
+header = [
+	[{0}
+	[
+	[----------
+	[
+	
+hole line = 
+	[
+	[foro N°{0}
+	[
+footer =
+
+[line format]
+numbers = true
+line start number = 1
+line step = 10
+line id = N
