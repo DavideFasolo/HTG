@@ -2,7 +2,7 @@
 name = heidenhein skel
 
 [cnc structure]
-header = BEGIN PGM {2} MM
+header = BEGIN PGM {2} MM ;file {3} {2}
 hole line = L X{4} Y{5}
 footer = END PGM {2} MM
 
@@ -23,5 +23,7 @@ footer =
 numbers = false
 line start number = 0
 line step = 1
-line id = N
+line id =
 post number = none
+end line = FMAX M89     ; Foro {0} da tabella
+last line = FMAX M99        ; Foro {0} da tabella

@@ -1,5 +1,6 @@
 from KG_dxf_lib import *
 from utilities import *
+from itertools import count
 
 
 #                                                                                                                      _
@@ -122,3 +123,56 @@ def dxf_structure(entities_matrix, heading_filename, dxf_config_parser):
                                  dxf_out_tables(dxf_config_parser),
                                  dxf_draw_entities(entities_matrix, dxf_config_parser),
                                  dxf_footer())
+
+
+#                                                                                                                      _
+#                                               CNC OUTPUT SETUP                                                       _
+#                                                                                                                      _
+
+
+def get_table_id(table_matrix):
+    return 'Fori diam {0}'.format(table_matrix[0])
+
+
+def get_table_list(tab_matrix):
+    return list(map(get_table_id, tab_matrix))
+
+
+def cnc_set_z(hole_matrix_tab):
+    return get_max_z(hole_matrix_tab) + 100
+
+
+def hole_cnc_build(ppc, hole_list):
+    return '\n{0} {2}'.format(ppc.hole_line.format('P43',
+                                                   'P42',
+                                                   hole_list[1][2],
+                                                   'P44',
+                                                   hole_list[1][0],
+                                                   hole_list[1][1],
+                                                   ppc.com_hole.format(hole_list[0])),
+                              ppc.com_hole.format(hole_list[0]),
+                              ppc.endline.format(hole_list[0])
+                              )
+
+
+def cnc_list_hole(ppc, hole_list):
+    return '{0} {1}'.format(''.join(list(map(hole_cnc_build, cycle([ppc]), hole_list))).strip(
+        ppc.endline.format(hole_list[-1][0])),
+        ppc.lastline.format(hole_list[-1][0]))
+
+
+def cnc_build(matrix, tab, ppc, filename):
+    return '{3}{0}{1}\n{2}'.format(
+        ppc.header.format('P41', 'P40', get_table_id(matrix[tab]), filename, len(matrix[tab][1])),
+        cnc_list_hole(ppc, matrix[tab][1]),
+        ppc.footer.format('P45', '', get_table_id(matrix[tab])),
+        ppc.com_header.format(get_table_id(matrix[tab]))).split('\n')
+
+
+def cnc_lines(matrix, tab, ppc, filename):
+    return ''.join(list(map(lambda line, line_id, line_number, separ: '{0}{1}{3}{2}\n'.format(
+        line_id, line_number, line, separ),
+                            cnc_build(matrix, tab, ppc, filename),
+                            ppc.line_nums == 'true' and cycle([ppc.line_id]) or cycle(['']),
+                            ppc.line_nums == 'true' and count(ppc.line_start, ppc.line_step) or cycle(['']),
+                            cycle([ppc.separator]))))

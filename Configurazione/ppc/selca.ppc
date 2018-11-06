@@ -3,24 +3,65 @@ name = selca 4000
 
 [cnc structure]
 header = [
-	[{2}
+	[{2} da file {3}
 	[
     [Richiesta parametri
     [
-    P40=?	[Immettere valore giri/min S=
-    P41=?	[Immettere valore avanzamento F=
-    P42=?	[Immettere valore incremento foratura I=
-    P43=?	[Immettere quota di arrivo a fine foro Z=
-    P44=?	[Immettere quota di disompegno Q=
+    DISP0
+    DISP-1
+    DISP1 = file {3} ESECUZIONE {4} {2}
+    DISP3 = Inserire valore giri mandrino S
+    DISP5 = Premere INVIO per dare OK
+    DISP7 = PREMERE BREAK PER USCIRE
+    P40=?
+    DISP0
+    DISP1 = file {3} ESECUZIONE {4} {2}
+    DISP3 = Inserire valore avanzamento F
+    DISP5 = Premere INVIO per dare OK
+    DISP7 = PREMERE BREAK PER USCIRE
+    P41=?
+    DISP0
+    DISP1 = file {3} ESECUZIONE {4} {2}
+    DISP3 = Inserire valore incremento foratura I
+    DISP5 = Premere INVIO per dare OK
+    DISP7 = PREMERE BREAK PER USCIRE
+    P42=?
+    DISP0
+    DISP1 = file {3} ESECUZIONE {4} {2}
+    DISP3 = Inserire quota di arrivo fine foro comune a tutti Z
+    DISP5 = Premere INVIO per dare OK
+    DISP7 = PREMERE BREAK PER USCIRE
+    P43=?
+    DISP0
+    DISP1 = file {3} ESECUZIONE {4} {2}
+    DISP3 = Inserire quota di disimpegno Q
+    DISP5 = Premere INVIO per dare OK
+    DISP7 = PREMERE BREAK PER USCIRE
+    P44=?
+    DISP0
+    DISP1 = file {3} ESECUZIONE {4} {2}
+    DISP3 = Inserire quota di arrivo a fine programma Z
+    DISP5 = Premere INVIO per dare OK e INIZIARE!
+    DISP7 = VIENE USATA ORIGINE 1 SALVO MODIFICHE MANUALI
+    DISP9 = PREMERE BREAK PER USCIRE
+    P45=?
+    DISP0
+    DISP-2
+    [
+    [   VIENE USATA ORIGINE 1 (modificare linea N18 se serve)
     [
     [Inizio programma
     [
     G17
+    O1
     F{0} M03 S{1}
-hole line = G83 Z{0} I{1} J{2} Q{3}
+    [
+hole line = G83 Z{0} I{1} J{2} Q{3} {6}
     X{4} Y{5}
     G80 Z{3}
+    [
 footer = G0 Z{0}
+    [
     M30
 
 [defaults]
@@ -32,16 +73,9 @@ zsec = 100
 zfin = 200
 
 [comments]
-header = [
-	[{0}
-	[
-	[----------
-	[
-	
-hole line = 
-	[
-	[foro {0} da tabella disegno
-	[
+header =
+hole line =
+    [Foro {0} da tabella <<-------------- {0}
 footer =
 
 [line format]
@@ -49,4 +83,6 @@ numbers = true
 line start number = 1
 line step = 1
 line id = N
-post number = tab
+post number = space
+end line =
+last line =

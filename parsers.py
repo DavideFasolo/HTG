@@ -7,7 +7,7 @@ from itertools import repeat
 
 
 def file_get_full_name(p):
-    return p.split('/').pop()
+    return p.split('\\').pop()
 
 
 def file_get_name(f):

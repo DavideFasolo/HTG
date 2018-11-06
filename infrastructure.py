@@ -119,6 +119,8 @@ class PostProcessor:
         self.line_id = config.get('line format', 'line id').replace('____', '\t')
         self.separator = (config.get('line format', 'post number') == 'space' and ' ') or (config.get('line format', 'post number') == 'tab' and '\t') or (config.get('line format', 'post number') == 'none' and '')
         self.line_start = config.getint('line format', 'line start number')
+        self.endline = config.get('line format', 'end line')
+        self.lastline = config.get('line format', 'last line')
 
 
 ######################################################################
