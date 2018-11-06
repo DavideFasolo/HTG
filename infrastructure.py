@@ -116,7 +116,8 @@ class PostProcessor:
         self.com_footer = config.get('comments', 'footer')
         self.line_nums = config.get('line format', 'numbers')
         self.line_step = config.getint('line format', 'line step')
-        self.line_id = config.get('line format', 'line id')
+        self.line_id = config.get('line format', 'line id').replace('____', '\t')
+        self.separator = (config.get('line format', 'post number') == 'space' and ' ') or (config.get('line format', 'post number') == 'tab' and '\t') or (config.get('line format', 'post number') == 'none' and '')
         self.line_start = config.getint('line format', 'line start number')
 
 
