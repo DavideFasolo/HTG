@@ -3,6 +3,7 @@ import os
 from infrastructure import *
 from outputs import *
 from parsers import *
+from itertools import count
 
 
 ########################################################################################################################
@@ -40,13 +41,14 @@ def cnc_set_z(hole_matrix_tab):
 
 
 def hole_cnc_build(ppc, hole_list, zsec):
-    return '\n[\n[foro N°{1}\n[\n{0}'.format(ppc.hole_line.format('P43',
-                                                                  'P42',
-                                                                  hole_list[1][2],
-                                                                  'P44',
-                                                                  hole_list[1][0],
-                                                                  hole_list[1][1]),
-                                             hole_list[0])
+    return '{1}\n{0}'.format(ppc.hole_line.format('P43',
+                                                  'P42',
+                                                  hole_list[1][2],
+                                                  'P44',
+                                                  hole_list[1][0],
+                                                  hole_list[1][1]),
+                             ppc.com_hole.format(hole_list[0])
+                             )
 
 
 def cnc_list_hole(ppc, matrix, hole_list):
@@ -54,19 +56,23 @@ def cnc_list_hole(ppc, matrix, hole_list):
 
 
 def cnc_build(matrix, tab, ppc):
-    return '[\n[FORI Ø{3}\n[\n[----------\n[\n{0}{1}{2}'.format(ppc.header.format('P41', 'P40'),
+    return '{3}{0}{1}\n{2}'.format(ppc.header.format('P41', 'P40', get_table_id(matrix[tab])),
                                                                 cnc_list_hole(ppc, matrix, matrix[tab][1]),
-                                                                ppc.footer.format(ppc.zfin),
-                                                                matrix[tab][0]).split('\n')
+                                                                ppc.footer.format(ppc.zfin,'',get_table_id(matrix[tab])),
+                                                                ppc.com_header.format(get_table_id(matrix[tab]))).split('\n')
 
 
-pippo = cnc_build(matrice, selected_tab, PostProcessor(workpath, selected_ppc))
-ciccio = str()
+def cnc_selca(matrix, tab, ppc):
+    return ''.join(list(map(lambda number, line, lin_id: '{2}{0}{1}\n'.format(number, line, lin_id),
+                            ppc.line_nums == 'true' and count(ppc.line_start, ppc.line_step) or cycle(['']),
+                            cnc_build(matrix, tab, ppc),
+                            ppc.line_nums == 'true' and cycle([ppc.line_id]) or cycle([''])
+                            )))
 
-for (number, line) in enumerate(pippo, 1):
-    ciccio += 'N\t{0}\t\t{1}\n'.format(number, line)
 
-print(ciccio)
+pippo = cnc_selca(matrice, selected_tab, PostProcessor(workpath, selected_ppc))
+
+print(pippo)
 
 
 # print(report_table(matrice))

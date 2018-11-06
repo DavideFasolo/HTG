@@ -111,6 +111,13 @@ class PostProcessor:
         self.zend = config.getfloat('defaults', 'zend')
         self.zsec = config.getfloat('defaults', 'zsec')
         self.zfin = config.getfloat('defaults', 'zfin')
+        self.com_header = config.get('comments', 'header')
+        self.com_hole = config.get('comments', 'hole line')
+        self.com_footer = config.get('comments', 'footer')
+        self.line_nums = config.get('line format', 'numbers')
+        self.line_step = config.getint('line format', 'line step')
+        self.line_id = config.get('line format', 'line id')
+        self.line_start = config.getint('line format', 'line start number')
 
 
 ######################################################################
