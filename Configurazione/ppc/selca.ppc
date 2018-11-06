@@ -7,11 +7,11 @@ header = [
 	[
     [Richiesta parametri
     [
-    P40=?    [Immettere valore giri/min S=
-    P41=?    [Immettere valore avanzamento F=
-    P42=?    [Immettere valore incremento foratura I=
-    P43=?    [Immettere quota di arrivo a fine foro Z=
-    P44=?    [Immettere quota di disompegno Q=
+    P40=?	[Immettere valore giri/min S=
+    P41=?	[Immettere valore avanzamento F=
+    P42=?	[Immettere valore incremento foratura I=
+    P43=?	[Immettere quota di arrivo a fine foro Z=
+    P44=?	[Immettere quota di disompegno Q=
     [
     [Inizio programma
     [
@@ -40,12 +40,13 @@ header = [
 	
 hole line = 
 	[
-	[foro N°{0}
+	[foro {0} da tabella disegno
 	[
 footer =
 
 [line format]
 numbers = true
 line start number = 1
-line step = 10
+line step = 1
 line id = N
+post number = tab

@@ -24,3 +24,4 @@ numbers = false
 line start number = 0
 line step = 1
 line id = N
+post number = none
