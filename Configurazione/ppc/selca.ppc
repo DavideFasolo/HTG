@@ -28,15 +28,7 @@ header = [
     DISP3 = Inserire valore incremento foratura I
     DISP7 = Premere INVIO per dare OK
     DISP9 = PREMERE BREAK PER USCIRE
-    P42=?
-	P46=2
-    DISP0
-    DISP1 = file {3} ESECUZIONE {4} {2}
-    DISP3 = Inserire quota di inizio fori comune a tutti J
-	DISP5 = CONTROLLARE BENE IL DISEGNO!
-    DISP7 = Premere INVIO per dare OK
-    DISP9 = PREMERE BREAK PER USCIRE
-    P46=?
+    P42=? {5}
 	P43=-5
     DISP0
     DISP1 = file {3} ESECUZIONE {4} {2}
@@ -103,3 +95,14 @@ line id = N
 post number = space
 end line =
 last line =
+
+[switches]
+z head = [
+	P46=2
+    DISP0
+    DISP1 = file {3} ESECUZIONE {4} {2}
+    DISP3 = Inserire quota di INIZIO fori comune a tutti J
+	DISP5 = CONTROLLARE BENE IL DISEGNO!
+    DISP7 = Premere INVIO per dare OK
+    DISP9 = PREMERE BREAK PER USCIRE
+    P46=?

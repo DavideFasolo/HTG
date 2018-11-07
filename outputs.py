@@ -148,36 +148,60 @@ def cnc_footer(ppc, matrix, tab):
     return ppc.footer.format(ppc.cnc_Zf, get_table_id(matrix[tab]))
 
 
-def hole_cnc_build(ppc, hole_list):
-    return '\n{0} {1}'.format(ppc.hole_line.format(ppc.cnc_Z,
-                                                   ppc.cnc_I,
-                                                   hole_list[1][2],
-                                                   ppc.cnc_Q,
-                                                   hole_list[1][0],
-                                                   hole_list[1][1],
-                                                   ppc.com_hole.format(hole_list[0])),
-                              ppc.endline.format(hole_list[0])
-                              )
+def cnc_hole(ppc, tab, z_switch):
+    # {0} = Z fine foro
+    # {1} = incremento foratura: I
+    # {2} = coordinata Z inizio foro: J
+    # {3} = Z disimpegno fine foro: Q
+    # {4}{5} = coordinate X ed Y
+    # {6} = commento fine riga
+    return ppc.hole_line.format(ppc.cnc_Z,
+                                ppc.cnc_I,
+                                (z_switch == 'true' and tab[1][2]) or ppc.cnc_J,
+                                ppc.cnc_Q,
+                                tab[1][0],
+                                tab[1][1],
+                                ppc.com_hole.format(tab[0]))
 
 
-def cnc_list_hole(ppc, hole_list):
-    return '{0} {1}'.format(''.join(list(map(hole_cnc_build, cycle([ppc]), hole_list))).strip(
+def cnc_header(ppc, z_switch, matrix, tab, filename):
+    # {0} = Drilling Feed: F
+    # {1} = Drilling rpm: S
+    # {2} = Hole group name
+    # {3} = full vda path and name
+    # {4} = number of holes in the group
+    # {5} = header section if z-coord is true
+    return ppc.header.format(ppc.cnc_F,
+                             ppc.cnc_S,
+                             get_table_id(matrix[tab]),
+                             filename,
+                             len(matrix[tab][1]),
+                             (not z_switch == 'true' and ppc.z_true) or '')
+
+
+def hole_cnc_build(ppc, hole_list, z_switch):
+    return '\n{0} {1}'.format(cnc_hole(ppc, hole_list, z_switch),
+                              ppc.endline.format(hole_list[0]))
+
+
+def cnc_list_hole(ppc, hole_list, z_switch):
+    return '{0} {1}'.format(''.join(list(map(hole_cnc_build, cycle([ppc]), hole_list, cycle([z_switch])))).strip(
         ppc.endline.format(hole_list[-1][0])),
         ppc.lastline.format(hole_list[-1][0]))
 
 
-def cnc_build(matrix, tab, ppc, filename):
+def cnc_build(matrix, tab, ppc, z_switch, filename):
     return '{3}{0}{1}\n{2}'.format(
-        ppc.header.format(ppc.cnc_F, ppc.cnc_S, get_table_id(matrix[tab]), filename, len(matrix[tab][1])),
-        cnc_list_hole(ppc, matrix[tab][1]),
+        cnc_header(ppc, z_switch, matrix, tab, filename),
+        cnc_list_hole(ppc, matrix[tab][1], z_switch),
         cnc_footer(ppc, matrix, tab),
         ppc.com_header.format(get_table_id(matrix[tab]))).split('\n')
 
 
-def cnc_lines(matrix, tab, ppc, filename):
+def cnc_lines(matrix, tab, ppc, z_switch, filename):
     return ''.join(list(map(lambda line, line_id, line_number, separ: '{0}{1}{3}{2}\n'.format(
         line_id, line_number, line, separ),
-                            cnc_build(matrix, tab, ppc, filename),
+                            cnc_build(matrix, tab, ppc, filename, z_switch),
                             ppc.line_nums == 'true' and cycle([ppc.line_id]) or cycle(['']),
                             ppc.line_nums == 'true' and count(ppc.line_start, ppc.line_step) or cycle(['']),
                             cycle([ppc.separator]))))

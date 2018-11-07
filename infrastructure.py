@@ -122,6 +122,7 @@ class PostProcessor:
         self.line_start = config.getint('line format', 'line start number')
         self.endline = config.get('line format', 'end line')
         self.lastline = config.get('line format', 'last line')
+        self.z_true = config.get('switches', 'z head')
 
 
 ######################################################################

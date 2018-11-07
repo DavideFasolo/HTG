@@ -32,15 +32,24 @@ print(report_table(matrice))
 
 selected_ppc = ppc_list.plist[0]
 selected_tab = 2
+z_switch: bool = 'false'
 
-print(cnc_lines(matrice, selected_tab, PostProcessor(workpath, ppc_list.plist[1]), file_get_full_name(filename)))
-print(cnc_lines(matrice, selected_tab, PostProcessor(workpath, ppc_list.plist[0]), file_get_full_name(filename)))
+print(cnc_lines(
+    matrice, selected_tab, PostProcessor(workpath, ppc_list.plist[1]), z_switch, file_get_full_name(filename)
+))
+print(cnc_lines(
+    matrice, selected_tab, PostProcessor(workpath, ppc_list.plist[0]), z_switch, file_get_full_name(filename)
+))
 
 out_selca = open(out_dir + 'FASOLO SELCA.cnc', 'w+')
-out_selca.write(cnc_lines(matrice, selected_tab, PostProcessor(workpath, ppc_list.plist[0]), file_get_full_name(filename)))
+out_selca.write(cnc_lines(
+    matrice, selected_tab, PostProcessor(workpath, ppc_list.plist[0]), z_switch, file_get_full_name(filename)
+))
 out_selca.close()
 out_heiden = open(out_dir + 'FASOLO HEIDENHAIN.h', 'w+')
-out_heiden.write(cnc_lines(matrice, selected_tab, PostProcessor(workpath, ppc_list.plist[1]), file_get_full_name(filename)))
+out_heiden.write(cnc_lines(
+    matrice, selected_tab, PostProcessor(workpath, ppc_list.plist[1]), z_switch, file_get_full_name(filename)
+))
 out_heiden.close()
 out_csv = open(out_dir + 'asd.csv', 'w+')
 out_csv.write(csv_table(matrice, csv_conf))

@@ -28,3 +28,6 @@ line id =
 post number = none
 end line = FMAX M89     ; Foro {0} da tabella
 last line = FMAX M99        ; Foro {0} da tabella
+
+[switches]
+z head =
