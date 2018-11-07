@@ -142,15 +142,20 @@ def cnc_set_z(hole_matrix_tab):
     return get_max_z(hole_matrix_tab) + 100
 
 
+def cnc_footer(ppc, matrix, tab):
+    # {0} = Z finale programma
+    # {1} = Nome programma
+    return ppc.footer.format(ppc.cnc_Zf, get_table_id(matrix[tab]))
+
+
 def hole_cnc_build(ppc, hole_list):
-    return '\n{0} {2}'.format(ppc.hole_line.format('P43',
-                                                   'P42',
+    return '\n{0} {1}'.format(ppc.hole_line.format(ppc.cnc_Z,
+                                                   ppc.cnc_I,
                                                    hole_list[1][2],
-                                                   'P44',
+                                                   ppc.cnc_Q,
                                                    hole_list[1][0],
                                                    hole_list[1][1],
                                                    ppc.com_hole.format(hole_list[0])),
-                              ppc.com_hole.format(hole_list[0]),
                               ppc.endline.format(hole_list[0])
                               )
 
@@ -163,9 +168,9 @@ def cnc_list_hole(ppc, hole_list):
 
 def cnc_build(matrix, tab, ppc, filename):
     return '{3}{0}{1}\n{2}'.format(
-        ppc.header.format('P41', 'P40', get_table_id(matrix[tab]), filename, len(matrix[tab][1])),
+        ppc.header.format(ppc.cnc_F, ppc.cnc_S, get_table_id(matrix[tab]), filename, len(matrix[tab][1])),
         cnc_list_hole(ppc, matrix[tab][1]),
-        ppc.footer.format('P45', '', get_table_id(matrix[tab])),
+        cnc_footer(ppc, matrix, tab),
         ppc.com_header.format(get_table_id(matrix[tab]))).split('\n')
 
 
