@@ -4,15 +4,16 @@ name = heidenhein skel
 [cnc structure]
 header = BEGIN PGM {2} MM ;file {3} {2}
 hole line = L X{4} Y{5}
-footer = END PGM {2} MM
+footer = END PGM {1} MM
 
 [defaults]
-feed = 150
-srpm = 1000
-step = 3
-zend = 0
-zsec = 100
-zfin = 200
+cnc_F = P41
+cnc_S = P40
+cnc_I = P42
+cnc_Z = P43
+cnc_Q = P44
+cnc_J = P46
+cnc_Zf = P45
 
 [comments]
 header =

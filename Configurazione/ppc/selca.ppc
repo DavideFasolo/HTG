@@ -7,48 +7,64 @@ header = [
 	[
     [Richiesta parametri
     [
+	P40=1500
     DISP0
     DISP-1
     DISP1 = file {3} ESECUZIONE {4} {2}
     DISP3 = Inserire valore giri mandrino S
-    DISP5 = Premere INVIO per dare OK
-    DISP7 = PREMERE BREAK PER USCIRE
+    DISP7 = Premere INVIO per dare OK
+    DISP9 = PREMERE BREAK PER USCIRE
     P40=?
+	P41=20
     DISP0
     DISP1 = file {3} ESECUZIONE {4} {2}
     DISP3 = Inserire valore avanzamento F
-    DISP5 = Premere INVIO per dare OK
-    DISP7 = PREMERE BREAK PER USCIRE
+    DISP7 = Premere INVIO per dare OK
+    DISP9 = PREMERE BREAK PER USCIRE
     P41=?
+	P42=3
     DISP0
     DISP1 = file {3} ESECUZIONE {4} {2}
     DISP3 = Inserire valore incremento foratura I
-    DISP5 = Premere INVIO per dare OK
-    DISP7 = PREMERE BREAK PER USCIRE
+    DISP7 = Premere INVIO per dare OK
+    DISP9 = PREMERE BREAK PER USCIRE
     P42=?
+	P46=2
+    DISP0
+    DISP1 = file {3} ESECUZIONE {4} {2}
+    DISP3 = Inserire quota di inizio fori comune a tutti J
+	DISP5 = CONTROLLARE BENE IL DISEGNO!
+    DISP7 = Premere INVIO per dare OK
+    DISP9 = PREMERE BREAK PER USCIRE
+    P46=?
+	P43=-5
     DISP0
     DISP1 = file {3} ESECUZIONE {4} {2}
     DISP3 = Inserire quota di arrivo fine foro comune a tutti Z
-    DISP5 = Premere INVIO per dare OK
-    DISP7 = PREMERE BREAK PER USCIRE
+	DISP5 = CONTROLLARE BENE IL DISEGNO!
+    DISP7 = Premere INVIO per dare OK
+    DISP9 = PREMERE BREAK PER USCIRE
     P43=?
+	P44=100
     DISP0
     DISP1 = file {3} ESECUZIONE {4} {2}
     DISP3 = Inserire quota di disimpegno Q
-    DISP5 = Premere INVIO per dare OK
-    DISP7 = PREMERE BREAK PER USCIRE
+	DISP5 = CONTROLLARE BENE IL DISEGNO!
+    DISP7 = Premere INVIO per dare OK
+    DISP9 = PREMERE BREAK PER USCIRE
     P44=?
+	P45=200
     DISP0
     DISP1 = file {3} ESECUZIONE {4} {2}
     DISP3 = Inserire quota di arrivo a fine programma Z
-    DISP5 = Premere INVIO per dare OK e INIZIARE!
-    DISP7 = VIENE USATA ORIGINE 1 SALVO MODIFICHE MANUALI
+	DISP5 = VIENE USATA ORIGINE 1 SALVO MODIFICHE MANUALI (N52)
+    DISP7 = Premere INVIO per dare OK e INIZIARE!
     DISP9 = PREMERE BREAK PER USCIRE
     P45=?
     DISP0
     DISP-2
     [
-    [   VIENE USATA ORIGINE 1 (modificare linea N18 se serve)
+    [   VIENE USATA ORIGINE 1 (modificare linea N52 se serve)
     [
     [Inizio programma
     [
@@ -65,12 +81,13 @@ footer = G0 Z{0}
     M30
 
 [defaults]
-feed = 150
-srpm = 1000
-step = 3
-zend = 0
-zsec = 100
-zfin = 200
+cnc_F = P41
+cnc_S = P40
+cnc_I = P42
+cnc_Z = P43
+cnc_Q = P44
+cnc_J = P46
+cnc_Zf = P45
 
 [comments]
 header =
