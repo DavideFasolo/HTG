@@ -30,8 +30,7 @@ matrice = build_matrix_vda(filename, struct_conf)
 
 print(report_table(matrice))
 
-selected_ppc = ppc_list.plist[0]
-selected_tab = 2
+selected_tab = 1
 z_switch: bool = 'false'
 
 print(cnc_lines(
@@ -57,3 +56,4 @@ out_csv.close()
 out_dxf = open(out_dir + 'asd.dxf', 'w+')
 out_dxf.write(dxf_structure(matrice, filename, dxf_conf))
 out_dxf.close()
+input()

@@ -143,18 +143,18 @@ def cnc_set_z(hole_matrix_tab):
 
 
 def cnc_footer(ppc, matrix, tab):
-    # {0} = Z finale programma
-    # {1} = Nome programma
+    # {0} = ending program Z
+    # {1} = program name
     return ppc.footer.format(ppc.cnc_Zf, get_table_id(matrix[tab]))
 
 
 def cnc_hole(ppc, tab, z_switch):
-    # {0} = Z fine foro
-    # {1} = incremento foratura: I
-    # {2} = coordinata Z inizio foro: J
-    # {3} = Z disimpegno fine foro: Q
-    # {4}{5} = coordinate X ed Y
-    # {6} = commento fine riga
+    # {0} = end hole Z
+    # {1} = drill step: I
+    # {2} = start hole Z: J
+    # {3} = rapid movement Z: Q
+    # {4}{5} = XY coordinates
+    # {6} = line comment hole table reference
     return ppc.hole_line.format(ppc.cnc_Z,
                                 ppc.cnc_I,
                                 (z_switch == 'true' and tab[1][2]) or ppc.cnc_J,
@@ -162,6 +162,12 @@ def cnc_hole(ppc, tab, z_switch):
                                 tab[1][0],
                                 tab[1][1],
                                 ppc.com_hole.format(tab[0]))
+
+
+def z_header_true(ppc, filename, matrix, tab):
+    return ppc.z_true.format(filename,
+                             len(matrix[tab][1]),
+                             get_table_id(matrix[tab]))
 
 
 def cnc_header(ppc, z_switch, matrix, tab, filename):
@@ -176,7 +182,7 @@ def cnc_header(ppc, z_switch, matrix, tab, filename):
                              get_table_id(matrix[tab]),
                              filename,
                              len(matrix[tab][1]),
-                             (not z_switch == 'true' and ppc.z_true) or '')
+                             (not z_switch == 'true' and z_header_true(ppc, filename, matrix, tab)) or '')
 
 
 def hole_cnc_build(ppc, hole_list, z_switch):
@@ -185,8 +191,9 @@ def hole_cnc_build(ppc, hole_list, z_switch):
 
 
 def cnc_list_hole(ppc, hole_list, z_switch):
-    return '{0} {1}'.format(''.join(list(map(hole_cnc_build, cycle([ppc]), hole_list, cycle([z_switch])))).strip(
-        ppc.endline.format(hole_list[-1][0])),
+    return '{0} {1}'.format(
+        ''.join(list(map(hole_cnc_build, cycle([ppc]), hole_list, cycle([z_switch])))).strip(
+            ppc.endline.format(hole_list[-1][0])),
         ppc.lastline.format(hole_list[-1][0]))
 
 
@@ -201,7 +208,7 @@ def cnc_build(matrix, tab, ppc, z_switch, filename):
 def cnc_lines(matrix, tab, ppc, z_switch, filename):
     return ''.join(list(map(lambda line, line_id, line_number, separ: '{0}{1}{3}{2}\n'.format(
         line_id, line_number, line, separ),
-                            cnc_build(matrix, tab, ppc, filename, z_switch),
+                            cnc_build(matrix, tab, ppc, z_switch, filename),
                             ppc.line_nums == 'true' and cycle([ppc.line_id]) or cycle(['']),
                             ppc.line_nums == 'true' and count(ppc.line_start, ppc.line_step) or cycle(['']),
                             cycle([ppc.separator]))))
