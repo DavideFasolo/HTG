@@ -56,6 +56,8 @@ class DxfConfig:
         self.tag_color = config.getint('colors', 'tag')
         self.text_color = config.getint('colors', 'text')
         self.tag_angle = config.getfloat('draw', 'tag angle')
+        self.tag_stylename = config.get('dxf advanced parameters', 'tag text stylename')
+        self.tag_font = config.get('draw', 'tag font')
 
 
 class ColorConfig:

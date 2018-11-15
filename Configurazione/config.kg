@@ -44,6 +44,7 @@ floating point = 3
 tag angle = 35
 tag text height = 3.5
 tag font ratio = 0.95
+tag font = Lucida Console
 
 [colors]
 circle = 152
@@ -67,4 +68,5 @@ axis style description = Axis --- - --- -
 axis dash pattern = 15 3 3 3
 tag text align x = 1
 tag text align y = 2
+tag text stylename = TAGSTYLE
 

@@ -38,8 +38,8 @@ def dxf_ltype(ltype_content):
     return '\n0\nLTYPE{0}'.format(ltype_content)
 
 
-def dxf_style(style_content):
-    return '\n0\nSTYLE{0}'.format(style_content)
+def dxf_style(style_name, style_font):
+    return '\n0\nSTYLE\n{0}\n3\n{1}'.format(style_name, style_font)
 
 
 def entity_style(stylename):

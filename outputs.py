@@ -69,7 +69,7 @@ def dxf_out_tables(dxf_config_parser):
                 dxf_ltype_table(
                     dxf_dash_style(dxf_config_parser.axis_name,
                                    dxf_config_parser.axis_description,
-                                   dxf_config_parser.axis_pattern)
+                                   dxf_config_parser.axis_pattern) +
                     dxf_style_table(
                         dxf_style(dxf_config_parser.tag_stylename,
                                   dxf_config_parser.tag_font))
@@ -112,6 +112,7 @@ def dxf_draw_entities(hole_matrix_out, dxf_config_parser):
                                     dxf_config_parser.tag_color)
             dxf_out += dxf_text(foro[0], tag_matrix[1],
                                 dxf_config_parser.tag_text_format,
+                                dxf_config_parser.tag_stylename,
                                 dxf_config_parser.text_level,
                                 dxf_config_parser.text_color)
     dxf_out += dxf_draw_axes(hole_matrix_out,
