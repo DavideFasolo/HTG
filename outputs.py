@@ -70,7 +70,10 @@ def dxf_out_tables(dxf_config_parser):
                     dxf_dash_style(dxf_config_parser.axis_name,
                                    dxf_config_parser.axis_description,
                                    dxf_config_parser.axis_pattern)
-                )
+                    dxf_style_table(
+                        dxf_style(dxf_config_parser.tag_stylename,
+                                  dxf_config_parser.tag_font))
+                    )
             )
         )
     )

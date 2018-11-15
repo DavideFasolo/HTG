@@ -56,4 +56,13 @@ out_csv.close()
 out_dxf = open(out_dir + 'asd.dxf', 'w+')
 out_dxf.write(dxf_structure(matrice, filename, dxf_conf))
 out_dxf.close()
+
+
+from os import listdir
+from os.path import isfile, join
+onlyfiles = [f.strip('.ppc') for f in listdir(workpath+'ppc\\') if isfile(join(workpath+'ppc\\', f))]
+print(onlyfiles)
+
+
+
 input()

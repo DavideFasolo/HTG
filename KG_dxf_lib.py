@@ -30,8 +30,16 @@ def dxf_ltype_table(ltype_table_content):
     return dxf_table('\n2\nLTYPE{0}'.format(ltype_table_content))
 
 
+def dxf_style_table(style_table_content):
+    return dxf_table('\n2\nSTYLE{0}'.format(style_table_content))
+
+
 def dxf_ltype(ltype_content):
     return '\n0\nLTYPE{0}'.format(ltype_content)
+
+
+def dxf_style(style_content):
+    return '\n0\nSTYLE{0}'.format(style_content)
 
 
 def entity_style(stylename):
@@ -56,6 +64,10 @@ def dxf_diam(diameter: float):
 
 def dxf_text_value(text_value):
     return '\n1\n{0}'.format(text_value)
+
+
+def dxf_text_stylename(text_stylename):
+    return '\n7\n{0}'.format(text_stylename)
 
 
 def dxf_p1(coord: list):
@@ -130,14 +142,15 @@ def dxf_text_format(format_code: list):
                                                         format_code[3])
 
 
-def dxf_text(text_value, text_coord: list, text_format: list, text_level, text_color):
-    return '\n0\nTEXT{0}{1}{2}{3}{4}{5}'.format(
+def dxf_text(text_value, text_coord: list, text_format: list, text_stylename, text_level, text_color):
+    return '\n0\nTEXT{0}{1}{2}{3}{4}{5}{6}'.format(
         dxf_level(text_level),
         dxf_text_format(text_format),
         dxf_p2(text_coord),
         dxf_color(text_color),
         dxf_p1(text_coord),
-        dxf_text_value(text_value)
+        dxf_text_value(text_value),
+        dxf_text_stylename(text_stylename)
     )
 
 
