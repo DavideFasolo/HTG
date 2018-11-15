@@ -65,16 +65,15 @@ def dxf_out_header_comments(filename_comment):
 def dxf_out_tables(dxf_config_parser):
     return dxf_section(
         dxf_tables(
-            dxf_table(
-                dxf_ltype_table(
+            dxf_ltype_table(
                     dxf_dash_style(dxf_config_parser.axis_name,
                                    dxf_config_parser.axis_description,
-                                   dxf_config_parser.axis_pattern) +
-                    dxf_style_table(
+                                   dxf_config_parser.axis_pattern)
+                    ) + 
+            dxf_style_table(
                         dxf_style(dxf_config_parser.tag_stylename,
-                                  dxf_config_parser.tag_font))
-                    )
-            )
+                                  dxf_config_parser.tag_font)
+                        )
         )
     )
 
@@ -99,7 +98,7 @@ def dxf_draw_entities(hole_matrix_out, dxf_config_parser):
                                    dxf_comment('N°{0} fori di diametro {1}'.format(str(len(tabella[1])),
                                                                                    str(tabella[0]))))
         for foro in tabella[1]:
-            tag_matrix = tag_point_matrix(foro[1], tabella[0], dxf_config_parser.tag_angle, foro[0])
+            tag_matrix = tag_point_matrix(foro[1], tabella[0], dxf_config_parser.tag_angle, foro[0], dxf_config_parser.tag_text_format[2], dxf_config_parser.tag_text_format[3])
             dxf_out += dxf_comment('#' * 28)
             dxf_out += dxf_comment('foro N°{0} Ø{1}'.format(str(foro[0]),
                                                             str(tabella[0])))

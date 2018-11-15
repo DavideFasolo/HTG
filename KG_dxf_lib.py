@@ -19,11 +19,11 @@ def dxf_entities(entities_content):
 
 
 def dxf_tables(tables_content):
-    return '\n2\nTABLES{0}\n0\nENDTAB'.format(tables_content)
+    return '\n2\nTABLES\n0\nTABLE{0}'.format(tables_content)
 
 
 def dxf_table(table_content):
-    return '\n0\nTABLE{0}'.format(table_content)
+    return '\n0\nTABLE{0}\n0\nENDTAB'.format(table_content)
 
 
 def dxf_ltype_table(ltype_table_content):
@@ -39,7 +39,7 @@ def dxf_ltype(ltype_content):
 
 
 def dxf_style(style_name, style_font):
-    return '\n0\nSTYLE\n{0}\n3\n{1}'.format(style_name, style_font)
+    return '\n0\nSTYLE\n2\n{0}\n3\n{1}'.format(style_name, style_font)
 
 
 def entity_style(stylename):
@@ -184,7 +184,7 @@ def rad_ang(angle):
     return angle * math.pi / 180
 
 
-def tag_side(text_height): return text_height * 0.6
+def tag_side(text_height): return text_height * 0.75
 
 
 def tag_b(text, text_height, font_ratio):
