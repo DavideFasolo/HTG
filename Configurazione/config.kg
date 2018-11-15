@@ -42,7 +42,7 @@ floating point = 3
 
 [draw]
 tag angle = 35
-tag text height = 3.5
+tag text height = 4
 tag font ratio = 0.95
 tag font = Lucida Console
 
